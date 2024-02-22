@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/spfx-serve.schema.json",
+  "port": 4321,
+  "https": true,
+  "initialPage": "https://dexterousplace.sharepoint.com/sites/ENOEnergy/_layouts/workbench.aspx",
+  "serveConfigurations": {
+    "default": {
+      "pageUrl": "https://dexterousplace.sharepoint.com/sites/ENOEnergy",
+      "customActions": {
+        "5cdc2613-8d81-4078-bdaf-5142e382d719": {
+          "location": "ClientSideExtension.ApplicationCustomizer",
+          "properties": {
+            "testMessage": "Test message"
+          }
+        }
+      }
+    },
+    "customize": {
+      "pageUrl": "https://dexterousplace.sharepoint.com/sites/ENOEnergy",
+      "customActions": {
+        "5cdc2613-8d81-4078-bdaf-5142e382d719": {
+          "location": "ClientSideExtension.ApplicationCustomizer",
+          "properties": {
+            "testMessage": "Test message"
+          }
+        }
+      }
+    }
+  }
+}

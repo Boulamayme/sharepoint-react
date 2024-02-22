@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "home-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/home/HomeWebPart.js",
+          "manifest": "./src/webparts/home/HomeWebPart.manifest.json"
+        }
+      ]
+    },
+    "customize-application-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/customize/CustomizeApplicationCustomizer.js",
+          "manifest": "./src/extensions/customize/CustomizeApplicationCustomizer.manifest.json"
+        }
+      ]
+    },
+    "organizational-chart-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/organizationalChart/OrganizationalChartWebPart.js",
+          "manifest": "./src/webparts/organizationalChart/OrganizationalChartWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "HomeWebPartStrings": "lib/webparts/home/loc/{locale}.js",
+    "CustomizeApplicationCustomizerStrings": "lib/extensions/customize/loc/{locale}.js",
+    "OrganizationalChartWebPartStrings": "lib/webparts/organizationalChart/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}

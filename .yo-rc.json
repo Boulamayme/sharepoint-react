@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": false,
+    "nodeVersion": "18.17.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.12.0"
+    },
+    "version": "1.18.0",
+    "libraryName": "enoe-app",
+    "libraryId": "15560305-55d4-41ef-891d-aa5219c5cf58",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "enoe-app",
+    "solutionShortDescription": "enoe-app description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
