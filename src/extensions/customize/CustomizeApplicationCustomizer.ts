@@ -1,12 +1,9 @@
-import { Log } from '@microsoft/sp-core-library';
-import {
-  BaseApplicationCustomizer
-} from '@microsoft/sp-application-base';
-import { Dialog } from '@microsoft/sp-dialog';
+import { Log } from "@microsoft/sp-core-library";
+import { BaseApplicationCustomizer } from "@microsoft/sp-application-base";
 
-import * as strings from 'CustomizeApplicationCustomizerStrings';
+import * as strings from "CustomizeApplicationCustomizerStrings";
 
-const LOG_SOURCE: string = 'CustomizeApplicationCustomizer';
+const LOG_SOURCE: string = "CustomizeApplicationCustomizer";
 
 /**
  * If your command set uses the ClientSideComponentProperties JSON input,
@@ -19,21 +16,39 @@ export interface ICustomizeApplicationCustomizerProperties {
 }
 
 /** A Custom Action which can be run during execution of a Client Side Application */
-export default class CustomizeApplicationCustomizer
-  extends BaseApplicationCustomizer<ICustomizeApplicationCustomizerProperties> {
-
+export default class CustomizeApplicationCustomizer extends BaseApplicationCustomizer<ICustomizeApplicationCustomizerProperties> {
   public onInit(): Promise<void> {
     Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
 
-    let message: string = this.properties.testMessage;
-    if (!message) {
-      message = '(No properties were provided.)';
-    }
+    // Add custom CSS and JS
+    this.inJectCssFile();
 
-    Dialog.alert(`Hello from ${strings.Title}:\n\n${message}`).catch(() => {
-      /* handle error */
-    });
+    setTimeout(() => {
+      const sectionTitle = document.querySelector(
+        "[data-automation-id='titleRegionBackgroundImage']"
+      );
+      if (sectionTitle && sectionTitle.parentElement) {
+        sectionTitle.parentElement.classList.add("dx-section-title");
+      }
+    }, 1000);
 
     return Promise.resolve();
+  }
+
+  public inJectCssFile(): void {
+    const head: any =
+      document.getElementsByTagName("head")[0] || document.documentElement;
+
+    let cssUrl = `${this.context.pageContext.web.absoluteUrl}/SiteAssets/assets/global.css`;
+
+    //Check if style is already loaded
+    let style = document.querySelector(`link[href="${cssUrl}"]`);
+    if (!style) {
+      let customStyle: HTMLLinkElement = document.createElement("link");
+      customStyle.href = cssUrl;
+      customStyle.rel = "stylesheet";
+      customStyle.type = "text/css";
+      head.insertAdjacentElement("beforeEnd", customStyle);
+    }
   }
 }
