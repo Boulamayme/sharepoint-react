@@ -27,7 +27,7 @@ export default class Card extends React.Component<ICardProps, {}> {
       <div className="row">
         {articles.length > 0 &&
           articles.map((article, index) => (
-            <div key={index} className="col-3">
+            <div key={index} className="col-3 mb-4">
               <div className="dx-article">
                 <img
                   loading="lazy"

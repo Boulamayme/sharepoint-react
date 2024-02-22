@@ -33,6 +33,14 @@
           "manifest": "./src/webparts/card/CardWebPart.manifest.json"
         }
       ]
+    },
+    "weather-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/weather/WeatherWebPart.js",
+          "manifest": "./src/webparts/weather/WeatherWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -42,6 +50,7 @@
     "OrganizationalChartWebPartStrings": "lib/webparts/organizationalChart/loc/{locale}.js",
     "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
     "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js",
-    "CardWebPartStrings": "lib/webparts/card/loc/{locale}.js"
+    "CardWebPartStrings": "lib/webparts/card/loc/{locale}.js",
+    "WeatherWebPartStrings": "lib/webparts/weather/loc/{locale}.js"
   }
 }

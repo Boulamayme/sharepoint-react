@@ -7,9 +7,12 @@ import { IReadonlyTheme } from "@microsoft/sp-component-base";
 
 import * as strings from "CardWebPartStrings";
 import Card from "./components/Card";
-import { ICardProps } from "./components/ICardProps";
-import { DateConvention, PrincipalType } from "@pnp/spfx-property-controls";
-import { PeoplePicker } from "@pnp/spfx-controls-react/lib/PeoplePicker";
+import { IArticle, ICardProps } from "./components/ICardProps";
+import { DateConvention } from "@pnp/spfx-property-controls";
+import {
+  PeoplePicker,
+  PrincipalType,
+} from "@pnp/spfx-controls-react/lib/PeoplePicker";
 import {
   CustomCollectionFieldType,
   PropertyFieldCollectionData,
@@ -30,14 +33,11 @@ export default class CardWebPart extends BaseClientSideWebPart<ICardWebPartProps
   public render(): void {
     console.log("Articles", this.properties.articles);
 
-    const element: React.ReactElement<ICardProps> = React.createElement(
-      Card,
-      {
-        articles: this.properties.articles || [],
-        onConfigurePropPane: this.configurePropPane,
-        displayMode: this.displayMode,
-      }
-    );
+    const element: React.ReactElement<ICardProps> = React.createElement(Card, {
+      articles: this.properties.articles || [],
+      onConfigurePropPane: this.configurePropPane,
+      displayMode: this.displayMode,
+    });
 
     ReactDom.render(element, this.domElement);
   }
