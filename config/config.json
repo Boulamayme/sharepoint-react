@@ -25,6 +25,14 @@
           "manifest": "./src/webparts/organizationalChart/OrganizationalChartWebPart.manifest.json"
         }
       ]
+    },
+    "card-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/card/CardWebPart.js",
+          "manifest": "./src/webparts/card/CardWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -33,6 +41,7 @@
     "CustomizeApplicationCustomizerStrings": "lib/extensions/customize/loc/{locale}.js",
     "OrganizationalChartWebPartStrings": "lib/webparts/organizationalChart/loc/{locale}.js",
     "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
-    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js",
+    "CardWebPartStrings": "lib/webparts/card/loc/{locale}.js"
   }
 }
