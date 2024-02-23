@@ -1,7 +1,11 @@
 import { Log } from "@microsoft/sp-core-library";
 import { BaseApplicationCustomizer } from "@microsoft/sp-application-base";
 
+import Footer from "./components/footer";
+
 import * as strings from "CustomizeApplicationCustomizerStrings";
+import * as ReactDOM from "react-dom";
+import { createElement } from "react";
 
 const LOG_SOURCE: string = "CustomizeApplicationCustomizer";
 
@@ -31,6 +35,24 @@ export default class CustomizeApplicationCustomizer extends BaseApplicationCusto
         sectionTitle.parentElement.classList.add("dx-section-title");
       }
     }, 1000);
+
+    this.context.application.navigatedEvent.add(this, () => {
+      const element: React.ReactElement = createElement(Footer);
+      let footer = document.getElementById("footer");
+      if (!footer) {
+        footer = document.createElement("div");
+        footer.id = "footer";
+        //Append the footer in spPageCanvasContent
+        const spPageCanvasContent = document.getElementById(
+          "spPageCanvasContent"
+        );
+        if (spPageCanvasContent) {
+          spPageCanvasContent.appendChild(footer);
+        }
+        const container = document.getElementById(footer.id);
+        ReactDOM.render(element, container);
+      }
+    });
 
     return Promise.resolve();
   }
