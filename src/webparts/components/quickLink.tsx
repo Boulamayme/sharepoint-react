@@ -14,7 +14,7 @@ const QuickLink = (props: any) => {
         <div
           className="dx-quicklink--item"
           key={index}
-          onClick={() => navigateTo(item.url)}
+          onClick={() => navigateTo(item.link)}
         >
           <img loading="lazy" src={item.icon} className="dx-quicklink--icon" />
           <div className="dx-quicklink--name">{item.title}</div>

@@ -41,6 +41,14 @@
           "manifest": "./src/webparts/weather/WeatherWebPart.manifest.json"
         }
       ]
+    },
+    "document-manager-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/documentManager/DocumentManagerWebPart.js",
+          "manifest": "./src/webparts/documentManager/DocumentManagerWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -51,6 +59,7 @@
     "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
     "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js",
     "CardWebPartStrings": "lib/webparts/card/loc/{locale}.js",
-    "WeatherWebPartStrings": "lib/webparts/weather/loc/{locale}.js"
+    "WeatherWebPartStrings": "lib/webparts/weather/loc/{locale}.js",
+    "DocumentManagerWebPartStrings": "lib/webparts/documentManager/loc/{locale}.js"
   }
 }

@@ -1,5 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Unkempt:wght@400;700&display=swap");
 
+
+
+/***************************************
+* Colors
+***************************************/
+$primary-color: #273f5b;
+$secondary-color: #f0f5fe;
+$tertiary-color: #757575;
+$black-color: #000;
+
 /************************************************************
 * Quick Links
 *************************************************************/
@@ -374,5 +384,157 @@
       height: 3px;
       background-color: #00965e;
     }
+  }
+}
+
+
+
+/***************************************
+* Global styles
+***************************************/
+.dx-cursor {
+  cursor: pointer;
+}
+/***************************************
+* Table
+***************************************/
+.dx-manager-docs {
+  .dx-table {
+    thead {
+      th {
+        color: $primary-color;
+        font-size: 15px;
+        font-weight: 700;
+      }
+    }
+    tbody {
+      tr {
+        td {
+          font-size: 15px;
+          color: $black-color;
+        }
+      }
+    }
+  }
+
+  //File
+  .dx-file {
+    &--date {
+      color: $tertiary-color;
+      font-weight: 300;
+    }
+  }
+  &-filter {
+    background: $secondary-color;
+    font-size: 15px;
+    font-family: "Open Sans", sans-serif;
+    color: $black-color;
+    &--list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      &-item {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 25px 15px;
+        cursor: pointer;
+        &:not(:last-child) {
+          border-bottom: 1px solid #97b6ed;
+        }
+        i {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}
+/***************************************
+* Avatar
+***************************************/
+.dx-avatar {
+  &--small {
+    width: 30px;
+    height: 30px;
+  }
+  &--circle {
+    border-radius: 50%;
+  }
+}
+/********************************************
+* Menu
+*********************************************/
+.dx-menu-list {
+  .p-menu-list {
+    margin: 0;
+    padding: 0;
+    .p-menuitem-link {
+      text-decoration: none;
+      font-size: 13px;
+      .p-menuitem-icon {
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+.dx-card-document {
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);
+
+  &--cover {
+    position: relative;
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+    .pi {
+      position: absolute;
+      font-size: 29px;
+      background: rgba(13, 81, 149, 0.6);
+      padding: 20px;
+      border-radius: 50%;
+      left: calc(50% - 34px);
+      top: calc(50% - 34px);
+      color: #fff;
+    }
+  }
+  &-user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    &--avatar {
+      width: 30px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+  }
+  &--info {
+    background: #00965e;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+  }
+  &-views {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  &-content {
+    font-size: 18px;
+    padding: 25px 15px;
+  }
+  &-footer {
+    padding: 0 15px;
+  }
+  &--type {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    border-top: 1px solid #acb5c3;
+    padding: 20px 0;
+    font-size: 12px;
   }
 }
