@@ -13,6 +13,8 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import Title from "../../components/Title";
 import CardNews from "../../components/CardNews";
+import Events from "../../components/Events";
+import HappyBirthDaySection from "../../components/HappyBirthday";
 
 export default class Home extends React.Component<IHomeProps, {}> {
   public render(): React.ReactElement<IHomeProps> {
@@ -57,11 +59,31 @@ export default class Home extends React.Component<IHomeProps, {}> {
                   <CardNews key={index} article={article} column="col-4" />
                 ))}
               </div>
+              <HappyBirthDaySection />
             </div>
             <div className="col-2">
               {titleUsefulLink && <Title title={titleUsefulLink} />}
-              <QuickLink items={usefulLinks} direction="flex-column" />
+              {usefulLinks.length > 0 && (
+                <div
+                  style={{
+                    background: "rgba(243, 244, 243, 1)",
+                    borderRadius: "4px",
+                    border: "1px solid rgba(209, 209, 209, 1)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    padding: "16px 0",
+                  }}
+                >
+                  <QuickLink items={usefulLinks} direction="flex-column" />
+                </div>
+              )}
             </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12">
+            <Events />
           </div>
         </div>
       </>

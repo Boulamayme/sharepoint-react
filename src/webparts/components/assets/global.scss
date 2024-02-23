@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Unkempt:wght@400;700&display=swap");
+
 /************************************************************
 * Quick Links
 *************************************************************/
@@ -129,7 +131,7 @@
 /************************************************************
 * Carousel
 *************************************************************/
-.carousel {
+.dx-carousel {
   &-item {
     position: relative;
     img {
@@ -156,10 +158,11 @@
       line-height: 34px;
     }
     p {
+      margin-top: 15px;
       font-size: 16px;
     }
 
-    .btn {
+    .dx-btn {
       border-radius: 3px;
       background-color: #fff;
       text-decoration: none;
@@ -171,6 +174,183 @@
       text-align: center;
       padding: 10px 28px;
       font: 13px;
+    }
+  }
+}
+
+/*******************************************************************
+* Events
+********************************************************************/
+.dx-events {
+  &--name {
+    font-size: 20px;
+    font-weight: 400;
+  }
+  &--title {
+    font-size: 40px;
+    font-weight: 400;
+  }
+  &--desc {
+    font-size: 20px;
+  }
+  &--calendar {
+    .p-datepicker {
+      background: transparent;
+      color: #fff;
+      border: 0;
+      &-header {
+        background: transparent;
+        justify-content: space-around;
+        .p-datepicker-title {
+          margin: 0;
+        }
+        button {
+          color: #1f2023;
+          font-weight: 400;
+        }
+      }
+      &-calendar {
+        font-size: 12px;
+        thead {
+          th {
+            text-align: center;
+            color: #1f2023;
+          }
+        }
+        tbody {
+          td {
+            color: #919091;
+            span:hover {
+              color: #4b5563;
+            }
+          }
+        }
+      }
+    }
+  }
+  &--search {
+    .p-input-icon-left {
+      display: flex;
+      align-items: center;
+      height: 46px;
+      input {
+        height: 100%;
+        padding: 0 40px;
+      }
+    }
+  }
+}
+
+/*******************************************************************
+* Happy Birthday
+********************************************************************/
+.dx-hp {
+  position: relative;
+  background: #f3f4f3;
+  border-radius: 50%;
+  padding: 4rem;
+  min-height: 400px;
+  &-users {
+    margin-top: 3rem;
+    &--avatar {
+      img {
+        width: 42px;
+        border-radius: 50%;
+      }
+    }
+    &--item {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    &--content {
+      display: flex;
+      flex-direction: column;
+      color: #9B9B9B;
+      font-size: 10px;
+    }
+    &--position{
+      color:#52617B;
+      font-weight: 300;
+      font-size: 11px;
+      margin-bottom: 4px;
+    }
+    &--name {
+      font-family: "Open Sans", sans-serif!important;
+      color:#52617B;
+      font-weight: 500;
+      font-size: 14px;
+      margin-bottom: 3px;
+    }
+    &--birthday {
+    }
+    &--hobbies {
+    }
+  }
+  &--title {
+    position: relative;
+    font-family: "Unkempt", cursive;
+    color: #52617b;
+    text-align: center;
+    font-size: 26px;
+    z-index: 9;
+  }
+}
+
+/*******************************************************************
+* List Schedule
+********************************************************************/
+.dx-schedule {
+  display: flex;
+  &__dates {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0;
+    background: #fff;
+    border-radius: 20px;
+  }
+  &__date {
+    display: flex;
+    flex-direction: column;
+    font-size: 21px;
+    font-weight: 500;
+    color: #003da5;
+    line-height: 20px;
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+    span {
+      font-size: 15px;
+      font-weight: 400;
+    }
+    &--selected {
+      background: #fff;
+      color: #00965e;
+      padding: 4px 15px;
+      border-radius: 16px;
+      box-shadow: 0px 18px 24px 0px rgba(0, 0, 0, 0.25);
+    }
+  }
+  &__events {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+  &__event {
+    span {
+      background: #00965e;
+      padding: 5px 15px;
+      color: #fff;
+    }
+    p {
+      margin-bottom: 0;
+      font-weight: 300;
+      color: #0e0911;
+    }
+    &:not(:last-child) {
+      margin-bottom: 20px;
     }
   }
 }

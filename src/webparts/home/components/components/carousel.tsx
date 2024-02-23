@@ -15,24 +15,26 @@ interface ICarouselProps {
 const Carousel: React.FC<ICarouselProps> = (props) => {
   return (
     <>
-      <div className="carousel">
-        <div className="carousel-inner">
+      <div className="dx-carousel">
+        <div className="dx-carousel-inner">
           {props.items.map((item, index) => (
             <div
               key={index}
-              className={`carousel-item ${index === 0 ? "active" : ""}`}
+              className={`dx-carousel-item ${index === 0 ? "active" : ""}`}
             >
               <img
                 src={item.imageUrl}
                 className="d-block w-full"
                 alt={item.title}
               />
-              <div className="carousel-caption d-none d-md-block">
+              <div className="dx-carousel-caption d-none d-md-block">
                 <h5>{item.title}</h5>
                 <p>{item.description}</p>
-                <a href={item.linkUrl} className="btn btn-primary">
-                  {item.btnLabel}
-                </a>
+                <div className="d-flex align-items-center">
+                  <a href={item.linkUrl} className="dx-btn">
+                    {item.btnLabel}
+                  </a>
+                </div>
               </div>
             </div>
           ))}
