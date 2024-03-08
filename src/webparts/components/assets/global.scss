@@ -555,12 +555,16 @@ $black-color: #000;
   &--cover {
     img {
       height: 170px;
+      width: 100%;
       object-fit: cover;
     }
   }
   &--content {
+    margin-top: 25px;
   }
   &--author {
+    display: block;
+    margin-bottom: 10px;
     color: #0e376a;
     font-size: 13px;
   }
@@ -570,8 +574,9 @@ $black-color: #000;
     color: #101828;
   }
   &--desc {
+    margin-top: 15px;
     color: #667085;
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 

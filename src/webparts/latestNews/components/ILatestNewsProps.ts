@@ -1,7 +1,5 @@
 export interface ILatestNewsProps {
-  description: string;
-  isDarkTheme: boolean;
-  environmentMessage: string;
-  hasTeamsContext: boolean;
-  userDisplayName: string;
+  latestNews: any[];
+  onConfigurePropPane: () => void;
+  displayMode: any;
 }

@@ -2,7 +2,6 @@ import LatestNewsItem from "./LatestNewsItem";
 import * as React from "react";
 
 const LatestNewsFC = ({ latestNews }: { latestNews: any[] }): JSX.Element => {
-
   return (
     <>
       <div className="row">
@@ -11,16 +10,7 @@ const LatestNewsFC = ({ latestNews }: { latestNews: any[] }): JSX.Element => {
             .filter((item) => item.featured)
             .map((item) => {
               return (
-                <LatestNewsItem
-                  key={item.id}
-                  title={item.title}
-                  description={item.description}
-                  shortDescription={item.description}
-                  cover={item.imageUrl}
-                  date={item.publishedDate}
-                  author={item.author}
-                  position="vertical"
-                />
+                <LatestNewsItem key={item.id} {...item} position="vertical" />
               );
             })}
         </div>
@@ -33,12 +23,7 @@ const LatestNewsFC = ({ latestNews }: { latestNews: any[] }): JSX.Element => {
                 return (
                   <LatestNewsItem
                     key={item.id}
-                    title={item.title}
-                    description={item.description}
-                    shortDescription={item.description}
-                    cover={item.imageUrl}
-                    date={item.publishedDate}
-                    author={item.author}
+                    {...item}
                     position="horizontal"
                   />
                 );
