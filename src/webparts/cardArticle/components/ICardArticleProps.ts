@@ -1,7 +1,6 @@
 export interface ICardArticleProps {
-  description: string;
-  isDarkTheme: boolean;
-  environmentMessage: string;
-  hasTeamsContext: boolean;
-  userDisplayName: string;
+  news: any[];
+  onConfigurePropPane: () => void;
+  columns: string;
+  displayMode: any;
 }
