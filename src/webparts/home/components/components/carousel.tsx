@@ -13,14 +13,35 @@ interface ICarouselProps {
 }
 
 const Carousel: React.FC<ICarouselProps> = (props) => {
+  const [activeIndex, setActiveIndex] = React.useState(0);
+
+  const nextSlide = () => {
+    setActiveIndex((prevIndex: number) =>
+      prevIndex === props.items.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const prevSlide = () => {
+    setActiveIndex((prevIndex: number) =>
+      prevIndex === 0 ? props.items.length - 1 : prevIndex - 1
+    );
+  };
   return (
     <>
       <div className="dx-carousel">
-        <div className="dx-carousel-inner">
+        <div
+          className="dx-carousel-inner"
+          style={{
+            transform: `translateX(-${activeIndex * 100}%)`,
+            transition: "transform 0.5s ease-out",
+          }}
+        >
           {props.items.map((item, index) => (
             <div
               key={index}
-              className={`dx-carousel-item ${index === 0 ? "active" : ""}`}
+              className={`dx-carousel-item ${
+                index === activeIndex ? "active" : ""
+              }`}
             >
               <img
                 src={item.imageUrl}
@@ -39,6 +60,12 @@ const Carousel: React.FC<ICarouselProps> = (props) => {
             </div>
           ))}
         </div>
+        <button className="dx-carousel-control-prev" onClick={prevSlide}>
+          <i className="pi pi-chevron-left" />
+        </button>
+        <button className="dx-carousel-control-next" onClick={nextSlide}>
+          <i className="pi pi-chevron-right" />
+        </button>
       </div>
     </>
   );

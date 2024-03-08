@@ -4,12 +4,12 @@ import type { IOrganizationalChartProps } from "./IOrganizationalChartProps";
 
 import "../assets/style.scss";
 
-import { Placeholder } from "@pnp/spfx-controls-react";
 import { DisplayMode } from "@microsoft/sp-core-library";
 
 //Icons
 import IconPhone from "../assets/images/phone";
 import IconOrg from "../assets/images/organization";
+import { Placeholder } from "@pnp/spfx-controls-react";
 
 export default class OrganizationalChart extends React.Component<
   IOrganizationalChartProps,

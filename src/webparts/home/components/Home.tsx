@@ -2,8 +2,6 @@ import * as React from "react";
 import type { IHomeProps } from "./IHomeProps";
 import Carousel from "./components/carousel";
 
-import QuickLink from "../../components/quickLink";
-
 import "../../components/assets/global.scss";
 
 //theme
@@ -15,6 +13,7 @@ import Title from "../../components/Title";
 import CardNews from "../../components/CardNews";
 import Events from "../../components/Events";
 import HappyBirthDaySection from "../../components/HappyBirthday";
+import QuickLinkFC from "../../components/quickLink";
 
 export default class Home extends React.Component<IHomeProps, {}> {
   public render(): React.ReactElement<IHomeProps> {
@@ -34,6 +33,15 @@ export default class Home extends React.Component<IHomeProps, {}> {
               linkUrl: "https://www.bing.com",
               btnLabel: "Voir les photos",
             },
+            {
+              imageUrl:
+                "https://images.pexels.com/photos/443383/pexels-photo-443383.jpeg",
+              title: "Les photos du séminaire en Camargue sont arrivées !",
+              description:
+                "Revivez ces bons moments uniques avec les clichés pris par tous les collaborateurs.",
+              linkUrl: "https://www.bing.com",
+              btnLabel: "Voir les photos",
+            },
           ]}
         />
         <div
@@ -44,7 +52,7 @@ export default class Home extends React.Component<IHomeProps, {}> {
             padding: "30px 0",
           }}
         >
-          <QuickLink items={quickLinks} />
+          <QuickLinkFC items={quickLinks} />
         </div>
         <div
           style={{
@@ -75,7 +83,7 @@ export default class Home extends React.Component<IHomeProps, {}> {
                     padding: "16px 0",
                   }}
                 >
-                  <QuickLink items={usefulLinks} direction="flex-column" />
+                  <QuickLinkFC items={usefulLinks} direction="flex-column" />
                 </div>
               )}
             </div>

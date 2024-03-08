@@ -49,6 +49,70 @@
           "manifest": "./src/webparts/documentManager/DocumentManagerWebPart.manifest.json"
         }
       ]
+    },
+    "timeline-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/timeline/TimelineWebPart.js",
+          "manifest": "./src/webparts/timeline/TimelineWebPart.manifest.json"
+        }
+      ]
+    },
+    "latest-news-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/latestNews/LatestNewsWebPart.js",
+          "manifest": "./src/webparts/latestNews/LatestNewsWebPart.manifest.json"
+        }
+      ]
+    },
+    "teams-list-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/teamsList/TeamsListWebPart.js",
+          "manifest": "./src/webparts/teamsList/TeamsListWebPart.manifest.json"
+        }
+      ]
+    },
+    "card-document-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/cardDocument/CardDocumentWebPart.js",
+          "manifest": "./src/webparts/cardDocument/CardDocumentWebPart.manifest.json"
+        }
+      ]
+    },
+    "careers-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/careers/CareersWebPart.js",
+          "manifest": "./src/webparts/careers/CareersWebPart.manifest.json"
+        }
+      ]
+    },
+    "card-article-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/cardArticle/CardArticleWebPart.js",
+          "manifest": "./src/webparts/cardArticle/CardArticleWebPart.manifest.json"
+        }
+      ]
+    },
+    "section-title-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/sectionTitle/SectionTitleWebPart.js",
+          "manifest": "./src/webparts/sectionTitle/SectionTitleWebPart.manifest.json"
+        }
+      ]
+    },
+    "quick-links-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/quickLinks/QuickLinksWebPart.js",
+          "manifest": "./src/webparts/quickLinks/QuickLinksWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -60,6 +124,14 @@
     "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js",
     "CardWebPartStrings": "lib/webparts/card/loc/{locale}.js",
     "WeatherWebPartStrings": "lib/webparts/weather/loc/{locale}.js",
-    "DocumentManagerWebPartStrings": "lib/webparts/documentManager/loc/{locale}.js"
+    "DocumentManagerWebPartStrings": "lib/webparts/documentManager/loc/{locale}.js",
+    "TimelineWebPartStrings": "lib/webparts/timeline/loc/{locale}.js",
+    "LatestNewsWebPartStrings": "lib/webparts/latestNews/loc/{locale}.js",
+    "TeamsListWebPartStrings": "lib/webparts/teamsList/loc/{locale}.js",
+    "CardDocumentWebPartStrings": "lib/webparts/cardDocument/loc/{locale}.js",
+    "CareersWebPartStrings": "lib/webparts/careers/loc/{locale}.js",
+    "CardArticleWebPartStrings": "lib/webparts/cardArticle/loc/{locale}.js",
+    "SectionTitleWebPartStrings": "lib/webparts/sectionTitle/loc/{locale}.js",
+    "QuickLinksWebPartStrings": "lib/webparts/quickLinks/loc/{locale}.js"
   }
 }

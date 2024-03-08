@@ -5,8 +5,158 @@ const HappyBirthDaySection = (props: any) => {
     <>
       <div className="row">
         <div className="col-6">
-          <div className="dx-hp">
+          <div
+            className="dx-hp"
+            style={{
+              padding: "2.5rem",
+            }}
+          >
+            <img
+              src="https://dexterousplace.sharepoint.com/sites/enoe-energie/SiteAssets/assets/greenc_cloud.png"
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "171px",
+              }}
+            />
+            <img
+              src="https://dexterousplace.sharepoint.com/sites/enoe-energie/SiteAssets/assets/green_blue.png"
+              style={{
+                position: "absolute",
+                top: 0,
+                right: 0,
+                width: "180px",
+              }}
+            />
             <h3 className="dx-hp--title">Happy birthday !</h3>
+            <div
+              className="d-flex justify-content-between"
+              style={{
+                gap: "10px",
+              }}
+            >
+              <div className="dx-hp-users">
+                <div className="dx-hp-users--item">
+                  <div className="dx-hp-users--avatar">
+                    <img
+                      src="https://this-person-does-not-exist.com/img/avatar-genc7f7c517ca695f702d78cf94e2f1c87b.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div className="dx-hp-users--content">
+                    <span
+                      className="dx-hp-users--name"
+                      style={{
+                        fontSize: 12,
+                      }}
+                    >
+                      Radovan SkilllArena
+                    </span>
+                    <span className="dx-hp-users--position">
+                      Chef de projet PV
+                    </span>
+                    <span
+                      className="dx-hp-users--birthday"
+                      style={{
+                        color: "#E8B352",
+                      }}
+                    >
+                      18 Janvier
+                    </span>
+                  </div>
+                </div>
+                <div className="dx-hp-users--item">
+                  <div className="dx-hp-users--avatar">
+                    <img
+                      src="https://this-person-does-not-exist.com/img/avatar-genc7f7c517ca695f702d78cf94e2f1c87b.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div className="dx-hp-users--content">
+                    <span
+                      className="dx-hp-users--name"
+                      style={{
+                        fontSize: 12,
+                      }}
+                    >
+                      Mohamed Ali Brini
+                    </span>
+                    <span className="dx-hp-users--position">
+                      Chef de projet PV
+                    </span>
+                    <span
+                      className="dx-hp-users--birthday"
+                      style={{
+                        color: "#E8B352",
+                      }}
+                    >
+                      18 Janvier
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="dx-hp-users">
+                <div className="dx-hp-users--item">
+                  <div className="dx-hp-users--avatar">
+                    <img
+                      src="https://this-person-does-not-exist.com/img/avatar-genc7f7c517ca695f702d78cf94e2f1c87b.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div className="dx-hp-users--content">
+                    <span
+                      className="dx-hp-users--name"
+                      style={{
+                        fontSize: 12,
+                      }}
+                    >
+                      Radovan SkilllArena
+                    </span>
+                    <span className="dx-hp-users--position">
+                      Chef de projet PV
+                    </span>
+                    <span
+                      className="dx-hp-users--birthday"
+                      style={{
+                        color: "#E8B352",
+                      }}
+                    >
+                      18 Janvier
+                    </span>
+                  </div>
+                </div>
+                <div className="dx-hp-users--item">
+                  <div className="dx-hp-users--avatar">
+                    <img
+                      src="https://this-person-does-not-exist.com/img/avatar-genc7f7c517ca695f702d78cf94e2f1c87b.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div className="dx-hp-users--content">
+                    <span
+                      className="dx-hp-users--name"
+                      style={{
+                        fontSize: 12,
+                      }}
+                    >
+                      Mohamed Ali Brini
+                    </span>
+                    <span className="dx-hp-users--position">
+                      Chef de projet PV
+                    </span>
+                    <span
+                      className="dx-hp-users--birthday"
+                      style={{
+                        color: "#E8B352",
+                      }}
+                    >
+                      18 Janvier
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div className="col-6">
@@ -68,10 +218,30 @@ const HappyBirthDaySection = (props: any) => {
                     Chef de projet PV
                   </span>
                   <span className="dx-hp-users--birthday">
-                    Anniversaire : 04 octobre{" "}
+                    Anniversaire : 04 octobre
                   </span>
                   <span className="dx-hp-users--hobbies">
-                    Centres d’intérêt : menuiserie, kendo, badminton
+                    Centres d'intérêt : menuiserie, kendo, badminton
+                  </span>
+                </div>
+              </div>
+              <div className="dx-hp-users--item">
+                <div className="dx-hp-users--avatar">
+                  <img
+                    src="https://this-person-does-not-exist.com/img/avatar-genc7f7c517ca695f702d78cf94e2f1c87b.jpg"
+                    alt=""
+                  />
+                </div>
+                <div className="dx-hp-users--content">
+                  <span className="dx-hp-users--name">Mohamed Ali Brini</span>
+                  <span className="dx-hp-users--position">
+                    Chef de projet PV
+                  </span>
+                  <span className="dx-hp-users--birthday">
+                    Anniversaire : 04 octobre
+                  </span>
+                  <span className="dx-hp-users--hobbies">
+                    Centres d'intérêt : menuiserie, kendo, badminton
                   </span>
                 </div>
               </div>

@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Unkempt:wght@400;700&display=swap");
-
-
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
 
 /***************************************
 * Colors
@@ -13,6 +12,12 @@ $black-color: #000;
 /************************************************************
 * Quick Links
 *************************************************************/
+.dx-quicklink__container {
+  background-color: #F3F4F3;
+  display: "flex";
+  justify-content: "center";
+  padding: 30px 0;
+}
 .dx-quicklink {
   display: flex;
   gap: 20px;
@@ -142,17 +147,31 @@ $black-color: #000;
 * Carousel
 *************************************************************/
 .dx-carousel {
-  &-item {
+  overflow: hidden;
+  position: relative;
+  &-inner {
     position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease-out;
+    height: 430px;
+  }
+  &-item {
+    flex: 0 0 auto;
+    width: 100%;
+    position: relative;
+
     img {
       width: 100%;
+      height: 100%;
+      display: block;
     }
   }
   &-caption {
     position: absolute;
     width: 50%;
     bottom: 3rem;
-    left: 2rem;
+    left: 3rem;
     border-radius: 5px;
     backdrop-filter: blur(8.5px);
     color: #fff;
@@ -186,6 +205,25 @@ $black-color: #000;
       font: 13px;
     }
   }
+}
+.dx-carousel-control-prev,
+.dx-carousel-control-next {
+  position: absolute;
+  top: calc(50% + 30px);
+  transform: translateY(-50%);
+  border: none;
+  padding: 10px;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+.dx-carousel-control-prev {
+  left: 0;
+}
+
+.dx-carousel-control-next {
+  right: 10px;
 }
 
 /*******************************************************************
@@ -276,18 +314,18 @@ $black-color: #000;
     &--content {
       display: flex;
       flex-direction: column;
-      color: #9B9B9B;
+      color: #9b9b9b;
       font-size: 10px;
     }
-    &--position{
-      color:#52617B;
+    &--position {
+      color: #52617b;
       font-weight: 300;
       font-size: 11px;
       margin-bottom: 4px;
     }
     &--name {
-      font-family: "Open Sans", sans-serif!important;
-      color:#52617B;
+      font-family: "Open Sans", sans-serif !important;
+      color: #52617b;
       font-weight: 500;
       font-size: 14px;
       margin-bottom: 3px;
@@ -365,6 +403,67 @@ $black-color: #000;
   }
 }
 
+/*******************************************************************
+* Latest News
+********************************************************************/
+.dx-news {
+  display: flex;
+  align-self: stretch;
+  &--cover {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    max-height: 278px;
+    width: 100%;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  &--title {
+    font-size: 20px;
+    color: #101828;
+  }
+  &--desc {
+    color: #667085;
+    margin-top: 10px;
+  }
+  &--author {
+    color: #0e376a;
+    width: 100%;
+    font-size: 13px;
+    font-weight: 700;
+  }
+}
+/*******************************************************************
+* Teams List
+********************************************************************/
+.dx-teams {
+  background: #e5ecf6;
+  padding: 25px;
+  &--item {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+    &-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+    &-name {
+      font-size: 13px;
+      margin: 0;
+    }
+    &-service {
+      color: #95999f;
+      margin: 0;
+    }
+  }
+}
 /************************************************************
 * Title
 *************************************************************/
@@ -387,7 +486,126 @@ $black-color: #000;
   }
 }
 
+/*******************************************************************
+* Careers
+********************************************************************/
+.dx-careers {
+  &-categories {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    &--item {
+      color: #38404c;
+      font-size: 15px;
+      margin-bottom: 15px;
+      cursor: pointer;
+      &__selected {
+        color: #232434;
+        font-weight: 700;
+      }
+    }
+  }
+  &-item {
+    background: #fff;
+    border-radius: 5px;
+    padding: 15px 20px;
+    box-shadow: 0px 10px 80px rgba(0, 0, 0, 0.07);
+    &--time {
+      font-weight: 12px;
+      color: #505e6b;
+    }
+    &--title {
+      color: #232434;
+      font-weight: 500;
+      font-size: 16px;
+      margin: 15px 0 30px 0;
+    }
+    &--createDate {
+      color: #505e6b;
+      font-size: 12px;
+    }
+    &--category {
+      font-size: 14px;
+      color: #505e6b;
+    }
+    &--contract {
+      font-size: 12px;
+      color: #505e6b;
+    }
+    &--label {
+      font-size: 14px;
+      color: #505e6b;
+    }
+    &--location {
+      font-size: 12px;
+      color: #505e6b;
+    }
+    &--link {
+      color: #0e376a;
+      font-size: 14px;
+      text-decoration: none;
+    }
+  }
+}
 
+/*******************************************************************
+* Card Article
+********************************************************************/
+.dx-card-article {
+  &--cover {
+    img {
+      height: 170px;
+      object-fit: cover;
+    }
+  }
+  &--content {
+  }
+  &--author {
+    color: #0e376a;
+    font-size: 13px;
+  }
+  &--title {
+    font-size: 22px;
+    font-weight: 500;
+    color: #101828;
+  }
+  &--desc {
+    color: #667085;
+    font-size: 16px;
+  }
+}
+
+/*******************************************************************
+* Card Document
+********************************************************************/
+.dx-document {
+  box-shadow: 0px 10px 80px rgba(0, 0, 0, 0.07);
+  background: #fff;
+  border-radius: 10px;
+  &--item {
+  }
+  &--cover {
+    img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+  }
+  &--title {
+    color: #00965e;
+    font-size: 25px;
+    text-align: center;
+    font-weight: 500;
+  }
+  &--link {
+    border: 1px solid #00965e;
+    color: #00965e;
+    padding: 11px 30px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+  }
+}
 
 /***************************************
 * Global styles
