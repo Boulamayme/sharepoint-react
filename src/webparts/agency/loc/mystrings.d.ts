@@ -1,4 +1,4 @@
-declare interface ICardDocumentWebPartStrings {
+declare interface IAgencyWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
   DescriptionFieldLabel: string;
@@ -11,10 +11,9 @@ declare interface ICardDocumentWebPartStrings {
   AppOfficeEnvironment: string;
   AppOutlookEnvironment: string;
   UnknownEnvironment: string;
-  SeeDocument: string;
 }
 
-declare module 'CardDocumentWebPartStrings' {
-  const strings: ICardDocumentWebPartStrings;
+declare module 'AgencyWebPartStrings' {
+  const strings: IAgencyWebPartStrings;
   export = strings;
 }

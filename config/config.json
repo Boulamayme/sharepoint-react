@@ -113,6 +113,14 @@
           "manifest": "./src/webparts/quickLinks/QuickLinksWebPart.manifest.json"
         }
       ]
+    },
+    "agency-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/agency/AgencyWebPart.js",
+          "manifest": "./src/webparts/agency/AgencyWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -132,6 +140,7 @@
     "CareersWebPartStrings": "lib/webparts/careers/loc/{locale}.js",
     "CardArticleWebPartStrings": "lib/webparts/cardArticle/loc/{locale}.js",
     "SectionTitleWebPartStrings": "lib/webparts/sectionTitle/loc/{locale}.js",
-    "QuickLinksWebPartStrings": "lib/webparts/quickLinks/loc/{locale}.js"
+    "QuickLinksWebPartStrings": "lib/webparts/quickLinks/loc/{locale}.js",
+    "AgencyWebPartStrings": "lib/webparts/agency/loc/{locale}.js"
   }
 }

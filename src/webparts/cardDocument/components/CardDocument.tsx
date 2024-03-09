@@ -1,55 +1,31 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import * as React from "react";
 import type { ICardDocumentProps } from "./ICardDocumentProps";
-
-//Icons
-const documentImg = require("../assets/document.png");
+import { Placeholder } from "@pnp/spfx-controls-react";
+import { DisplayMode } from "@microsoft/sp-core-library";
+import * as strings from "CardDocumentWebPartStrings";
 
 export default class CardDocument extends React.Component<
   ICardDocumentProps,
   {}
 > {
-  public items: any[] = [
-    {
-      imageUrl: documentImg,
-      title: "Procédure asbences",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      btnLabel: "Voir le document",
-      linkUrl: "#",
-    },
-    {
-      imageUrl: documentImg,
-      title: "Procédure congés payés",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      btnLabel: "Voir le document",
-      linkUrl: "#",
-    },
-    {
-      imageUrl: documentImg,
-      title: "Entretien professionnel",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      btnLabel: "Voir le document",
-      linkUrl: "#",
-    },
-  ];
-
   public render(): React.ReactElement<ICardDocumentProps> {
-    const {} = this.props;
+    const { items } = this.props;
 
     return (
       <>
         <div className="row">
-          {this.items.map((item, index) => (
+          {items.map((item, index) => (
             <div key={index} className="col-4">
               <div className="dx-document px-4 pb-3">
                 <div className="dx-document--item">
                   <div className="dx-document--cover">
-                    <img src={documentImg} alt="" />
+                    <img src={item.imageUrl} alt="" />
                   </div>
                   <div className="d-flex align-items-center flex-column pt-5">
                     <h3 className="dx-document--title mb-5">{item.title}</h3>
-                    <a href="#" className="dx-document--link">
-                      {item.btnLabel}
+                    <a href={item.url} className="dx-document--link">
+                      {strings.SeeDocument}
                     </a>
                   </div>
                 </div>
@@ -57,6 +33,16 @@ export default class CardDocument extends React.Component<
             </div>
           ))}
         </div>
+        {items.length === 0 && (
+          <Placeholder
+            iconName="Edit"
+            iconText="Configure your web part"
+            description="Please configure the web part."
+            buttonLabel="Configure"
+            hideButton={this.props.displayMode === DisplayMode.Read}
+            onConfigure={this.props.onConfigurePropPane}
+          />
+        )}
       </>
     );
   }

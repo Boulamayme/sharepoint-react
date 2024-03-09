@@ -1,7 +1,8 @@
+import { DisplayMode } from "@microsoft/sp-core-library";
+import { ICardDocument } from "../../components/models/cardDocument.model";
+
 export interface ICardDocumentProps {
-  description: string;
-  isDarkTheme: boolean;
-  environmentMessage: string;
-  hasTeamsContext: boolean;
-  userDisplayName: string;
+  items: ICardDocument[];
+  displayMode: DisplayMode;
+  onConfigurePropPane: () => void;
 }

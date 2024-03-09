@@ -4,33 +4,34 @@ import { Version } from "@microsoft/sp-core-library";
 import { type IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import { IReadonlyTheme } from "@microsoft/sp-component-base";
-import * as strings from "CardDocumentWebPartStrings";
+import * as strings from "AgencyWebPartStrings";
 
 //Style
 import "../components/assets/global.scss";
 
 //Models
-import { ICardDocument } from "../components/models/cardDocument.model";
-import { ICardDocumentProps } from "./components/ICardDocumentProps";
+import { IAgencyProps } from "./components/IAgencyProps";
+import { IAgency } from "../components/models/agency.model";
+
+//Components
+import Agency from "./components/Agency";
 
 //Pnp Controls React
-import { FilePicker, IFilePickerResult } from "@pnp/spfx-controls-react";
 import {
   CustomCollectionFieldType,
   PropertyFieldCollectionData,
 } from "@pnp/spfx-property-controls/lib/PropertyFieldCollectionData";
+import { FilePicker, IFilePickerResult } from "@pnp/spfx-controls-react";
 
-//Components
-
-import CardDocument from "./components/CardDocument";
-export interface ICardDocumentWebPartProps {
-  items: ICardDocument[];
+export interface IAgencyWebPartProps {
+  description: string;
+  items: IAgency[];
 }
 
-export default class CardDocumentWebPart extends BaseClientSideWebPart<ICardDocumentWebPartProps> {
+export default class AgencyWebPart extends BaseClientSideWebPart<IAgencyWebPartProps> {
   public render(): void {
-    const element: React.ReactElement<ICardDocumentProps> = React.createElement(
-      CardDocument,
+    const element: React.ReactElement<IAgencyProps> = React.createElement(
+      Agency,
       {
         items: this.properties.items || [],
         displayMode: this.displayMode,
@@ -125,25 +126,15 @@ export default class CardDocumentWebPart extends BaseClientSideWebPart<ICardDocu
         {
           groups: [
             {
-              groupName: "Card Documents",
+              groupName: "Agency Webpart Settings",
               groupFields: [
                 PropertyFieldCollectionData("items", {
                   key: "items",
                   label: "",
-                  panelHeader: "Manage card documents",
-                  manageBtnLabel: "Manage card documents",
+                  panelHeader: "Manage agencies",
+                  manageBtnLabel: "Manage agencies",
                   value: this.properties.items,
                   fields: [
-                    {
-                      id: "title",
-                      title: "Title",
-                      type: CustomCollectionFieldType.string,
-                    },
-                    {
-                      id: "url",
-                      title: "URL",
-                      type: CustomCollectionFieldType.string,
-                    },
                     {
                       id: "imageUrl",
                       title: "Image URL",
@@ -175,6 +166,21 @@ export default class CardDocumentWebPart extends BaseClientSideWebPart<ICardDocu
                           },
                         });
                       },
+                    },
+                    {
+                      id: "city",
+                      title: "City",
+                      type: CustomCollectionFieldType.string,
+                    },
+                    {
+                      id: "address",
+                      title: "Address",
+                      type: CustomCollectionFieldType.string,
+                    },
+                    {
+                      id: "url",
+                      title: "Url",
+                      type: CustomCollectionFieldType.string,
                     },
                   ],
                   disabled: false,
