@@ -1,4 +1,4 @@
-define([], function() {
+define([], function () {
   return {
     "PropertyPaneDescription": "Description",
     "BasicGroupName": "Group Name",
@@ -12,6 +12,6 @@ define([], function() {
     "AppOfficeEnvironment": "The app is running in office.com",
     "AppOutlookEnvironment": "The app is running in Outlook",
     "UnknownEnvironment": "The app is running in an unknown environment",
-    "NoOffersFound": "No offers found",
+    "NoOffersFound": "Acunne offre trouvée",
   }
 });

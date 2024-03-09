@@ -24,6 +24,7 @@ import { Toast } from "primereact/toast";
 import * as strings from "DocumentManagerWebPartStrings";
 import CardDocument from "./CardDocument";
 import Title from "../../components/Title";
+import { formatDate } from "../../components/helpers/helpers";
 
 //Icons
 const iconPdf = require("../assets/icons/pdf.png");
@@ -165,21 +166,6 @@ export default class DocumentsManager extends React.Component<
     });
   }
 
-  public formatDateTemplate(rowData: any): JSX.Element {
-    const date = new Date(rowData.ListItemAllFields.Modified);
-    return (
-      <>
-        <span className="dx-file--date">
-          {date.toLocaleDateString("fr-FR", {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-          })}
-        </span>
-      </>
-    );
-  }
-
   public authorTemplate(rowData: any): JSX.Element {
     return (
       <>
@@ -247,7 +233,7 @@ export default class DocumentsManager extends React.Component<
                 <Column
                   field="ListItemAllFields.Modified"
                   header={strings.Modified}
-                  body={this.formatDateTemplate}
+                  body={(rowData) => formatDate(rowData.ListItemAllFields.Modified)}
                   sortable
                 />
                 <Column

@@ -11,6 +11,7 @@ declare interface ICareersWebPartStrings {
   AppOfficeEnvironment: string;
   AppOutlookEnvironment: string;
   UnknownEnvironment: string;
+  NoOffersFound: string;
 }
 
 declare module 'CareersWebPartStrings' {

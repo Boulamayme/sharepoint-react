@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import * as React from "react";
 
+
+import { formatDate } from "./helpers/helpers";
+
 //Icons
 const IconBookmark = require("./assets/images/bookmark.svg");
 const IconLike = require("./assets/images/like.svg");
@@ -10,13 +13,6 @@ const IconComment = require("./assets/images/comment.svg");
 const CardNews = (props: any) => {
   const { article , column } = props;
 
-  const formatDate = (date: string): string => {
-    return new Intl.DateTimeFormat("fr-FR", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    }).format(new Date(date));
-  };
   return (
     <div className={`${column } mb-4`}>
       <div className="dx-article">

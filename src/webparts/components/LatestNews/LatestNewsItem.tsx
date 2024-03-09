@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import * as React from "react";
+import { formatDate } from "../helpers/helpers";
 
 const icon = require("../../components/assets/images/icon_wrap.png");
 
@@ -16,14 +17,6 @@ interface ILatestNewsItem {
 const LatestNewsItem = (props: ILatestNewsItem): JSX.Element => {
   const navigateTo = (url: string): void => {
     window.open(url, "_blank");
-  };
-
-  const formatDate = (date: string) => {
-    return new Intl.DateTimeFormat("fr-FR", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    }).format(new Date(date));
   };
 
   return (

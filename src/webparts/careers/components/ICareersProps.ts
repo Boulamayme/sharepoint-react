@@ -1,7 +1,6 @@
 export interface ICareersProps {
-  description: string;
-  isDarkTheme: boolean;
-  environmentMessage: string;
-  hasTeamsContext: boolean;
-  userDisplayName: string;
+  careers: any[];
+  onConfigurePropPane: () => void;
+  displayMode: any;
+  categories: any[];
 }

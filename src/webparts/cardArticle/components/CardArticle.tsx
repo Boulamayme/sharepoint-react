@@ -4,6 +4,9 @@ import type { ICardArticleProps } from "./ICardArticleProps";
 import { Placeholder } from "@pnp/spfx-controls-react";
 import { DisplayMode } from "@microsoft/sp-core-library";
 
+//Helpers
+import { formatDate } from "../../components/helpers/helpers";
+
 const icon = require("../../components/assets/images/icon_wrap.png");
 
 export default class CardArticle extends React.Component<
@@ -13,13 +16,7 @@ export default class CardArticle extends React.Component<
   public navigateTo = (url: string): void => {
     window.open(url, "_blank");
   };
-  public formatDate = (date: string) => {
-    return new Intl.DateTimeFormat("fr-FR", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    }).format(new Date(date));
-  };
+
   public render(): React.ReactElement<ICardArticleProps> {
     const { news, columns } = this.props;
 
@@ -39,7 +36,7 @@ export default class CardArticle extends React.Component<
                   </div>
                   <div className="dx-card-article--content">
                     <span className="dx-card-article--author">
-                      {item.author} • {this.formatDate(item.publishedDate)}
+                      {item.author} • {formatDate(item.publishedDate)}
                     </span>
                     <h3 className="dx-card-article--title">
                       {item.title}
