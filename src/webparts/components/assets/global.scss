@@ -803,3 +803,129 @@ $black-color: #000;
     max-width: 116px;
   }
 }
+
+/*******************************************************************
+* Info Box
+********************************************************************/
+.dx-infobox {
+  &--item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 35px 20px;
+    height: 100%;
+  }
+  &--title {
+    color: #003da5;
+    font-size: 22px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  &--icon {
+    margin: 1rem 0px 2rem 0;
+    width: 98px;
+    height: 96px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &--desc {
+    color: #000000;
+    font-size: 15px;
+    font-family: "Open Sans", sans-serif;
+  }
+}
+
+/*******************************************************************
+* Timeline
+********************************************************************/
+.dx-timeline {
+  padding: 10px;
+  display: flex;
+  cursor: grab;
+  touch-action: none;
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  &--item {
+    display: flex;
+    flex-direction: column;
+    &:nth-child(even) {
+      flex-direction: column-reverse;
+    }
+  }
+  &--header {
+    width: 220px;
+    height: 220px;
+    color: #fff;
+    padding: 20px;
+    &-year {
+      font-size: 60px;
+      font-weight: 500;
+    }
+    &-desc {
+      font-family: "Open Sans", sans-serif;
+      font-size: 14px;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  &--logo {
+    width: 220px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    &__shadow {
+      box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+/*******************************************************************
+* Author Box
+********************************************************************/
+.dx-author {
+  display: flex;
+  flex-basis: 0;
+  flex-shrink: 0;
+  flex-direction: row;
+  gap: 2rem;
+  border-bottom: 2px solid #c6c9cd;
+  padding-bottom: 3rem;
+  margin: 0 3rem;
+  &--image {
+    img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 50%;
+      object-position: top;
+    }
+  }
+  &-content {
+    font-family: "Open Sans", sans-serif;
+    &--desc {
+      color: #0e0911;
+      font-size: 20px;
+      line-height: 36px;
+      font-weight: 400;
+      margin-bottom: 2rem;
+    }
+    &--name {
+      color: #0e0911;
+      font-size: 16px;
+      font-weight: 500;
+    }
+    &--job {
+      font-size: 16px;
+      color: #0e0911;
+    }
+  }
+}

@@ -2,6 +2,9 @@ import * as React from "react";
 import type { IHomeProps } from "./IHomeProps";
 import Carousel from "./components/carousel";
 
+/**************************************************
+ *TO DO: Must be deleted and add it in extension
+ *************************************************/
 import "../../components/assets/global.scss";
 
 //theme

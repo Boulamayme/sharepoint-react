@@ -1,41 +1,44 @@
 import * as React from "react";
 import * as ReactDom from "react-dom";
 import { Version } from "@microsoft/sp-core-library";
-import { type IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
+import {
+  type IPropertyPaneConfiguration,
+  PropertyPaneTextField,
+} from "@microsoft/sp-property-pane";
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import { IReadonlyTheme } from "@microsoft/sp-component-base";
-import * as strings from "AgencyWebPartStrings";
 
 /**************************************************
  *TO DO: Must be deleted and add it in extension
  *************************************************/
 import "../components/assets/global.scss";
 
-//Models
-import { IAgencyProps } from "./components/IAgencyProps";
-import { IAgency } from "../components/models/agency.model";
-
-//Components
-import Agency from "./components/Agency";
-
-//Pnp Controls React
+import * as strings from "AuthorBoxWebPartStrings";
+import AuthorBox from "./components/AuthorBox";
+import { IAuthorBoxProps } from "./components/IAuthorBoxProps";
 import {
-  CustomCollectionFieldType,
-  PropertyFieldCollectionData,
-} from "@pnp/spfx-property-controls/lib/PropertyFieldCollectionData";
-import { FilePicker, IFilePickerResult } from "@pnp/spfx-controls-react";
+  IFilePickerResult,
+  PropertyFieldFilePicker,
+} from "@pnp/spfx-property-controls";
 
-export interface IAgencyWebPartProps {
+export interface IAuthorBoxWebPartProps {
+  avatar: IFilePickerResult;
+  name: string;
   description: string;
-  items: IAgency[];
+  position: string;
 }
 
-export default class AgencyWebPart extends BaseClientSideWebPart<IAgencyWebPartProps> {
+export default class AuthorBoxWebPart extends BaseClientSideWebPart<IAuthorBoxWebPartProps> {
   public render(): void {
-    const element: React.ReactElement<IAgencyProps> = React.createElement(
-      Agency,
+    console.log(this.properties);
+
+    const element: React.ReactElement<IAuthorBoxProps> = React.createElement(
+      AuthorBox,
       {
-        items: this.properties.items || [],
+        name: this.properties.name,
+        avatar: this.properties.avatar,
+        description: this.properties.description,
+        position: this.properties.position,
         displayMode: this.displayMode,
         onConfigurePropPane: this._onConfigure,
       }
@@ -128,64 +131,33 @@ export default class AgencyWebPart extends BaseClientSideWebPart<IAgencyWebPartP
         {
           groups: [
             {
-              groupName: "Agency Webpart Settings",
+              groupName: "Auhtor box Webpart Settings",
               groupFields: [
-                PropertyFieldCollectionData("items", {
-                  key: "items",
-                  label: "",
-                  panelHeader: "Manage agencies",
-                  manageBtnLabel: "Manage agencies",
-                  value: this.properties.items,
-                  fields: [
-                    {
-                      id: "imageUrl",
-                      title: "Image URL",
-                      type: CustomCollectionFieldType.custom,
-                      onCustomRender: (
-                        field,
-                        value,
-                        onUpdate,
-                        item,
-                        itemId
-                      ) => {
-                        return React.createElement(FilePicker, {
-                          context: this.context as any,
-                          key: itemId,
-                          buttonLabel: "Select Image",
-                          hideLocalUploadTab: true,
-                          hideLocalMultipleUploadTab: true,
-                          hideLinkUploadTab: true,
-                          onSave: (filePickerResult: IFilePickerResult[]) => {
-                            if (
-                              filePickerResult &&
-                              filePickerResult.length > 0
-                            ) {
-                              onUpdate(
-                                field.id,
-                                filePickerResult[0].fileAbsoluteUrl
-                              );
-                            }
-                          },
-                        });
-                      },
-                    },
-                    {
-                      id: "city",
-                      title: "City",
-                      type: CustomCollectionFieldType.string,
-                    },
-                    {
-                      id: "address",
-                      title: "Address",
-                      type: CustomCollectionFieldType.string,
-                    },
-                    {
-                      id: "url",
-                      title: "Url",
-                      type: CustomCollectionFieldType.string,
-                    },
-                  ],
-                  disabled: false,
+                PropertyPaneTextField("name", {
+                  label: strings.Name,
+                }),
+                PropertyPaneTextField("description", {
+                  label: strings.Description,
+                }),
+                PropertyPaneTextField("position", {
+                  label: strings.Position,
+                }),
+                PropertyFieldFilePicker("avatar", {
+                  context: this.context as any,
+                  filePickerResult: this.properties.avatar,
+                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                  properties: this.properties,
+                  onSave: (e: IFilePickerResult) => {
+                    console.log(e);
+                    this.properties.avatar = e;
+                  },
+                  onChanged: (e: IFilePickerResult) => {
+                    console.log(e);
+                    this.properties.avatar = e;
+                  },
+                  key: "avatar",
+                  buttonLabel: strings.ChooseAPicture,
+                  label: strings.FilePicker,
                 }),
               ],
             },

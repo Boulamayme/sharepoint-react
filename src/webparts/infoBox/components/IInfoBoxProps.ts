@@ -1,8 +1,8 @@
 import { DisplayMode } from "@microsoft/sp-core-library";
-import { ITimeline } from "../../components/models/timeline.model";
+import { IInfoBox } from "../../components/models/infoBox.model";
 
-export interface ITimelineProps {
-  items: ITimeline[];
+export interface IInfoBoxProps {
+  items: IInfoBox[];
   displayMode: DisplayMode;
   onConfigurePropPane: () => void;
 }

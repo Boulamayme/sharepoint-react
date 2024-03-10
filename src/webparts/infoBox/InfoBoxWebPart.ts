@@ -1,50 +1,41 @@
 import * as React from "react";
 import * as ReactDom from "react-dom";
 import { Version } from "@microsoft/sp-core-library";
-import {
-  PropertyPaneDropdown,
-  type IPropertyPaneConfiguration,
-} from "@microsoft/sp-property-pane";
+import { type IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import { IReadonlyTheme } from "@microsoft/sp-component-base";
+
+//Models
+import { IInfoBox } from "../components/models/infoBox.model";
 
 /**************************************************
  *TO DO: Must be deleted and add it in extension
  *************************************************/
 import "../components/assets/global.scss";
 
-import * as strings from "CardArticleWebPartStrings";
-import CardArticle from "./components/CardArticle";
-import { ICardArticleProps } from "./components/ICardArticleProps";
+import * as strings from "InfoBoxWebPartStrings";
+import InfoBox from "./components/InfoBox";
 
+//Components
+import { IInfoBoxProps } from "./components/IInfoBoxProps";
+
+//Pnp Controls React
 import {
   CustomCollectionFieldType,
   PropertyFieldCollectionData,
 } from "@pnp/spfx-property-controls/lib/PropertyFieldCollectionData";
-import {
-  DateConvention,
-  DateTimePicker,
-  FilePicker,
-  IFilePickerResult,
-} from "@pnp/spfx-controls-react";
+import { FilePicker, IFilePickerResult } from "@pnp/spfx-controls-react";
 
-import {
-  PeoplePicker,
-  PrincipalType,
-} from "@pnp/spfx-controls-react/lib/PeoplePicker";
-
-export interface ICardArticleWebPartProps {
-  news: any[];
-  columns: string;
+export interface IInfoBoxWebPartProps {
+  items: IInfoBox[];
 }
 
-export default class CardArticleWebPart extends BaseClientSideWebPart<ICardArticleWebPartProps> {
+export default class InfoBoxWebPart extends BaseClientSideWebPart<IInfoBoxWebPartProps> {
   public render(): void {
-    const element: React.ReactElement<ICardArticleProps> = React.createElement(
-      CardArticle,
+    const element: React.ReactElement<IInfoBoxProps> = React.createElement(
+      InfoBox,
       {
-        news: this.properties.news || [],
-        columns: this.properties.columns,
+        items: this.properties.items || [],
         displayMode: this.displayMode,
         onConfigurePropPane: this._onConfigure,
       }
@@ -52,8 +43,7 @@ export default class CardArticleWebPart extends BaseClientSideWebPart<ICardArtic
 
     ReactDom.render(element, this.domElement);
   }
-
-  public _onConfigure = () => {
+  _onConfigure = () => {
     this.context.propertyPane.open();
   };
 
@@ -135,38 +125,20 @@ export default class CardArticleWebPart extends BaseClientSideWebPart<ICardArtic
     return {
       pages: [
         {
-          header: {
-            description: strings.PropertyPaneDescription,
-          },
           groups: [
             {
-              groupName: "Manage News",
+              groupName: "Info Box Webpart Settings",
               groupFields: [
-                PropertyFieldCollectionData("news", {
-                  key: "news",
+                PropertyFieldCollectionData("items", {
+                  key: "items",
                   label: "",
-                  panelHeader: "Manage items news",
-                  manageBtnLabel: "Manage news",
-                  value: this.properties.news,
+                  panelHeader: "Info box",
+                  manageBtnLabel: "Info box",
+                  value: this.properties.items,
                   fields: [
                     {
-                      id: "title",
-                      title: "Title",
-                      type: CustomCollectionFieldType.string,
-                    },
-                    {
-                      id: "description",
-                      title: "Description",
-                      type: CustomCollectionFieldType.string,
-                    },
-                    {
-                      id: "url",
-                      title: "URL",
-                      type: CustomCollectionFieldType.string,
-                    },
-                    {
-                      id: "imageUrl",
-                      title: "Image URL",
+                      id: "icon",
+                      title: "Icon URL",
                       type: CustomCollectionFieldType.custom,
                       onCustomRender: (
                         field,
@@ -197,73 +169,17 @@ export default class CardArticleWebPart extends BaseClientSideWebPart<ICardArtic
                       },
                     },
                     {
-                      id: "publishedDate",
-                      title: "Published Date",
-                      type: CustomCollectionFieldType.custom,
-                      onCustomRender: (
-                        field,
-                        value,
-                        onUpdate,
-                        item,
-                        itemId
-                      ) => {
-                        return React.createElement(DateTimePicker, {
-                          key: itemId,
-                          showLabels: false,
-                          dateConvention: DateConvention.Date,
-                          showGoToToday: true,
-                          value: value ? new Date(value) : undefined,
-                          onChange: (date: Date) => {
-                            onUpdate(field.id, date);
-                          },
-                        });
-                      },
+                      id: "title",
+                      title: "Title",
+                      type: CustomCollectionFieldType.string,
                     },
                     {
-                      id: "author",
-                      title: "Author",
-                      type: CustomCollectionFieldType.custom,
-                      onCustomRender: (
-                        field,
-                        value,
-                        onUpdate,
-                        item,
-                        itemId,
-                        onError
-                      ) => {
-                        return React.createElement(PeoplePicker, {
-                          context: this.context as any,
-                          personSelectionLimit: 1,
-                          showtooltip: true,
-                          key: itemId,
-                          defaultSelectedUsers: [item.customFieldId],
-                          onChange: (items: any[]) => {
-                            onUpdate(field.id, items[0].text);
-                          },
-                          showHiddenInUI: false,
-                          principalTypes: [PrincipalType.User],
-                        });
-                      },
+                      id: "description",
+                      title: "Description",
+                      type: CustomCollectionFieldType.string,
                     },
                   ],
                   disabled: false,
-                }),
-              ],
-            },
-            {
-              groupName: "Configuration layout",
-              groupFields: [
-                PropertyPaneDropdown("columns", {
-                  label: "Columns per row",
-                  options: [
-                    { key: "col-6", text: "2" },
-                    { key: "col-4", text: "3" },
-                    { key: "col-3", text: "4" },
-                    {
-                      key: "col-2",
-                      text: "6",
-                    },
-                  ],
                 }),
               ],
             },

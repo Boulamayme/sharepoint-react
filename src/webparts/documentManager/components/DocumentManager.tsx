@@ -7,7 +7,9 @@ import type {
 import { SPFI } from "@pnp/sp";
 import { getSP } from "../pnpjsConfig";
 
-//Import styles
+/**************************************************
+ *TO DO: Must be deleted and add it in extension
+ *************************************************/
 import "../../components/assets/global.scss";
 
 //theme

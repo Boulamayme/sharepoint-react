@@ -8,7 +8,11 @@ import {
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
-//Style
+
+
+/**************************************************
+ *TO DO: Must be deleted and add it in extension
+ *************************************************/
 import "../components/assets/global.scss";
 
 

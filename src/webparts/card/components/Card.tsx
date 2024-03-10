@@ -2,6 +2,10 @@
 import * as React from "react";
 import type { ICardProps } from "./ICardProps";
 
+
+/**************************************************
+ *TO DO: Must be deleted and add it in extension
+ *************************************************/
 import "../../components/assets/global.scss";
 import { DisplayMode } from "@microsoft/sp-core-library";
 import { Placeholder } from "@pnp/spfx-controls-react";
