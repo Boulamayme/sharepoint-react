@@ -929,3 +929,122 @@ $black-color: #000;
     }
   }
 }
+
+/*******************************************************************
+* Events
+********************************************************************/
+.dx-events {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  .dx-events--btn {
+    font-family: "Open Sans", sans-serif;
+    font-size: 25px;
+    img {
+      margin-right: 2rem;
+    }
+  }
+}
+.dx-event-banner {
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  height: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+  color: #fff;
+  z-index: 1;
+  &:after {
+    content: "";
+    background: #003da5;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+  }
+  &--title {
+    margin: 0;
+    font-size: 32px;
+  }
+  &--date {
+    display: flex;
+    gap: 4rem;
+    margin: 15px 0;
+    &-item {
+      display: flex;
+      font-size: 80px;
+      flex-direction: column;
+      font-family: "Open Sans", sans-serif;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      span {
+        font-size: 16px;
+      }
+    }
+  }
+  &--desc {
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    margin: 0 0 2rem 0;
+    padding: 0;
+  }
+  &--btn {
+    background: #038387;
+    color: #fff;
+    border: 0;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    padding: 4px 20px;
+    border-radius: 4px;
+  }
+}
+
+.dx-event-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  &--item {
+    position: relative;
+    overflow: hidden;
+    img {
+      object-fit: cover;
+      object-position: center;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    &.wide {
+      grid-column: span 2;
+    }
+  }
+  &--image-wrapper {
+    height: 250px;
+  }
+}
+
+.dx-event-current {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  &--item {
+    font-family: "Open Sans", sans-serif;
+    display: flex;
+    align-items: center;
+    padding: 11px 20px;
+    border-radius: 5px;
+    box-shadow: 0px 5px 17px 0px rgba(0, 0, 0, 0.07);
+    gap: 20px;
+  }
+  &--label {
+    font-size: 13px;
+    font-weight: 700;
+    span {
+      font-weight: 300;
+    }
+  }
+}

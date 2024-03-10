@@ -5,7 +5,6 @@ import type {
   IDocumentsManagerProps,
 } from "./IDocumentManagerProps";
 import { SPFI } from "@pnp/sp";
-import { getSP } from "../pnpjsConfig";
 
 /**************************************************
  *TO DO: Must be deleted and add it in extension
@@ -27,6 +26,7 @@ import * as strings from "DocumentManagerWebPartStrings";
 import CardDocument from "./CardDocument";
 import Title from "../../components/Title";
 import { formatDate } from "../../components/helpers/helpers";
+import { getSP } from "../../components/pnpjsConfig";
 
 //Icons
 const iconPdf = require("../assets/icons/pdf.png");

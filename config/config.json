@@ -137,6 +137,14 @@
           "manifest": "./src/webparts/authorBox/AuthorBoxWebPart.manifest.json"
         }
       ]
+    },
+    "events-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/events/EventsWebPart.js",
+          "manifest": "./src/webparts/events/EventsWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -159,6 +167,7 @@
     "QuickLinksWebPartStrings": "lib/webparts/quickLinks/loc/{locale}.js",
     "AgencyWebPartStrings": "lib/webparts/agency/loc/{locale}.js",
     "InfoBoxWebPartStrings": "lib/webparts/infoBox/loc/{locale}.js",
-    "AuthorBoxWebPartStrings": "lib/webparts/authorBox/loc/{locale}.js"
+    "AuthorBoxWebPartStrings": "lib/webparts/authorBox/loc/{locale}.js",
+    "EventsWebPartStrings": "lib/webparts/events/loc/{locale}.js"
   }
 }
