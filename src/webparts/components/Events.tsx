@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import * as React from "react";
 import { useState } from "react";
 
@@ -6,17 +7,19 @@ import { Calendar } from "primereact/calendar";
 import Title from "./Title";
 import { formatDate } from "./helpers/helpers";
 import * as strings from "HomeWebPartStrings";
+import { InputText } from "primereact/inputtext";
 
 const iconAgenda = require("./assets/images/agenda.png");
 
 const EventsFC = (props: any) => {
   const { news } = props;
   const [date, setDate] = useState(new Date());
+  const [search, setSearch] = useState("");
+  const [filteredEvents, setFilteredEvents] = useState(news);
 
   const startOfDay = (date: any) =>
     new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime();
 
-  // Custom date template to highlight event days
   const dateEventTemplate = (dateMeta: any) => {
     const checkDate = new Date(dateMeta.year, dateMeta.month, dateMeta.day);
     if (
@@ -30,33 +33,28 @@ const EventsFC = (props: any) => {
     return dateMeta.day;
   };
 
-  // React.useEffect(() => {
-  //   // Filter events based on the selected date
-  //   const filtered = news.filter((event: any) => {
-  //     const eventDateStart = startOfDay(new Date(event.publishedDate));
-  //     const selectedDateStart = startOfDay(date);
-  //     const dayBefore = startOfDay(
-  //       new Date(date.getFullYear(), date.getMonth(), date.getDate() - 1)
-  //     );
-  //     const dayAfter = startOfDay(
-  //       new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1)
-  //     );
-
-  //     return (
-  //       eventDateStart === selectedDateStart ||
-  //       eventDateStart === dayBefore ||
-  //       eventDateStart === dayAfter
-  //     );
-  //   });
-  //   setFilteredEvents(filtered);
-  // }, [date, news]);
-
   const addToCalendar = (event: any) => {
     window.open(
-      `https://outlook.office.com/calendar/0/deeplink/compose?subject=${event.title}&startdt=${event.publishedDate}&enddt=${event.publishedDate}&body=${event.description}`
+      `https://outlook.office.com/calendar/deeplink/compose?body=${encodeURIComponent(
+        event.description
+      )}&enddt=${new Date(
+        event.publishedDate
+      ).toISOString()}&location=location&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&startdt=${new Date(
+        event.publishedDate
+      ).toUTCString()}&subject=${event.title}`
     );
   };
-
+  const handleSearchEvent = (search: string) => {
+    //Search in title and description
+    const filteredEvents = news.filter((event: any) => {
+      return (
+        event.description.toLowerCase().includes(search.toLowerCase()) ||
+        event.title.toLowerCase().includes(search.toLowerCase())
+      );
+    });
+    setSearch(search);
+    setFilteredEvents(filteredEvents);
+  };
   return (
     <>
       <div
@@ -68,7 +66,26 @@ const EventsFC = (props: any) => {
           height: "560px",
         }}
       >
-        <Title title="Prochains évènements" />
+        <div className="d-flex align-items-center justify-content-between">
+          <div className="col-auto">
+            <Title title="Prochains évènements" />
+          </div>
+          <div className="col-3">
+            <div className="dx-events--search">
+              <span className="p-input-icon-left w-100">
+                <i className="pi pi-search" />
+                <InputText
+                  value={search}
+                  placeholder="Search"
+                  className="w-100"
+                  onChange={(e) => {
+                    handleSearchEvent(e.target.value);
+                  }}
+                />
+              </span>
+            </div>
+          </div>
+        </div>
         <div className="row">
           <div className="col-auto">
             <Calendar
@@ -81,8 +98,8 @@ const EventsFC = (props: any) => {
           </div>
           <div className="col">
             <div className="dx-schedule ms-3">
-              <div className="dx-schedule__events">
-                {news.map((event: any, index: number) => (
+              <div className="dx-schedule__events mt-4">
+                {filteredEvents.map((event: any, index: number) => (
                   <div className="dx-schedule__event" key={index}>
                     <span>{formatDate(event.publishedDate)}</span>
                     <p className="mt-1 mb-2">{event.description}</p>
