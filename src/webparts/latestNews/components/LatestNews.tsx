@@ -8,11 +8,11 @@ import { DisplayMode } from "@microsoft/sp-core-library";
 
 export default class LatestNews extends React.Component<ILatestNewsProps, {}> {
   public render(): React.ReactElement<ILatestNewsProps> {
-    const { latestNews } = this.props;
+    const { latestNews , title, link } = this.props;
 
     return (
       <>
-        {latestNews.length > 0 && <LatestNewsFC latestNews={latestNews} />}
+        {latestNews.length > 0 && <LatestNewsFC latestNews={latestNews} title={title} link={link} />}
         {latestNews.length === 0 && (
           <Placeholder
             iconName="Edit"

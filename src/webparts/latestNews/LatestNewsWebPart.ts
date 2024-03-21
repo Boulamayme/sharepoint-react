@@ -1,7 +1,10 @@
 import * as React from "react";
 import * as ReactDom from "react-dom";
 import { Version } from "@microsoft/sp-core-library";
-import { type IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
+import {
+  PropertyPaneTextField,
+  type IPropertyPaneConfiguration,
+} from "@microsoft/sp-property-pane";
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import { IReadonlyTheme } from "@microsoft/sp-component-base";
 
@@ -31,6 +34,8 @@ import {
 
 export interface ILatestNewsWebPartProps {
   latestNews: any[];
+  title: string;
+  link: string;
 }
 
 export default class LatestNewsWebPart extends BaseClientSideWebPart<ILatestNewsWebPartProps> {
@@ -39,6 +44,8 @@ export default class LatestNewsWebPart extends BaseClientSideWebPart<ILatestNews
       LatestNews,
       {
         latestNews: this.properties.latestNews || [],
+        title: this.properties.title,
+        link: this.properties.link,
         displayMode: this.displayMode,
         onConfigurePropPane: this._onConfigure,
       }
@@ -243,6 +250,12 @@ export default class LatestNewsWebPart extends BaseClientSideWebPart<ILatestNews
                     },
                   ],
                   disabled: false,
+                }),
+                PropertyPaneTextField("title", {
+                  label: "Title",
+                }),
+                PropertyPaneTextField("link", {
+                  label: "Link",
                 }),
               ],
             },

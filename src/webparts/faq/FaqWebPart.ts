@@ -1,11 +1,19 @@
 import * as React from "react";
 import * as ReactDom from "react-dom";
 import { Version } from "@microsoft/sp-core-library";
-import { type IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
+import {
+  PropertyPaneLabel,
+  type IPropertyPaneConfiguration,
+} from "@microsoft/sp-property-pane";
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import { IReadonlyTheme } from "@microsoft/sp-component-base";
 
 import { RichText } from "@pnp/spfx-controls-react/lib/RichText";
+
+//PrimeReact
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
 
 //Style
 import "../components/assets/global.scss";
@@ -20,6 +28,7 @@ import {
 
 export interface IFaqWebPartProps {
   items: any[];
+  categories: any[];
 }
 
 export default class FaqWebPart extends BaseClientSideWebPart<IFaqWebPartProps> {
@@ -27,6 +36,7 @@ export default class FaqWebPart extends BaseClientSideWebPart<IFaqWebPartProps> 
     const element: React.ReactElement<IFaqProps> = React.createElement(Faq, {
       items: this.properties.items || [],
       onConfigurePropPane: this.configurePropPane,
+      categories: this.properties.categories || [],
       displayMode: this.displayMode,
     });
 
@@ -121,6 +131,24 @@ export default class FaqWebPart extends BaseClientSideWebPart<IFaqWebPartProps> 
           groups: [
             {
               groupFields: [
+                PropertyFieldCollectionData("categories", {
+                  key: "categories",
+                  label: "",
+                  panelHeader: "Manage categories careers",
+                  manageBtnLabel: "Manage categories",
+                  value: this.properties.categories,
+                  fields: [
+                    {
+                      id: "title",
+                      title: "Title",
+                      type: CustomCollectionFieldType.string,
+                    },
+                  ],
+                  disabled: false,
+                }),
+                PropertyPaneLabel("labelCategory", {
+                  text: "Manage list of items to display in the FAQ section",
+                }),
                 PropertyFieldCollectionData("items", {
                   key: "items",
                   label: "Manage items",
@@ -132,6 +160,21 @@ export default class FaqWebPart extends BaseClientSideWebPart<IFaqWebPartProps> 
                       id: "title",
                       title: "Title",
                       type: CustomCollectionFieldType.string,
+                    },
+                    {
+                      id: "category",
+                      title: "Category",
+                      type: CustomCollectionFieldType.dropdown,
+                      options:
+                        this.properties.categories &&
+                        this.properties.categories.length > 0
+                          ? this.properties.categories.map((category) => {
+                              return {
+                                key: category.title,
+                                text: category.title,
+                              };
+                            })
+                          : [],
                     },
                     {
                       id: "content",
