@@ -12,7 +12,18 @@ export default class Agency extends React.Component<IAgencyProps, {}> {
           <div className="dx-agency">
             {items.map((item, index) => (
               <div key={index} className="dx-agency--item">
-                <img src={item.imageUrl} alt="" className="dx-agency--img" />
+                <div
+                  className="dx-agency--img"
+                  style={{
+                    height: "50px",
+                    width: "50px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <img src={item.imageUrl} alt="" className="" />
+                </div>
                 <h3 className="dx-agency--city">{item.city}</h3>
                 <span className="dx-agency--address">{item.address}</span>
               </div>

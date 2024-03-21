@@ -145,6 +145,54 @@
           "manifest": "./src/webparts/events/EventsWebPart.manifest.json"
         }
       ]
+    },
+    "tools-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/tools/ToolsWebPart.js",
+          "manifest": "./src/webparts/tools/ToolsWebPart.manifest.json"
+        }
+      ]
+    },
+    "card-learning-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/cardLearning/CardLearningWebPart.js",
+          "manifest": "./src/webparts/cardLearning/CardLearningWebPart.manifest.json"
+        }
+      ]
+    },
+    "faq-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/faq/FaqWebPart.js",
+          "manifest": "./src/webparts/faq/FaqWebPart.manifest.json"
+        }
+      ]
+    },
+    "events-calendar-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/eventsCalendar/EventsCalendarWebPart.js",
+          "manifest": "./src/webparts/eventsCalendar/EventsCalendarWebPart.manifest.json"
+        }
+      ]
+    },
+    "directory-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/directory/DirectoryWebPart.js",
+          "manifest": "./src/webparts/directory/DirectoryWebPart.manifest.json"
+        }
+      ]
+    },
+    "news-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/news/NewsWebPart.js",
+          "manifest": "./src/webparts/news/NewsWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -168,6 +216,12 @@
     "AgencyWebPartStrings": "lib/webparts/agency/loc/{locale}.js",
     "InfoBoxWebPartStrings": "lib/webparts/infoBox/loc/{locale}.js",
     "AuthorBoxWebPartStrings": "lib/webparts/authorBox/loc/{locale}.js",
-    "EventsWebPartStrings": "lib/webparts/events/loc/{locale}.js"
+    "EventsWebPartStrings": "lib/webparts/events/loc/{locale}.js",
+    "ToolsWebPartStrings": "lib/webparts/tools/loc/{locale}.js",
+    "CardLearningWebPartStrings": "lib/webparts/cardLearning/loc/{locale}.js",
+    "FaqWebPartStrings": "lib/webparts/faq/loc/{locale}.js",
+    "EventsCalendarWebPartStrings": "lib/webparts/eventsCalendar/loc/{locale}.js",
+    "DirectoryWebPartStrings": "lib/webparts/directory/loc/{locale}.js",
+    "NewsWebPartStrings": "lib/webparts/news/loc/{locale}.js"
   }
 }

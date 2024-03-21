@@ -26,6 +26,13 @@ const Carousel: React.FC<ICarouselProps> = (props) => {
       prevIndex === 0 ? props.items.length - 1 : prevIndex - 1
     );
   };
+
+  React.useEffect(() => {
+    const interval = setInterval(nextSlide, 5000); 
+    return () => clearInterval(interval);
+  }, []); 
+
+
   return (
     <>
       <div className="dx-carousel">

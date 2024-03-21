@@ -10,13 +10,13 @@ export default class CardDocument extends React.Component<
   {}
 > {
   public render(): React.ReactElement<ICardDocumentProps> {
-    const { items } = this.props;
+    const { items , columns } = this.props;
 
     return (
       <>
         <div className="row">
           {items.map((item, index) => (
-            <div key={index} className="col-4">
+            <div key={index} className={columns}>
               <div className="dx-document px-4 pb-3">
                 <div className="dx-document--item">
                   <div className="dx-document--cover">

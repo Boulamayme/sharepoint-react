@@ -2,8 +2,6 @@
 import * as React from "react";
 import { formatDate } from "../helpers/helpers";
 
-const icon = require("../../components/assets/images/icon_wrap.png");
-
 interface ILatestNewsItem {
   position: string;
   imageUrl: string;
@@ -45,7 +43,7 @@ const LatestNewsItem = (props: ILatestNewsItem): JSX.Element => {
           </div>
           <h3 className="dx-news--title">
             {props.title}
-            <img src={icon} alt="" />
+            {/* <img src={icon} alt="" /> */}
           </h3>
           <p className="dx-news--desc">{props.description}</p>
         </div>

@@ -31,6 +31,7 @@ export default class OrganizationalChartWebPart extends BaseClientSideWebPart<IO
         items: this.properties.items || [],
         onConfigurePropPane: this.configurePropPane,
         displayMode: this.displayMode,
+        context: this.context,
       });
 
     ReactDom.render(element, this.domElement);

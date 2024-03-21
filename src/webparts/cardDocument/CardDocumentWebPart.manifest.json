@@ -29,7 +29,8 @@
       "description": { "default": "Card Document description" },
       "officeFabricIconFontName": "Page",
       "properties": {
-        "description": "Card Document"
+        "description": "Card Document",
+        "columns": "col-4"
       }
     }
   ]

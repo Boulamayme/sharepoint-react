@@ -1,6 +1,17 @@
+import * as strings from "HomeWebPartStrings";
 import * as React from "react";
 
 const HappyBirthDaySection = (props: any) => {
+  const { incomingBirthday, incomingEmployees } = props;
+
+  //Format Date to get only the day and month for exemle 18 Janvier
+  const formatDate = (date: string) => {
+    const newDate = new Date(date);
+    return newDate.toLocaleDateString("fr-FR", {
+      month: "long",
+      day: "numeric",
+    });
+  };
   return (
     <>
       <div className="row">
@@ -12,7 +23,7 @@ const HappyBirthDaySection = (props: any) => {
             }}
           >
             <img
-              src="https://dexterousplace.sharepoint.com/sites/enoe-energie/SiteAssets/assets/greenc_cloud.png"
+              src="/sites/enoe-energie/SiteAssets/assets/greenc_cloud.png"
               style={{
                 position: "absolute",
                 top: 0,
@@ -21,7 +32,7 @@ const HappyBirthDaySection = (props: any) => {
               }}
             />
             <img
-              src="https://dexterousplace.sharepoint.com/sites/enoe-energie/SiteAssets/assets/green_blue.png"
+              src="/sites/enoe-energie/SiteAssets/assets/green_blue.png"
               style={{
                 position: "absolute",
                 top: 0,
@@ -36,125 +47,42 @@ const HappyBirthDaySection = (props: any) => {
                 gap: "10px",
               }}
             >
-              <div className="dx-hp-users">
-                <div className="dx-hp-users--item">
-                  <div className="dx-hp-users--avatar">
-                    <img
-                      src="https://this-person-does-not-exist.com/img/avatar-genc7f7c517ca695f702d78cf94e2f1c87b.jpg"
-                      alt=""
-                    />
+              <div
+                className="dx-hp-users"
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(2, 1fr)",
+                  gap: "15px",
+                }}
+              >
+                {incomingBirthday.map((item: any, index: number) => (
+                  <div key={index} className="dx-hp-users--item">
+                    <div className="dx-hp-users--avatar">
+                      <img src={item.user.imageUrl} alt="" />
+                    </div>
+                    <div className="dx-hp-users--content">
+                      <span
+                        className="dx-hp-users--name"
+                        style={{
+                          fontSize: 12,
+                        }}
+                      >
+                        {item.user.text}
+                      </span>
+                      <span className="dx-hp-users--position">
+                        {item.jobTitle}
+                      </span>
+                      <span
+                        className="dx-hp-users--birthday"
+                        style={{
+                          color: "#E8B352",
+                        }}
+                      >
+                        {formatDate(item.birthday)}
+                      </span>
+                    </div>
                   </div>
-                  <div className="dx-hp-users--content">
-                    <span
-                      className="dx-hp-users--name"
-                      style={{
-                        fontSize: 12,
-                      }}
-                    >
-                      Radovan SkilllArena
-                    </span>
-                    <span className="dx-hp-users--position">
-                      Chef de projet PV
-                    </span>
-                    <span
-                      className="dx-hp-users--birthday"
-                      style={{
-                        color: "#E8B352",
-                      }}
-                    >
-                      18 Janvier
-                    </span>
-                  </div>
-                </div>
-                <div className="dx-hp-users--item">
-                  <div className="dx-hp-users--avatar">
-                    <img
-                      src="https://this-person-does-not-exist.com/img/avatar-genc7f7c517ca695f702d78cf94e2f1c87b.jpg"
-                      alt=""
-                    />
-                  </div>
-                  <div className="dx-hp-users--content">
-                    <span
-                      className="dx-hp-users--name"
-                      style={{
-                        fontSize: 12,
-                      }}
-                    >
-                      Mohamed Ali Brini
-                    </span>
-                    <span className="dx-hp-users--position">
-                      Chef de projet PV
-                    </span>
-                    <span
-                      className="dx-hp-users--birthday"
-                      style={{
-                        color: "#E8B352",
-                      }}
-                    >
-                      18 Janvier
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="dx-hp-users">
-                <div className="dx-hp-users--item">
-                  <div className="dx-hp-users--avatar">
-                    <img
-                      src="https://this-person-does-not-exist.com/img/avatar-genc7f7c517ca695f702d78cf94e2f1c87b.jpg"
-                      alt=""
-                    />
-                  </div>
-                  <div className="dx-hp-users--content">
-                    <span
-                      className="dx-hp-users--name"
-                      style={{
-                        fontSize: 12,
-                      }}
-                    >
-                      Radovan SkilllArena
-                    </span>
-                    <span className="dx-hp-users--position">
-                      Chef de projet PV
-                    </span>
-                    <span
-                      className="dx-hp-users--birthday"
-                      style={{
-                        color: "#E8B352",
-                      }}
-                    >
-                      18 Janvier
-                    </span>
-                  </div>
-                </div>
-                <div className="dx-hp-users--item">
-                  <div className="dx-hp-users--avatar">
-                    <img
-                      src="https://this-person-does-not-exist.com/img/avatar-genc7f7c517ca695f702d78cf94e2f1c87b.jpg"
-                      alt=""
-                    />
-                  </div>
-                  <div className="dx-hp-users--content">
-                    <span
-                      className="dx-hp-users--name"
-                      style={{
-                        fontSize: 12,
-                      }}
-                    >
-                      Mohamed Ali Brini
-                    </span>
-                    <span className="dx-hp-users--position">
-                      Chef de projet PV
-                    </span>
-                    <span
-                      className="dx-hp-users--birthday"
-                      style={{
-                        color: "#E8B352",
-                      }}
-                    >
-                      18 Janvier
-                    </span>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
@@ -162,7 +90,7 @@ const HappyBirthDaySection = (props: any) => {
         <div className="col-6">
           <div className="dx-hp">
             <img
-              src="https://dexterousplace.sharepoint.com/sites/enoe-energie/SiteAssets/assets/img_n_b.png"
+              src="/sites/enoe-energie/SiteAssets/assets/img_n_b.png"
               style={{
                 position: "absolute",
                 right: "0",
@@ -171,7 +99,7 @@ const HappyBirthDaySection = (props: any) => {
               }}
             />
             <img
-              src="https://dexterousplace.sharepoint.com/sites/enoe-energie/SiteAssets/assets/image.png"
+              src="/sites/enoe-energie/SiteAssets/assets/image.png"
               alt=""
               style={{
                 position: "absolute",
@@ -181,7 +109,7 @@ const HappyBirthDaySection = (props: any) => {
               }}
             />
             <img
-              src="https://dexterousplace.sharepoint.com/sites/enoe-energie/SiteAssets/assets/nuage%20souriant.png"
+              src="/sites/enoe-energie/SiteAssets/assets/nuage%20souriant.png"
               style={{
                 position: "absolute",
                 left: "0",
@@ -192,7 +120,7 @@ const HappyBirthDaySection = (props: any) => {
             />
             <h3 className="dx-hp--title">
               <img
-                src="https://dexterousplace.sharepoint.com/sites/enoe-energie/SiteAssets/assets/cloud.png"
+                src="/sites/enoe-energie/SiteAssets/assets/cloud.png"
                 alt=""
                 style={{
                   position: "absolute",
@@ -205,46 +133,25 @@ const HappyBirthDaySection = (props: any) => {
               Enoé s'agrandit !
             </h3>
             <div className="dx-hp-users">
-              <div className="dx-hp-users--item">
-                <div className="dx-hp-users--avatar">
-                  <img
-                    src="https://this-person-does-not-exist.com/img/avatar-genc7f7c517ca695f702d78cf94e2f1c87b.jpg"
-                    alt=""
-                  />
+              {incomingEmployees.map((item: any, index: number) => (
+                <div key={index} className="dx-hp-users--item">
+                  <div className="dx-hp-users--avatar">
+                    <img src={item.user.imageUrl} alt="" />
+                  </div>
+                  <div className="dx-hp-users--content">
+                    <span className="dx-hp-users--name">{item.user.text}</span>
+                    <span className="dx-hp-users--position">
+                      {item.jobTitle}
+                    </span>
+                    <span className="dx-hp-users--birthday">
+                      {strings.ArrivalDate} : {formatDate(item.arrivalDate)}
+                    </span>
+                    <span className="dx-hp-users--hobbies">
+                      {strings.Interests} : {item.hobbies}
+                    </span>
+                  </div>
                 </div>
-                <div className="dx-hp-users--content">
-                  <span className="dx-hp-users--name">Radovan SkilllArena</span>
-                  <span className="dx-hp-users--position">
-                    Chef de projet PV
-                  </span>
-                  <span className="dx-hp-users--birthday">
-                    Anniversaire : 04 octobre
-                  </span>
-                  <span className="dx-hp-users--hobbies">
-                    Centres d'intérêt : menuiserie, kendo, badminton
-                  </span>
-                </div>
-              </div>
-              <div className="dx-hp-users--item">
-                <div className="dx-hp-users--avatar">
-                  <img
-                    src="https://this-person-does-not-exist.com/img/avatar-genc7f7c517ca695f702d78cf94e2f1c87b.jpg"
-                    alt=""
-                  />
-                </div>
-                <div className="dx-hp-users--content">
-                  <span className="dx-hp-users--name">Mohamed Ali Brini</span>
-                  <span className="dx-hp-users--position">
-                    Chef de projet PV
-                  </span>
-                  <span className="dx-hp-users--birthday">
-                    Anniversaire : 04 octobre
-                  </span>
-                  <span className="dx-hp-users--hobbies">
-                    Centres d'intérêt : menuiserie, kendo, badminton
-                  </span>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

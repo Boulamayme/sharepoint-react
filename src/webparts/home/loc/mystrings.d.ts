@@ -11,6 +11,12 @@ declare interface IHomeWebPartStrings {
   AppOfficeEnvironment: string;
   AppOutlookEnvironment: string;
   UnknownEnvironment: string;
+  Interests: string;
+  ArrivalDate: string;
+  AddToCalendar: string;
+  Recent: string;
+  Popular: string;
+  SeeMore: string;
 }
 
 declare module 'HomeWebPartStrings' {

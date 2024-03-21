@@ -26,8 +26,8 @@ export default class Timeline extends React.Component<
     };
 
     const handleMouseMove = (e: MouseEvent) => {
-      const dx = e.clientX - startPos.x;
-      ele.scrollLeft = startPos.left + dx; // Update for horizontal drag
+      const dx = (e.clientX - startPos.x) * -1;
+      ele.scrollLeft = startPos.left + dx;
       this.updateCursor(ele);
     };
 
@@ -54,8 +54,8 @@ export default class Timeline extends React.Component<
 
     const handleTouchMove = (e: TouchEvent) => {
       const touch = e.touches[0];
-      const dx = touch.clientX - startPos.x;
-      ele.scrollLeft = startPos.left + dx; // Update for horizontal drag
+      const dx = (touch.clientX - startPos.x) * -1;
+      ele.scrollLeft = startPos.left + dx; 
       this.updateCursor(ele);
     };
 

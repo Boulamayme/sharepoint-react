@@ -1,43 +1,415 @@
-import * as React from 'react';
-import styles from './Weather.module.scss';
-import type { IWeatherProps } from './IWeatherProps';
-import { escape } from '@microsoft/sp-lodash-subset';
+/* eslint-disable @typescript-eslint/no-var-requires */
+import * as React from "react";
+import type { IWeatherProps } from "./IWeatherProps";
+
+const iconWeather1 = require("../../components/assets/images/sun_1.png");
+const iconWeather2 = require("../../components/assets/images/meteo_3.png");
+const iconWeather3 = require("../../components/assets/images/neige.png");
+const iconWeather4 = require("../../components/assets/images/sun.png");
+
+const iconWeather5 = require("../../components/assets/images/group65564.png");
+const iconWeather6 = require("../../components/assets/images/Union.png");
+const iconWeather7 = require("../../components/assets/images/subsc.png");
 
 export default class Weather extends React.Component<IWeatherProps, {}> {
   public render(): React.ReactElement<IWeatherProps> {
-    const {
-      description,
-      isDarkTheme,
-      environmentMessage,
-      hasTeamsContext,
-      userDisplayName
-    } = this.props;
+    const {} = this.props;
 
     return (
-      <section className={`${styles.weather} ${hasTeamsContext ? styles.teams : ''}`}>
-        <div className={styles.welcome}>
-          <img alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
-          <h2>Well done, {escape(userDisplayName)}!</h2>
-          <div>{environmentMessage}</div>
-          <div>Web part property value: <strong>{escape(description)}</strong></div>
+      <>
+        <div
+          className="dx-weather"
+          style={{
+            display: "flex",
+            backgroundColor: "#D5E2F6",
+            padding: "20px",
+            borderRadius: "5px",
+            justifyContent: "center",
+            textAlign: "center",
+          }}
+        >
+          <div
+            className="dx-weather--item"
+            style={{
+              borderRight: "1px solid #8AA8DA",
+              padding: "17px 25px",
+            }}
+          >
+            <div
+              className="dx-weather--title"
+              style={{
+                color: "#738CB3",
+                fontSize: "20px",
+                fontWeight: "bold",
+              }}
+            >
+              Marseille
+            </div>
+            <div className="dx-weather--temp">
+              <img src={iconWeather1} />
+              <span
+                className="dx-weather--temp-value"
+                style={{
+                  color: "#436292",
+                  fontSize: "50px",
+                  fontFamily: "Open Sans",
+                }}
+              >
+                8°
+                <span
+                  style={{
+                    color: "#738CB3",
+                    fontSize: "16px",
+                  }}
+                >
+                  Nuageux
+                </span>
+              </span>
+            </div>
+            <div className="d-flex justify-content-between">
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <img src={iconWeather5} />
+                <span
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: "500",
+                  }}
+                >
+                  10 km/h
+                </span>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <img src={iconWeather6} />
+                <span
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: "500",
+                  }}
+                >
+                  94 %
+                </span>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <img src={iconWeather7} />
+                <span
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: "500",
+                  }}
+                >
+                  1 sur 11
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            className="dx-weather--item"
+            style={{
+              borderRight: "1px solid #8AA8DA",
+              padding: "17px 25px",
+            }}
+          >
+            <div
+              className="dx-weather--title"
+              style={{
+                color: "#738CB3",
+                fontSize: "20px",
+                fontWeight: "bold",
+              }}
+            >
+              Paris
+            </div>
+            <div className="dx-weather--temp">
+              <img src={iconWeather2} />
+              <span
+                className="dx-weather--temp-value"
+                style={{
+                  color: "#436292",
+                  fontSize: "50px",
+                  fontFamily: "Open Sans",
+                }}
+              >
+                8°
+                <span
+                  style={{
+                    color: "#738CB3",
+                    fontSize: "16px",
+                  }}
+                >
+                  Nuageux
+                </span>
+              </span>
+            </div>
+            <div className="d-flex justify-content-between">
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <img src={iconWeather5} />
+                <span
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: "500",
+                  }}
+                >
+                  10 km/h
+                </span>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <img src={iconWeather6} />
+                <span
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: "500",
+                  }}
+                >
+                  94 %
+                </span>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <img src={iconWeather7} />
+                <span
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: "500",
+                  }}
+                >
+                  1 sur 11
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            className="dx-weather--item"
+            style={{
+              borderRight: "1px solid #8AA8DA",
+              padding: "17px 25px",
+            }}
+          >
+            <div
+              className="dx-weather--title"
+              style={{
+                color: "#738CB3",
+                fontSize: "20px",
+                fontWeight: "bold",
+              }}
+            >
+              Biarritz
+            </div>
+            <div className="dx-weather--temp">
+              <img src={iconWeather3} />
+              <span
+                className="dx-weather--temp-value"
+                style={{
+                  color: "#436292",
+                  fontSize: "50px",
+                  fontFamily: "Open Sans",
+                }}
+              >
+                8°
+                <span
+                  style={{
+                    color: "#738CB3",
+                    fontSize: "16px",
+                  }}
+                >
+                  Nuageux
+                </span>
+              </span>
+            </div>
+            <div className="d-flex justify-content-between">
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <img src={iconWeather5} />
+                <span
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: "500",
+                  }}
+                >
+                  10 km/h
+                </span>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <img src={iconWeather6} />
+                <span
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: "500",
+                  }}
+                >
+                  94 %
+                </span>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <img src={iconWeather7} />
+                <span
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: "500",
+                  }}
+                >
+                  1 sur 11
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            className="dx-weather--item"
+            style={{
+              borderRight: 0,
+              padding: "17px 25px",
+            }}
+          >
+            <div
+              className="dx-weather--title"
+              style={{
+                color: "#738CB3",
+                fontSize: "20px",
+                fontWeight: "bold",
+              }}
+            >
+              Le Mans
+            </div>
+            <div className="dx-weather--temp">
+              <img src={iconWeather4} />
+              <span
+                className="dx-weather--temp-value"
+                style={{
+                  color: "#436292",
+                  fontSize: "50px",
+                  fontFamily: "Open Sans",
+                }}
+              >
+                -1 °
+                <span
+                  style={{
+                    color: "#738CB3",
+                    fontSize: "16px",
+                  }}
+                >
+                  Nuageux
+                </span>
+              </span>
+            </div>
+            <div className="d-flex justify-content-between">
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <img src={iconWeather5} />
+                <span
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: "500",
+                  }}
+                >
+                  10 km/h
+                </span>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <img src={iconWeather6} />
+                <span
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: "500",
+                  }}
+                >
+                  94 %
+                </span>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <img src={iconWeather7} />
+                <span
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: "500",
+                  }}
+                >
+                  1 sur 11
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
-          <h3>Welcome to SharePoint Framework!</h3>
-          <p>
-            The SharePoint Framework (SPFx) is a extensibility model for Microsoft Viva, Microsoft Teams and SharePoint. It&#39;s the easiest way to extend Microsoft 365 with automatic Single Sign On, automatic hosting and industry standard tooling.
-          </p>
-          <h4>Learn more about SPFx development:</h4>
-          <ul className={styles.links}>
-            <li><a href="https://aka.ms/spfx" target="_blank" rel="noreferrer">SharePoint Framework Overview</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-graph" target="_blank" rel="noreferrer">Use Microsoft Graph in your solution</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-teams" target="_blank" rel="noreferrer">Build for Microsoft Teams using SharePoint Framework</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-viva" target="_blank" rel="noreferrer">Build for Microsoft Viva Connections using SharePoint Framework</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-store" target="_blank" rel="noreferrer">Publish SharePoint Framework applications to the marketplace</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-api" target="_blank" rel="noreferrer">SharePoint Framework API reference</a></li>
-            <li><a href="https://aka.ms/m365pnp" target="_blank" rel="noreferrer">Microsoft 365 Developer Community</a></li>
-          </ul>
-        </div>
-      </section>
+      </>
     );
   }
 }

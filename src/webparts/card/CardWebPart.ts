@@ -31,8 +31,6 @@ export default class CardWebPart extends BaseClientSideWebPart<ICardWebPartProps
   // private _isDarkTheme: boolean = false;
 
   public render(): void {
-    console.log("Articles", this.properties.articles);
-
     const element: React.ReactElement<ICardProps> = React.createElement(Card, {
       articles: this.properties.articles || [],
       onConfigurePropPane: this.configurePropPane,
@@ -147,16 +145,19 @@ export default class CardWebPart extends BaseClientSideWebPart<ICardWebPartProps
                       id: "description",
                       title: "Description",
                       type: CustomCollectionFieldType.string,
+                      required: true,
                     },
                     {
                       id: "url",
                       title: "URL",
                       type: CustomCollectionFieldType.string,
+                      required: true,
                     },
                     {
                       id: "imageUrl",
                       title: "Image URL",
                       type: CustomCollectionFieldType.custom,
+                      required: true,
                       onCustomRender: (
                         field,
                         value,
@@ -207,11 +208,13 @@ export default class CardWebPart extends BaseClientSideWebPart<ICardWebPartProps
                           },
                         });
                       },
+                      required: true,
                     },
                     {
                       id: "author",
                       title: "Author",
                       type: CustomCollectionFieldType.custom,
+                      required: true,
                       onCustomRender: (
                         field,
                         value,

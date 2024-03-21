@@ -2,21 +2,21 @@
 import * as React from "react";
 import type { IOrganizationalChartProps } from "./IOrganizationalChartProps";
 
-import "../assets/style.scss";
+import "../../components/assets/global.scss";
 
 import { DisplayMode } from "@microsoft/sp-core-library";
 
 //Icons
 import IconPhone from "../assets/images/phone";
 import IconOrg from "../assets/images/organization";
-import { Placeholder } from "@pnp/spfx-controls-react";
+import { LivePersona, Placeholder } from "@pnp/spfx-controls-react";
 
 export default class OrganizationalChart extends React.Component<
   IOrganizationalChartProps,
   {}
 > {
   public render(): React.ReactElement<IOrganizationalChartProps> {
-    const { items } = this.props;
+    const { items, context } = this.props;
 
     return (
       <>
@@ -32,11 +32,14 @@ export default class OrganizationalChart extends React.Component<
                         <div className="col-3 mb-3">
                           <div className="sp-org">
                             <div className="d-flex px-3 flex-column align-items-center">
-                              <img
-                                className="sp-org--avatar"
-                                src={el.user.imageUrl}
-                                alt=""
-                              />
+                              {el.user.imageUrl && (
+                                <img
+                                  className="sp-org--avatar"
+                                  src={el.user.imageUrl}
+                                  alt=""
+                                />
+                              )}
+
                               <div className="ms-2 mt-3 text-center">
                                 <h3 className="sp-org--title mb-1">
                                   {el.user.text}
@@ -65,12 +68,24 @@ export default class OrganizationalChart extends React.Component<
                             </div>
 
                             <div className="sp-org--contact">
-                              <a href="#">
+                              <a
+                                href={`https://teams.microsoft.com/l/call/0/0?users=${el.user.secondaryText}`}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
                                 <IconPhone />
                               </a>
-                              <a href={`mailto:${el.user.secondaryText}`}>
-                                <IconOrg />
-                              </a>
+                              <LivePersona
+                                upn={el.user.secondaryText}
+                                template={
+                                  <>
+                                    <span className="ms-2">
+                                      <IconOrg />
+                                    </span>
+                                  </>
+                                }
+                                serviceScope={context.serviceScope}
+                              />
                             </div>
                           </div>
                         </div>

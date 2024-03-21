@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDom from "react-dom";
 import { Version } from "@microsoft/sp-core-library";
-import { type IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
+import { PropertyPaneDropdown, type IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import { IReadonlyTheme } from "@microsoft/sp-component-base";
 import * as strings from "CardDocumentWebPartStrings";
@@ -27,6 +27,7 @@ import {
 import CardDocument from "./components/CardDocument";
 export interface ICardDocumentWebPartProps {
   items: ICardDocument[];
+  columns: string;
 }
 
 export default class CardDocumentWebPart extends BaseClientSideWebPart<ICardDocumentWebPartProps> {
@@ -36,6 +37,7 @@ export default class CardDocumentWebPart extends BaseClientSideWebPart<ICardDocu
       {
         items: this.properties.items || [],
         displayMode: this.displayMode,
+        columns: this.properties.columns,
         onConfigurePropPane: this._onConfigure,
       }
     );
@@ -180,6 +182,23 @@ export default class CardDocumentWebPart extends BaseClientSideWebPart<ICardDocu
                     },
                   ],
                   disabled: false,
+                }),
+              ],
+            },
+            {
+              groupName: "Configuration layout",
+              groupFields: [
+                PropertyPaneDropdown("columns", {
+                  label: "Columns per row",
+                  options: [
+                    { key: "col-6", text: "2" },
+                    { key: "col-4", text: "3" },
+                    { key: "col-3", text: "4" },
+                    {
+                      key: "col-2",
+                      text: "6",
+                    },
+                  ],
                 }),
               ],
             },

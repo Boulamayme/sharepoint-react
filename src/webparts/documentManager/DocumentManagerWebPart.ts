@@ -21,7 +21,7 @@ export default class DocumentManagerWebPart extends BaseClientSideWebPart<IDocum
   public render(): void {
     const element: React.ReactElement<IDocumentsManagerProps> =
       React.createElement(DocumentManager, {
-        folderUrl: "/sites/enoe-energie/Documents partages",
+        folderUrl: "/sites/enoedocs/Documents partages",
         ctx: this.context,
       });
 

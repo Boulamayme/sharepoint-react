@@ -5,7 +5,7 @@
   "initialPage": "https://{tenantDomain}/_layouts/workbench.aspx",
   "serveConfigurations": {
     "default": {
-      "pageUrl": "https://dexterousplace.sharepoint.com/sites/enoe-energie/SitePages/Annuaire.aspx",
+      "pageUrl": "https://enoeenergie.sharepoint.com/sites/enoe-energie/SitePages/Annuaire.aspx",
       "customActions": {
         "5cdc2613-8d81-4078-bdaf-5142e382d719": {
           "location": "ClientSideExtension.ApplicationCustomizer",
@@ -16,7 +16,7 @@
       }
     },
     "customize": {
-      "pageUrl": "https://dexterousplace.sharepoint.com/sites/enoe-energie/SitePages/Annuaire.aspx",
+      "pageUrl": "https://enoeenergie.sharepoint.com/sites/enoe-energie/SitePages/Annuaire.aspx",
       "customActions": {
         "5cdc2613-8d81-4078-bdaf-5142e382d719": {
           "location": "ClientSideExtension.ApplicationCustomizer",

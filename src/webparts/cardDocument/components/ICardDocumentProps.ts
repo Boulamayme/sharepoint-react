@@ -5,4 +5,5 @@ export interface ICardDocumentProps {
   items: ICardDocument[];
   displayMode: DisplayMode;
   onConfigurePropPane: () => void;
+  columns: string;
 }

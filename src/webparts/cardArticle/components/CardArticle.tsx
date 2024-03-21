@@ -36,7 +36,16 @@ export default class CardArticle extends React.Component<
                   </div>
                   <div className="dx-card-article--content">
                     <span className="dx-card-article--author">
-                      {item.author} • {formatDate(item.publishedDate)}
+                      {item.author && item.publishedDate ? (
+                        `${item.author && item.author} • ${
+                          item.publishedDate && formatDate(item.publishedDate)
+                        }`
+                      ) : (
+                        <>
+                          {item.author && item.author}
+                          {item.publishedDate && formatDate(item.publishedDate)}
+                        </>
+                      )}
                     </span>
                     <h3 className="dx-card-article--title">
                       {item.title}

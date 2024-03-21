@@ -32,11 +32,37 @@ export default class CustomizeApplicationCustomizer extends BaseApplicationCusto
         "[data-automation-id='titleRegionBackgroundImage']"
       );
       if (sectionTitle && sectionTitle.parentElement) {
-        sectionTitle.parentElement.classList.add("dx-section-title");
+        sectionTitle.parentElement.parentElement.classList.add("dx-section-bg");
+      } else {
+        const _sectionTitle = document.querySelector(
+          "[data-automation-id='TitleTextId']"
+        );
+        if (_sectionTitle) {
+          const webPartContainer = _sectionTitle.closest(".webPartContainer");
+          if (webPartContainer) {
+            webPartContainer.classList.add("dx-section-title");
+          }
+        }
       }
     }, 1000);
 
     this.context.application.navigatedEvent.add(this, () => {
+      const sectionTitle = document.querySelector(
+        "[data-automation-id='titleRegionBackgroundImage']"
+      );
+      if (sectionTitle && sectionTitle.parentElement) {
+        sectionTitle.parentElement.parentElement.classList.add("dx-section-bg");
+      } else {
+        const _sectionTitle = document.querySelector(
+          "[data-automation-id='TitleTextId']"
+        );
+        if (_sectionTitle) {
+          const webPartContainer = _sectionTitle.closest(".webPartContainer");
+          if (webPartContainer) {
+            webPartContainer.classList.add("dx-section-title");
+          }
+        }
+      }
       const element: React.ReactElement = createElement(Footer);
       let footer = document.getElementById("footer");
       if (!footer) {

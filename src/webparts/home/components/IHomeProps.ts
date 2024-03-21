@@ -4,4 +4,8 @@ export interface IHomeProps {
   articles: any[];
   titleUsefulLink: string;
   usefulLinks: any[];
+  events: any[];
+  carouselItems: any[];
+  incomingBirthday: any[];
+  incomingEmployees: any[];
 }

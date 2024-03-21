@@ -27,7 +27,10 @@ export default class Careers extends React.Component<
   }
 
   componentDidMount(): void {
-    if (this.state.selectedCategory === "") {
+    if (
+      this.props.categories.length > 0 &&
+      this.state.selectedCategory === ""
+    ) {
       this.setState({
         selectedCategory: this.props.categories[0].title,
         careers: this.props.careers.filter(

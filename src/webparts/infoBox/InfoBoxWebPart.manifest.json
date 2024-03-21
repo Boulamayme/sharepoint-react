@@ -23,7 +23,7 @@
     "description": { "default": "Info Box description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "Info Box"
+      "description": "Info Box",
     }
   }]
 }

@@ -6,9 +6,7 @@ import type {
 } from "./IDocumentManagerProps";
 import { SPFI } from "@pnp/sp";
 
-/**************************************************
- *TO DO: Must be deleted and add it in extension
- *************************************************/
+//Import styles
 import "../../components/assets/global.scss";
 
 //theme
@@ -25,7 +23,6 @@ import { Toast } from "primereact/toast";
 import * as strings from "DocumentManagerWebPartStrings";
 import CardDocument from "./CardDocument";
 import Title from "../../components/Title";
-import { formatDate } from "../../components/helpers/helpers";
 import { getSP } from "../../components/pnpjsConfig";
 
 //Icons
@@ -168,6 +165,21 @@ export default class DocumentsManager extends React.Component<
     });
   }
 
+  public formatDateTemplate(rowData: any): JSX.Element {
+    const date = new Date(rowData.ListItemAllFields.Modified);
+    return (
+      <>
+        <span className="dx-file--date">
+          {date.toLocaleDateString("fr-FR", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+          })}
+        </span>
+      </>
+    );
+  }
+
   public authorTemplate(rowData: any): JSX.Element {
     return (
       <>
@@ -235,7 +247,7 @@ export default class DocumentsManager extends React.Component<
                 <Column
                   field="ListItemAllFields.Modified"
                   header={strings.Modified}
-                  body={(rowData) => formatDate(rowData.ListItemAllFields.Modified)}
+                  body={this.formatDateTemplate}
                   sortable
                 />
                 <Column
