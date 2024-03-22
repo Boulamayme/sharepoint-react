@@ -102,6 +102,7 @@ const EventsFC = (props: any) => {
                 {filteredEvents.map((event: any, index: number) => (
                   <div className="dx-schedule__event" key={index}>
                     <span>{formatDate(event.publishedDate)}</span>
+                    <h3>{event.title}</h3>
                     <p className="mt-1 mb-2">{event.description}</p>
                     <div
                       className="dx-schedule__event-agenda dx-cursor"
