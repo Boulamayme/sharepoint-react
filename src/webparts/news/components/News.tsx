@@ -127,18 +127,18 @@ export default class News extends React.Component<
 
       const articlesWithViews = await Promise.all(
         items.map(async (item) => {
-          const viewsLifeTime = await this.fetchViewsLifeTimeForArticle(
+          const elt = await this.fetchViewsLifeTimeForArticle(
             item.ID
           );
           return {
             ...item,
-            viewsLifeTime,
+            ...elt,
             imageUrl: `${window.location.origin}/_layouts/15/getpreview.ashx?path=${item.FileRef}&resolution=6`,
             publishedDate: item.Created,
             description: item.Title,
             likes: item._LikeCount ? item._LikeCount : 0,
             comments: item._CommentCount ? item._CommentCount : 0,
-            view: viewsLifeTime ? viewsLifeTime : 0,
+            view: elt ? elt.ViewsLifeTime : 0,
             url: item.FileRef,
             author: {
               imageUrl: item.Author[0].picture,
@@ -174,8 +174,7 @@ export default class News extends React.Component<
       });
       // Process results
       if (results.RowCount > 0) {
-        const viewsLifeTime = results.PrimarySearchResults[0].ViewsLifeTime;
-        return viewsLifeTime;
+        return results.PrimarySearchResults[0];
       }
       return 0;
     } catch (error) {

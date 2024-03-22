@@ -11,6 +11,7 @@ import "@pnp/sp/folders";
 import "@pnp/sp/batching";
 import "@pnp/sp/profiles";
 import "@pnp/sp/presets/all";
+import "@pnp/sp/favorites";
 
 // eslint-disable-next-line no-var
 var _sp: SPFI = null;
