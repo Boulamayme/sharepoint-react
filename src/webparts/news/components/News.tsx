@@ -22,6 +22,7 @@ export default class News extends React.Component<
     articles: any[];
     request: any;
     query: string;
+    favItems: any[];
   }
 > {
   private _sp: SPFI;
@@ -34,12 +35,14 @@ export default class News extends React.Component<
       request: null,
       nextHref: null,
       query: "",
+      favItems: [],
     };
     this._sp = getSP();
     this.searchTimeout = null;
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    await this.getFollowedListITems();
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     this.fetchArticles();
   }
@@ -127,9 +130,7 @@ export default class News extends React.Component<
 
       const articlesWithViews = await Promise.all(
         items.map(async (item) => {
-          const elt = await this.fetchViewsLifeTimeForArticle(
-            item.ID
-          );
+          const elt = await this.fetchViewsLifeTimeForArticle(item.ID);
           return {
             ...item,
             ...elt,
@@ -174,7 +175,12 @@ export default class News extends React.Component<
       });
       // Process results
       if (results.RowCount > 0) {
-        return results.PrimarySearchResults[0];
+        let _item = results.PrimarySearchResults[0] as any;
+        let isExist = this.state.favItems.find(
+          (a) => a.sharepointIds.listItemUniqueId === _item.IdentityListItemId
+        );
+        _item.bookmarked = isExist ? true : false;
+        return _item
       }
       return 0;
     } catch (error) {
@@ -182,6 +188,13 @@ export default class News extends React.Component<
       return null;
     }
   }
+
+  getFollowedListITems = async () => {
+    const favItems = await this._sp.favorites.followedListItems();
+    this.setState({
+      favItems: favItems,
+    });
+  };
 
   handleSearchChange = (event: any) => {
     const _query = event.target.value;
@@ -219,10 +232,11 @@ export default class News extends React.Component<
                 className="dx-btn dx-btn__icon"
                 type="button"
                 onClick={() => {
-                  window.open(
-                    "/sites/enoe-energie/_layouts/15/SeeAll.aspx?Page=%2Fsites%2Fenoe-energie%2FSitePages%2FMes-Favor.aspx&InstanceId=1b83fbb6-e045-4229-b379-d1b11bd934a1",
-                    "_blank"
-                  );
+                  (
+                    document.querySelector(
+                      "[data-automation-id='sp-socialbar-bookmarkmessage'] .ms-Button-label"
+                    ) as HTMLButtonElement
+                  ).click();
                 }}
               >
                 <img src={bookmarkIcon} />

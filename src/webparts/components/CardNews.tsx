@@ -26,17 +26,31 @@ const CardNews = (props: any) => {
     const webId = article.WebId;
     const listId = article.ListId;
     const listItemUniqueId = article.IdentityListItemId;
-    const favListItemInfo = await _sp.favorites.followedListItems.add(
-      siteId,
-      webId,
-      listId,
-      listItemUniqueId
-    );
-    if(favListItemInfo){
-      // eslint-disable-next-line require-atomic-updates
-      setBookmarked(true)
+    if (bookmarked) {
+      await _sp.favorites.followedListItems.remove(
+        siteId,
+        webId,
+        listId,
+        listItemUniqueId
+      );
+      setBookmarked(false);
+    } else {
+      const favListItemInfo = await _sp.favorites.followedListItems.add(
+        siteId,
+        webId,
+        listId,
+        listItemUniqueId
+      );
+      if (favListItemInfo) {
+        // eslint-disable-next-line require-atomic-updates
+        setBookmarked(true);
+      }
     }
   };
+
+  React.useEffect(() => {
+    setBookmarked(article.bookmarked ? true : false);
+  }, []);
 
   return (
     <>

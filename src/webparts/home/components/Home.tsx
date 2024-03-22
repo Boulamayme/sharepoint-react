@@ -31,6 +31,7 @@ export default class Home extends React.Component<
     filterNews: string;
     birthdays: any[];
     articles: any[];
+    favItems: any[];
   }
 > {
   public _sp: SPFI;
@@ -40,6 +41,7 @@ export default class Home extends React.Component<
       filterNews: "recent",
       birthdays: [],
       articles: [],
+      favItems: [],
     };
     this._sp = getSP();
   }
@@ -131,6 +133,13 @@ export default class Home extends React.Component<
     }
   };
 
+  getFollowedListITems = async () => {
+    const favItems = await this._sp.favorites.followedListItems();
+    this.setState({
+      favItems: favItems,
+    });
+  };
+
   //Retrieve Last 3 news
   public fetchArticles = async () => {
     try {
@@ -176,9 +185,7 @@ export default class Home extends React.Component<
 
       const articlesWithViews = await Promise.all(
         items.map(async (item) => {
-          const elt = await this.fetchViewsLifeTimeForArticle(
-            item.ID
-          );
+          const elt = await this.fetchViewsLifeTimeForArticle(item.ID);
           return {
             ...item,
             ...elt,
@@ -219,7 +226,12 @@ export default class Home extends React.Component<
       });
       // Process results
       if (results.RowCount > 0) {
-        return results.PrimarySearchResults[0];
+        let _item = results.PrimarySearchResults[0] as any;
+        let isExist = this.state.favItems.find(
+          (a) => a.sharepointIds.listItemUniqueId === _item.IdentityListItemId
+        );
+        _item.bookmarked = isExist ? true : false;
+        return _item;
       }
       return 0;
     } catch (error) {
@@ -229,6 +241,8 @@ export default class Home extends React.Component<
   }
 
   async componentDidMount(): Promise<void> {
+    await this.getFollowedListITems();
+
     this.setState({
       birthdays: await this.retrieveAnniversariesUsers(),
     });
