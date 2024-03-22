@@ -4,4 +4,5 @@ export interface IWeatherProps {
   environmentMessage: string;
   hasTeamsContext: boolean;
   userDisplayName: string;
+  countries: string[];
 }

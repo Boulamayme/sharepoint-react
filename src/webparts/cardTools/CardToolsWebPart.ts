@@ -131,8 +131,8 @@ export default class CardToolsWebPart extends BaseClientSideWebPart<ICardToolsWe
                 PropertyFieldCollectionData("items", {
                   key: "items",
                   label: "",
-                  panelHeader: "Manage items news",
-                  manageBtnLabel: "Manage news",
+                  panelHeader: "Manage items",
+                  manageBtnLabel: "Manage items",
                   value: this.properties.items,
                   fields: [
                     {

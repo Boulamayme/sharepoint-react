@@ -13,25 +13,29 @@ export default class CardTools extends React.Component<ICardToolsProps, {}> {
 
     return (
       <>
-        {items.length > 0 &&
-          items.map((item, index) => (
-            <div key={index} className={`${columns}`}>
-              <div className="dx-card-tools">
-                <div className="dx-card-tools--header">
-                  <img src={item.imageUrl} alt="" />
-                </div>
-                <div className="dx-card-tools--content">
-                  <div>
-                    <h3 className="dx-card-tools--title mb-4">{item.title}</h3>
-                    <p className="dx-card-tools--desc mb-5">
-                      {item.description}
-                    </p>
+        <div className="row">
+          {items.length > 0 &&
+            items.map((item, index) => (
+              <div key={index} className={`${columns}`}>
+                <div className="dx-card-tools">
+                  <div className="dx-card-tools--header">
+                    <img src={item.imageUrl} alt="" />
                   </div>
-                  <a href={item.url}>{strings.SeeMore}</a>
+                  <div className="dx-card-tools--content">
+                    <div>
+                      <h3 className="dx-card-tools--title mb-4">
+                        {item.title}
+                      </h3>
+                      <p className="dx-card-tools--desc mb-5">
+                        {item.description}
+                      </p>
+                    </div>
+                    <a href={item.url}>{strings.SeeMore}</a>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+        </div>
         {items.length === 0 && (
           <Placeholder
             iconName="Edit"
