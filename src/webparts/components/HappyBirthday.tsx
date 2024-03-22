@@ -78,7 +78,7 @@ const HappyBirthDaySection = (props: any) => {
                           color: "#E8B352",
                         }}
                       >
-                        {formatDate(item.birthday)}
+                        {item.birthday}
                       </span>
                     </div>
                   </div>

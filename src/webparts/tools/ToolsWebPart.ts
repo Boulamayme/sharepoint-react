@@ -38,7 +38,7 @@ export default class ToolsWebPart extends BaseClientSideWebPart<IToolsWebPartPro
       Tools,
       {
         tools:
-          this.properties.items.length > 0
+          this.properties.items && this.properties.items.length > 0
             ? this.properties.items.find(
                 (a) => a.GUID === this.properties.selectedItem
               )

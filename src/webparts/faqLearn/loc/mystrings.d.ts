@@ -1,4 +1,4 @@
-declare interface IDirectoryWebPartStrings {
+declare interface IFaqLearnWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
   DescriptionFieldLabel: string;
@@ -11,13 +11,9 @@ declare interface IDirectoryWebPartStrings {
   AppOfficeEnvironment: string;
   AppOutlookEnvironment: string;
   UnknownEnvironment: string;
-  LoadMore: string;
-  FilterByDirection: string;
-  SearchCollab: string;
-  OrganizationalChart: string;
 }
 
-declare module "DirectoryWebPartStrings" {
-  const strings: IDirectoryWebPartStrings;
+declare module 'FaqLearnWebPartStrings' {
+  const strings: IFaqLearnWebPartStrings;
   export = strings;
 }

@@ -201,6 +201,14 @@
           "manifest": "./src/webparts/button/ButtonWebPart.manifest.json"
         }
       ]
+    },
+    "faq-learn-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/faqLearn/FaqLearnWebPart.js",
+          "manifest": "./src/webparts/faqLearn/FaqLearnWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -231,6 +239,7 @@
     "EventsCalendarWebPartStrings": "lib/webparts/eventsCalendar/loc/{locale}.js",
     "DirectoryWebPartStrings": "lib/webparts/directory/loc/{locale}.js",
     "NewsWebPartStrings": "lib/webparts/news/loc/{locale}.js",
-    "ButtonWebPartStrings": "lib/webparts/button/loc/{locale}.js"
+    "ButtonWebPartStrings": "lib/webparts/button/loc/{locale}.js",
+    "FaqLearnWebPartStrings": "lib/webparts/faqLearn/loc/{locale}.js"
   }
 }

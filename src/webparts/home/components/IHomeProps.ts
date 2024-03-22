@@ -8,4 +8,5 @@ export interface IHomeProps {
   carouselItems: any[];
   incomingBirthday: any[];
   incomingEmployees: any[];
+  context: any;
 }

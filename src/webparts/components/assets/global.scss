@@ -99,7 +99,7 @@ $black-color: #000;
 *************************************************************/
 .dx-faq-banner {
   position: relative;
-  background: #01965E;
+  background: #01965e;
   height: 280px;
   display: flex;
   justify-content: space-between;
@@ -136,7 +136,7 @@ $black-color: #000;
       flex-grow: 1;
       font-family: "Open Sans", sans-serif;
       color: #000;
-      &:enabled{
+      &:enabled {
         outline: none;
       }
     }
@@ -166,7 +166,7 @@ $black-color: #000;
         font-family: "Open Sans", sans-serif;
       }
     }
-    .p-menuitem-link{
+    .p-menuitem-link {
       text-decoration: none;
     }
     .p-menubar-root-list {
@@ -175,6 +175,30 @@ $black-color: #000;
     }
     .p-menuitem-icon {
       color: #73aa41;
+    }
+  }
+}
+
+/************************************************************
+* Form
+*************************************************************/
+.dx-searchbox {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #01965e;
+  padding-bottom: 9px;
+  input {
+    border: 0;
+    flex-grow: 1;
+    color: #0e0911;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    padding-left: 15px;
+    &:enabled {
+      outline: none;
+    }
+    &::placeholder {
+      color: #0e0911;
     }
   }
 }
@@ -308,7 +332,9 @@ $black-color: #000;
   }
   .dx-article--index {
     color: #3e2a2f;
-    font: 400 11px Poppins;
+    font-family: "Open Sans", sans-serif;
+    font-size: 11px;
+    font-weight: 400;
   }
 }
 
@@ -676,7 +702,24 @@ $black-color: #000;
     }
   }
 }
+.dx-title-section {
+  color: #00965e;
+  font-weight: 600;
+  font-size: 48px;
+  margin: 20px 0;
+}
 
+/************************************************************
+* Badge
+*************************************************************/
+.dx-badge {
+  font-family: "Open Sans", sans-serif;
+  background: #d4e1ff;
+  color: #0b7077;
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
 /*******************************************************************
 * Accordion
 ********************************************************************/
@@ -701,7 +744,7 @@ $black-color: #000;
         }
       }
     }
-    &-content{
+    &-content {
       border: 0;
     }
     &-header {

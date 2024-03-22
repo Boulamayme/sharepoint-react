@@ -24,9 +24,6 @@ export default class CustomizeApplicationCustomizer extends BaseApplicationCusto
   public onInit(): Promise<void> {
     Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
 
-    // Add custom CSS and JS
-    this.inJectCssFile();
-
     setTimeout(() => {
       const sectionTitle = document.querySelector(
         "[data-automation-id='titleRegionBackgroundImage']"
@@ -47,6 +44,8 @@ export default class CustomizeApplicationCustomizer extends BaseApplicationCusto
     }, 1000);
 
     this.context.application.navigatedEvent.add(this, () => {
+      // Add custom CSS and JS
+      this.inJectCssFile();
       const sectionTitle = document.querySelector(
         "[data-automation-id='titleRegionBackgroundImage']"
       );
@@ -65,12 +64,12 @@ export default class CustomizeApplicationCustomizer extends BaseApplicationCusto
       }
       const element: React.ReactElement = createElement(Footer);
       let footer = document.getElementById("footer");
-      if (!footer) {
+      if (!footer) { 
         footer = document.createElement("div");
         footer.id = "footer";
         //Append the footer in spPageCanvasContent
-        const spPageCanvasContent = document.getElementById(
-          "spPageCanvasContent"
+        const spPageCanvasContent = document.querySelector(
+          "[data-automation-id='contentScrollRegion'] > [role='main']"
         );
         if (spPageCanvasContent) {
           spPageCanvasContent.appendChild(footer);

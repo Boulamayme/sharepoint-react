@@ -21,20 +21,44 @@ const Footer = (): JSX.Element => {
             </div>
             <div className="dx-footer--list">
               <div className="dx-footer--title">Menu principal</div>
-              <span className="dx-footer--item dx-cursor">Accueil</span>
-              <span className="dx-footer--item dx-cursor">Actualités</span>
-              <span className="dx-footer--item dx-cursor">Organisation</span>
               <span className="dx-footer--item dx-cursor">
-                Espace documentaire
+                <a href="https://enoeenergie.sharepoint.com/sites/enoe-energie">
+                  Accueil
+                </a>
               </span>
-              <span className="dx-footer--item dx-cursor">Enoé</span>
               <span className="dx-footer--item dx-cursor">
-                Vie d'entreprise
+                <a href="https://enoeenergie.sharepoint.com/sites/enoe-energie/SitePages/Actualit%C3%A9s.aspx">
+                  Actualités
+                </a>
+              </span>
+              <span className="dx-footer--item dx-cursor">
+                <a href="https://enoeenergie.sharepoint.com/sites/enoe-energie/SitePages/Annuaire.aspx">
+                  Organisation
+                </a>
+              </span>
+              <span className="dx-footer--item dx-cursor">
+                <a href="https://enoeenergie.sharepoint.com/sites/enoedocs">
+                  Espace documentaire
+                </a>
+              </span>
+              <span className="dx-footer--item dx-cursor">
+                <a href="https://enoeenergie.sharepoint.com/sites/enoe-energie/SitePages/Eno%C3%A9.aspx">
+                  Enoé
+                </a>
+              </span>
+              <span className="dx-footer--item dx-cursor">
+                <a href="https://enoeenergie.sharepoint.com/sites/enoe-energie/SitePages/Vie-d%27entreprise.aspx">
+                  Vie d'entreprise
+                </a>
               </span>
             </div>
             <div className="dx-footer--list">
               <div className="dx-footer--title">Aide</div>
-              <span className="dx-footer--item dx-cursor">FAQ</span>
+              <span className="dx-footer--item dx-cursor">
+                <a href="https://enoeenergie.sharepoint.com/sites/enoe-energie/SitePages/FAQ.aspx">
+                  FAQ
+                </a>
+              </span>
             </div>
             <div>
               <div className="dx-footer--title">SUIVEZ-NOUS</div>
@@ -42,9 +66,7 @@ const Footer = (): JSX.Element => {
                 <a href="https://www.linkedin.com/company/eno%C3%A9-%C3%A9nergie/">
                   <img loading="lazy" src={iconLinkedin} />
                 </a>
-                <a
-                  href="https://www.facebook.com/profile.php?id=100089075965133"
-                >
+                <a href="https://www.facebook.com/profile.php?id=100089075965133">
                   <img loading="lazy" src={iconFacebook} />
                 </a>
                 <a href="https://twitter.com/enoeenergie">

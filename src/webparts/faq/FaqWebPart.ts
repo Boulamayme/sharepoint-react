@@ -33,6 +33,7 @@ export interface IFaqWebPartProps {
 
 export default class FaqWebPart extends BaseClientSideWebPart<IFaqWebPartProps> {
   public render(): void {
+    console.log(this.properties.items);
     const element: React.ReactElement<IFaqProps> = React.createElement(Faq, {
       items: this.properties.items || [],
       onConfigurePropPane: this.configurePropPane,
@@ -134,7 +135,7 @@ export default class FaqWebPart extends BaseClientSideWebPart<IFaqWebPartProps> 
                 PropertyFieldCollectionData("categories", {
                   key: "categories",
                   label: "",
-                  panelHeader: "Manage categories careers",
+                  panelHeader: "Manage categories FAQ",
                   manageBtnLabel: "Manage categories",
                   value: this.properties.categories,
                   fields: [

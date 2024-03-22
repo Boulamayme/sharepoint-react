@@ -14,9 +14,10 @@ declare interface INewsWebPartStrings {
   Recent: string;
   Popular: string;
   SeeMore: string;
+  LoadMore: string;
 }
 
-declare module 'NewsWebPartStrings' {
+declare module "NewsWebPartStrings" {
   const strings: INewsWebPartStrings;
   export = strings;
 }

@@ -13,5 +13,8 @@ define([], function() {
       "AppOutlookEnvironment": "The app is running in Outlook",
       "UnknownEnvironment": "The app is running in an unknown environment",
       "LoadMore": "Voir plus",
+      "FilterByDirection": "Filtrer par direction",
+      "SearchCollab": "Rechercher un collaborateur",
+      "OrganizationalChart": "Organigramme",
     }
   });

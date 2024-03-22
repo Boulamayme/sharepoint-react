@@ -23,6 +23,7 @@ import {
   PrincipalType,
 } from "@pnp/spfx-controls-react/lib/PeoplePicker";
 import { IArticle } from "../card/components/ICardProps";
+import { getSP } from "../components/pnpjsConfig";
 
 export interface INewsWebPartProps {
   articles: IArticle[];
@@ -43,49 +44,12 @@ export default class NewsWebPart extends BaseClientSideWebPart<INewsWebPartProps
     this.context.propertyPane.open();
   };
 
-  protected onInit(): Promise<void> {
-    return this._getEnvironmentMessage().then((message) => {
-      // this._environmentMessage = message;
-    });
-  }
+  protected async onInit(): Promise<void> {
+    // this._environmentMessage = this._getEnvironmentMessage();
 
-  private _getEnvironmentMessage(): Promise<string> {
-    if (!!this.context.sdks.microsoftTeams) {
-      // running in Teams, office.com or Outlook
-      return this.context.sdks.microsoftTeams.teamsJs.app
-        .getContext()
-        .then((context) => {
-          let environmentMessage: string = "";
-          switch (context.app.host.name) {
-            case "Office": // running in Office
-              environmentMessage = this.context.isServedFromLocalhost
-                ? strings.AppLocalEnvironmentOffice
-                : strings.AppOfficeEnvironment;
-              break;
-            case "Outlook": // running in Outlook
-              environmentMessage = this.context.isServedFromLocalhost
-                ? strings.AppLocalEnvironmentOutlook
-                : strings.AppOutlookEnvironment;
-              break;
-            case "Teams": // running in Teams
-            case "TeamsModern":
-              environmentMessage = this.context.isServedFromLocalhost
-                ? strings.AppLocalEnvironmentTeams
-                : strings.AppTeamsTabEnvironment;
-              break;
-            default:
-              environmentMessage = strings.UnknownEnvironment;
-          }
+    await super.onInit();
 
-          return environmentMessage;
-        });
-    }
-
-    return Promise.resolve(
-      this.context.isServedFromLocalhost
-        ? strings.AppLocalEnvironmentSharePoint
-        : strings.AppSharePointEnvironment
-    );
+    getSP(this.context);
   }
 
   protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {

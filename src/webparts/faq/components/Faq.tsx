@@ -37,6 +37,8 @@ export default class Faq extends React.Component<
   }
 
   componentDidMount() {
+    debugger;
+
     this.setState({
       filteredItems: this.props.items,
     });
@@ -59,7 +61,7 @@ export default class Faq extends React.Component<
           this.setState({
             selectedCategory: category,
             filteredItems: this.props.items.filter(
-              (item) => item.categoryId === category.id
+              (item) => item.category === category.title
             ),
           });
         },
@@ -81,7 +83,6 @@ export default class Faq extends React.Component<
   };
 
   public render(): React.ReactElement<IFaqProps> {
-    const { items } = this.props;
 
     return (
       <>
@@ -116,7 +117,7 @@ export default class Faq extends React.Component<
           </div>
         </div>
 
-        {items.length > 0 && (
+        {this.props.items.length > 0 && (
           <div
             style={{
               background: "#F7F7FB",
@@ -132,7 +133,7 @@ export default class Faq extends React.Component<
             </div>
           </div>
         )}
-        {items.length === 0 && (
+        {this.props.items.length === 0 && (
           <Placeholder
             iconName="Edit"
             iconText="Configure your web part"

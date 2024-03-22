@@ -10,33 +10,40 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 
+//Style
 import "../components/assets/global.scss";
 
-import * as strings from "DirectoryWebPartStrings";
-import Directory from "./components/Directory";
-import { IDirectoryProps } from "./components/IDirectoryProps";
+import * as strings from "FaqLearnWebPartStrings";
+import FaqLearn from "./components/FaqLearn";
+import { IFaqLearnProps } from "./components/IFaqLearnProps";
 import {
   CustomCollectionFieldType,
   PropertyFieldCollectionData,
 } from "@pnp/spfx-property-controls/lib/PropertyFieldCollectionData";
+import { RichText } from "@pnp/spfx-controls-react/lib/RichText";
 
-export interface IDirectoryWebPartProps {
-  departments: any[];
+export interface IFaqLearnWebPartProps {
+  items: any[];
+  categories: any[];
 }
 
-export default class DirectoryWebPart extends BaseClientSideWebPart<IDirectoryWebPartProps> {
+export default class FaqLearnWebPart extends BaseClientSideWebPart<IFaqLearnWebPartProps> {
   public render(): void {
-    const element: React.ReactElement<IDirectoryProps> = React.createElement(
-      Directory,
+    const element: React.ReactElement<IFaqLearnProps> = React.createElement(
+      FaqLearn,
       {
-        context: this.context,
-        departments: this.properties.departments,
+        items: this.properties.items || [],
+        onConfigurePropPane: this.configurePropPane,
+        displayMode: this.displayMode,
       }
     );
 
     ReactDom.render(element, this.domElement);
   }
 
+  public configurePropPane = (): void => {
+    this.context.propertyPane.open();
+  };
   protected onInit(): Promise<void> {
     return this._getEnvironmentMessage().then((message) => {
       // this._environmentMessage = message;
@@ -116,22 +123,43 @@ export default class DirectoryWebPart extends BaseClientSideWebPart<IDirectoryWe
       pages: [
         {
           header: {
-            description: "Directory web part settings",
+            description: "FAQ Learning",
           },
           groups: [
             {
               groupFields: [
-                PropertyFieldCollectionData("departments", {
-                  key: "Departments",
-                  label: "",
-                  panelHeader: "Manage categories careers",
-                  manageBtnLabel: "Manage categories",
-                  value: this.properties.departments,
+                PropertyFieldCollectionData("items", {
+                  key: "items",
+                  label: "Manage items",
+                  panelHeader: "Manage items",
+                  manageBtnLabel: "Manage items",
+                  value: this.properties.items,
                   fields: [
                     {
                       id: "title",
                       title: "Title",
                       type: CustomCollectionFieldType.string,
+                    },
+                    {
+                      id: "content",
+                      title: "content",
+                      type: CustomCollectionFieldType.custom,
+                      onCustomRender: (
+                        field,
+                        value,
+                        onUpdate,
+                        item,
+                        itemId
+                      ) => {
+                        return React.createElement(RichText, {
+                          key: itemId,
+                          value: value,
+                          onChange: (text: string) => {
+                            onUpdate(field.id, text);
+                            return text;
+                          },
+                        });
+                      },
                     },
                   ],
                   disabled: false,

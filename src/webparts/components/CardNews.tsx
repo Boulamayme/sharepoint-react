@@ -16,6 +16,10 @@ const CardNews = (props: any) => {
     window.open(url, "_blank");
   };
 
+  const handleEventBookmarked = () => {
+    console.log("Item", article);
+  };
+
   return (
     <div className={`${column} mb-4`}>
       <div className="dx-article" onClick={() => navigationTo(article.url)}>
@@ -36,6 +40,9 @@ const CardNews = (props: any) => {
               loading="lazy"
               src={IconBookmark}
               className="dx-article--bookmark"
+              onClick={() => {
+                handleEventBookmarked();
+              }}
             />
           </div>
           <div className="dx-article--desc">{article.description}</div>
@@ -51,15 +58,21 @@ const CardNews = (props: any) => {
           <div className="dx-article-footer d-flex justify-content-between align-items-center w-100">
             <div className="dx-article-footer--item">
               <img loading="lazy" src={IconLike} />
-              <div className="dx-article--index">{article.likes ? article.likes  : 0 }</div> 
+              <div className="dx-article--index">
+                {article.likes ? article.likes : 0}
+              </div>
             </div>
             <div className="dx-article-footer--item">
               <img loading="lazy" src={IconComment} />
-              <div className="dx-article--index">{article.comments ? article.comments : 0 }</div>
+              <div className="dx-article--index">
+                {article.comments ? article.comments : 0}
+              </div>
             </div>
             <div className="dx-article-footer--item">
               <img loading="lazy" src={IconView} />
-              <div className="dx-article--index">{article.view ? article.view : 0 } vues</div>
+              <div className="dx-article--index">
+                {article.view ? article.view : 0} vues
+              </div>
             </div>
           </div>
         </div>

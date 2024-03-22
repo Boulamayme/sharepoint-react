@@ -4,54 +4,160 @@ import * as React from "react";
 import type { IDirectoryProps } from "./IDirectoryProps";
 import { HttpClientResponse } from "@microsoft/sp-http";
 import * as strings from "DirectoryWebPartStrings";
-
+import { LivePersona } from "@pnp/spfx-controls-react";
+import { Dropdown } from "primereact/dropdown";
 
 const iconUser: any = require("../assets/user_1.png");
 const iconPhone: any = require("../assets/phone_1.png");
 const iconOrg: any = require("../assets/org_1.png");
 
+const iconSearch = require("../../components/assets/images/search.svg");
+const iconOrga = require("../../components/assets/images/org.png");
+
 export default class Directory extends React.Component<
   IDirectoryProps,
-  { items: any[]; nextLink: string }
+  { items: any[]; nextLink: string; department: any; query: string }
 > {
+  searchTimeout: any;
+
   constructor(props: IDirectoryProps) {
     super(props);
     this.state = {
       items: [],
       nextLink: null,
+      query: "",
+      department: null,
     };
+    this.searchTimeout = null;
   }
 
   public componentDidMount() {
     this.fetchUsersFromAzureAD();
   }
 
-  private fetchUsersFromAzureAD(nextLink: string = null): void {
-    let requestUrl = "/users?$filter=userType eq 'Member'&$top=16";
-    if (nextLink) {
-      requestUrl = nextLink;
+  private fetchUsersFromAzureAD(
+    name = "",
+    department = "",
+    _nextLink: any = null
+  ): void {
+    let filterQueries = ["userType eq 'Member'"];
+
+    if (name) {
+      // Assuming 'name' can be part of either displayName, surname, or givenName
+      // Adjust the logic here if you want a more sophisticated matching algorithm
+      const nameFilter = `startsWith(displayName,'${name}') or startsWith(surname,'${name}') or startsWith(givenName,'${name}')`;
+      filterQueries.push(nameFilter);
     }
 
-    this.props.context.msGraphClientFactory.getClient("3").then((client) => {
-      client
-        .api(requestUrl)
-        .version("v1.0")
-        .get((error, response: any, rawResponse?: HttpClientResponse) => {
-          if (!error) {
-            this.setState((prevState) => ({
-              items: [...prevState.items, ...response.value],
-              nextLink: response["@odata.nextLink"],
-            }));
-          }
-        });
-    });
+    if (department) {
+      filterQueries.push(`department eq '${department}'`);
+    }
+
+    let filterQuery = `$filter=${filterQueries.join(" and ")}`;
+
+    let requestUrl = `/users?${filterQuery}&$top=16&$select=id,displayName,mail,jobTitle,department,surname,givenName`;
+
+    if (_nextLink) {
+      requestUrl = _nextLink;
+    }
+
+    this.props.context.msGraphClientFactory
+      .getClient("3")
+      .then((client: any) => {
+        client
+          .api(requestUrl)
+          .version("v1.0")
+          .get(
+            (error: any, response: any, rawResponse?: HttpClientResponse) => {
+              if (!error) {
+                this.setState((prevState) => ({
+                  items: _nextLink
+                    ? [...prevState.items, ...response.value]
+                    : response.value,
+                  nextLink: response["@odata.nextLink"],
+                }));
+              }
+            }
+          );
+      });
   }
+  handleSearchChange = (event: any) => {
+    const _query = event.target.value;
+    this.setState({ query: _query });
+
+    if (this.searchTimeout) {
+      clearTimeout(this.searchTimeout);
+    }
+    this.searchTimeout = setTimeout(() => {
+      this.fetchUsersFromAzureAD(_query, this.state.department);
+    }, 1000);
+  };
+
+  handleDepartmentChange = (e: any) => {
+    const department = e.value.title;
+    this.setState({ department: department });
+    this.fetchUsersFromAzureAD(this.state.query, department);
+  };
 
   public render(): React.ReactElement<IDirectoryProps> {
     const { items, nextLink } = this.state;
 
     return (
       <>
+        <div
+          className="d-flex justify-content-between mt-5"
+          style={{
+            marginBottom: "6rem",
+          }}
+        >
+          <div className="col-3">
+            <div className="dx-searchbox">
+              <img src={iconSearch} />
+              <input
+                type="text"
+                placeholder={strings.SearchCollab}
+                onChange={(e) => {
+                  this.handleSearchChange(e);
+                }}
+              />
+            </div>
+          </div>
+          <div className="col-auto">
+            <div
+              className="d-flex"
+              style={{
+                gap: "20px",
+              }}
+            >
+              <Dropdown
+                value={this.state.department}
+                onChange={(e) => {
+                  this.handleDepartmentChange(e);
+                }}
+                options={this.props.departments}
+                optionLabel="title"
+                placeholder={strings.FilterByDirection}
+                className="w-full md:w-14rem"
+              />
+              <button
+                type="button"
+                style={{
+                  border: 0,
+                  background: "#003DA5",
+                  color: "#fff",
+                  display: "flex",
+                  alignItems: "center",
+                  whiteSpace: "nowrap",
+                  borderRadius: "5px",
+                  padding: "0 25px",
+                }}
+              >
+                <img className="me-3" src={iconOrga} alt="" />
+                {strings.OrganizationalChart}
+              </button>
+            </div>
+          </div>
+        </div>
         <div className="row mt-3">
           {items.map((el: any) => {
             return (
@@ -71,7 +177,7 @@ export default class Directory extends React.Component<
                     </div>
 
                     <div className="sp-org--contact">
-                      <a href="#">
+                      <a href={`mailto:${el.mail}`}>
                         <img src={iconUser} />
                       </a>
                       <a
@@ -81,9 +187,18 @@ export default class Directory extends React.Component<
                       >
                         <img src={iconPhone} />
                       </a>
-
-                      <a href={`mailto:${el.mail}`}>
-                        <img src={iconOrg} />
+                      <a href="#">
+                        <LivePersona
+                          upn={el.mail}
+                          template={
+                            <>
+                              <span className="ms-2">
+                                <img src={iconOrg} />
+                              </span>
+                            </>
+                          }
+                          serviceScope={this.props.context.serviceScope}
+                        />
                       </a>
                     </div>
                   </div>
@@ -97,8 +212,21 @@ export default class Directory extends React.Component<
           <div className="row justify-content-center mt-5">
             <div className="col-auto">
               <button
-                onClick={() => this.fetchUsersFromAzureAD(nextLink)}
-                className="dx-button"
+                onClick={() => {
+                  if (this.state.nextLink) {
+                    this.fetchUsersFromAzureAD(
+                      this.state.query,
+                      this.state.department,
+                      this.state.nextLink
+                    );
+                  } else {
+                    this.fetchUsersFromAzureAD(
+                      this.state.query,
+                      this.state.department
+                    );
+                  }
+                }}
+                className="dx-btn dx-btn__default"
               >
                 {strings.LoadMore}
               </button>
