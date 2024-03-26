@@ -93,6 +93,19 @@ $black-color: #000;
     color: #909090;
   }
 }
+/************************************************************
+* Weather
+*************************************************************/
+.dx-weather {
+  &--item {
+    flex-grow: 1;
+    padding: 0 25px;
+  }
+  &--temp{
+    display: flex;
+    align-items: center;
+  }
+}
 
 /************************************************************
 * FAQ
@@ -599,9 +612,9 @@ $black-color: #000;
       color: #3e2a2f;
       font-family: "Open Sans", sans-serif;
     }
-    h3{
+    h3 {
       font-family: "Open Sans", sans-serif;
-      color: #0E0911;
+      color: #0e0911;
       font-size: 16px;
       font-weight: 400;
       margin-top: 15px;
@@ -1375,7 +1388,6 @@ $black-color: #000;
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  height: 560px;
   .dx-title {
     margin: 1rem 0 0 0;
   }

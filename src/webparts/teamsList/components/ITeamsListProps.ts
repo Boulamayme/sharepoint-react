@@ -1,7 +1,8 @@
+import { WebPartContext } from "@microsoft/sp-webpart-base";
+
 export interface ITeamsListProps {
-  description: string;
-  isDarkTheme: boolean;
-  environmentMessage: string;
-  hasTeamsContext: boolean;
-  userDisplayName: string;
+  users: any[];
+  onConfigurePropPane: () => void;
+  displayMode: any;
+  context: WebPartContext;
 }

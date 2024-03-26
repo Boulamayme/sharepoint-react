@@ -105,9 +105,10 @@ export default class Home extends React.Component<
               .version("v1.0")
               .get();
             const user = userResponse.value[0] ? userResponse.value[0] : null;
+            let [month, day] = item.field_2.split("/");
             return {
               ...item,
-              birthday: item.field_2,
+              birthday: `${day}/${month}`,
               jobTitle: user?.jobTitle ?? "",
               user: {
                 text: `${item.field_5} ${item.field_1}`,
@@ -147,11 +148,17 @@ export default class Home extends React.Component<
 
       let whereClause = `
       <Where>
+      <And>
           <Eq>
               <FieldRef Name='Cat_x00e9_gorie'/>
               <Value Type='Text'>Actualités</Value>
           </Eq>
-      </Where>`;
+          <Eq>
+              <FieldRef Name='Home'/>
+              <Value Type='Boolean'>1</Value>
+          </Eq>
+      </And>
+  </Where>`;
 
       let orderByClause =
         "<OrderBy><FieldRef Name='Created' Ascending='TRUE' /></OrderBy>";

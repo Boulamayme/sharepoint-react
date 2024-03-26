@@ -58,6 +58,8 @@ export default class Weather extends React.Component<
         Rain: { icon: iconWeatherRain, description: "Pluie" },
         Clear: { icon: iconWeatherClear, description: "Clair" },
         Clouds: { icon: iconWeatherClouds, description: "nuages" },
+        Thunderstorm: { icon: iconWeatherRain, description: "Tempête" },
+        Atmosphere: { icon: iconWeatherRain, description: "Atmosphère" },
       };
 
       const mainWeather = data.weather[0].main;
@@ -124,7 +126,6 @@ export default class Weather extends React.Component<
                   index !== this.state.weatherData.length - 1
                     ? "1px solid #8AA8DA"
                     : undefined,
-                padding: "17px 25px",
               }}
             >
               {countryWeather.loading ? (
@@ -144,10 +145,21 @@ export default class Weather extends React.Component<
                     {countryWeather.country}
                   </div>
                   <div className="dx-weather--temp">
-                    <img
-                      src={countryWeather.data?.weatherIcon}
-                      alt="Weather icon"
-                    />
+                    <div
+                      style={{
+                        width: "140px",
+                        height: "115px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <img
+                        src={countryWeather.data?.weatherIcon}
+                        alt="Weather icon"
+                      />
+                    </div>
+
                     <span
                       className="dx-weather--temp-value"
                       style={{
@@ -167,7 +179,7 @@ export default class Weather extends React.Component<
                       </span>
                     </span>
                   </div>
-                  <div className="d-flex justify-content-between">
+                  <div className="d-flex justify-content-between mt-3">
                     {/* Wind Speed */}
                     <div
                       style={{

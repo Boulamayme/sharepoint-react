@@ -145,7 +145,15 @@ export default class Events extends React.Component<
               </span>
             </div>
             <p className="dx-event-banner--desc">{description}</p>
-            <button className="dx-event-banner--btn">{strings.Register}</button>
+            <button
+              className="dx-event-banner--btn"
+              type="button"
+              onClick={() => {
+                window.open(this.props.url, "_blank");
+              }}
+            >
+              {strings.Register}
+            </button>
           </div>
         )}
 

@@ -55,7 +55,7 @@ export default class Directory extends React.Component<
 
     let filterQuery = `$filter=${filterQueries.join(" and ")}`;
 
-    let requestUrl = `/users?${filterQuery}&$top=16&$select=id,displayName,mail,jobTitle,department,surname,givenName`;
+    let requestUrl = `/users?$count=true&$orderby=DisplayName&${filterQuery}&$top=16&$select=id,displayName,mail,jobTitle,department,surname,givenName`;
 
     if (_nextLink) {
       requestUrl = _nextLink;
@@ -66,6 +66,7 @@ export default class Directory extends React.Component<
       .then((client: any) => {
         client
           .api(requestUrl)
+          .header("ConsistencyLevel", "eventual")
           .version("v1.0")
           .get(
             (error: any, response: any, rawResponse?: HttpClientResponse) => {
@@ -150,6 +151,9 @@ export default class Directory extends React.Component<
                   whiteSpace: "nowrap",
                   borderRadius: "5px",
                   padding: "0 25px",
+                }}
+                onClick={() => {
+                  window.open(this.props.url, "_blank");
                 }}
               >
                 <img className="me-3" src={iconOrga} alt="" />

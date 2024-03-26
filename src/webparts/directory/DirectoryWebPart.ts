@@ -1,7 +1,10 @@
 import * as React from "react";
 import * as ReactDom from "react-dom";
 import { Version } from "@microsoft/sp-core-library";
-import { type IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
+import {
+  PropertyPaneTextField,
+  type IPropertyPaneConfiguration,
+} from "@microsoft/sp-property-pane";
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import { IReadonlyTheme } from "@microsoft/sp-component-base";
 
@@ -22,6 +25,7 @@ import {
 
 export interface IDirectoryWebPartProps {
   departments: any[];
+  url: string;
 }
 
 export default class DirectoryWebPart extends BaseClientSideWebPart<IDirectoryWebPartProps> {
@@ -31,6 +35,7 @@ export default class DirectoryWebPart extends BaseClientSideWebPart<IDirectoryWe
       {
         context: this.context,
         departments: this.properties.departments,
+        url: this.properties.url || "",
       }
     );
 
@@ -121,6 +126,10 @@ export default class DirectoryWebPart extends BaseClientSideWebPart<IDirectoryWe
           groups: [
             {
               groupFields: [
+                //Title
+                PropertyPaneTextField("url", {
+                  label: "Url Organigramme",
+                }),
                 PropertyFieldCollectionData("departments", {
                   key: "Departments",
                   label: "",

@@ -147,6 +147,7 @@ export default class ToolsWebPart extends BaseClientSideWebPart<IToolsWebPartPro
   }
 
   async fetchListItems(listId: string): Promise<Array<any>> {
+    debugger;
     let items = await this._sp.web.lists
       .getById(listId)
       .items.select(

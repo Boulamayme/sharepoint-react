@@ -2,8 +2,8 @@
 import * as React from "react";
 
 const iconFacebook = require("../assets/facebook.svg");
-const iconX = require("../assets/facebook.svg");
-const iconLinkedin = require("../assets/x.svg");
+const iconX = require("../assets/x.svg");
+const iconLinkedin = require("../assets/linkedin.svg");
 const iconYoutube = require("../assets/youtube.svg");
 
 const Footer = (): JSX.Element => {

@@ -1,64 +1,57 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import * as React from "react";
 import type { ITeamsListProps } from "./ITeamsListProps";
+import { Placeholder } from "@pnp/spfx-controls-react";
+import { DisplayMode } from "@microsoft/sp-core-library";
 
-const avatar = require("../assets/iconset.png");
-const teamsIcon = require("../assets/teams.png");
 const messageIcon = require("../assets/message.png");
 
 export default class TeamsList extends React.Component<ITeamsListProps, {}> {
-  public items: any[] = [
-    {
-      id: 1,
-      name: "Ana CALIN",
-      service: "Directrice juridique",
-      avatar: avatar,
-    },
-    {
-      id: 2,
-      name: "Léa RAMONDOU",
-      service: "Assistante juridique",
-      avatar: avatar,
-    },
-    {
-      id: 3,
-      name: "Chloé MERIADEC",
-      service: "Juriste",
-      avatar: avatar,
-    },
-  ];
-
   public render(): React.ReactElement<ITeamsListProps> {
-    const {} = this.props;
+    const { users } = this.props;
 
     return (
       <>
-        <div className="dx-teams">
-          {this.items.map((item, index) => {
-            return (
-              <div
-                className="dx-teams--item d-flex align-items-center justify-content-between"
-                key={index}
-              >
-                <div className="d-flex">
-                  <img
-                    className="dx-teams--item-avatar"
-                    src={item.avatar}
-                    alt=""
-                  />
-                  <div className="ms-2">
-                    <h3 className="dx-teams--item-name">{item.name}</h3>
-                    <p className="dx-teams--item-service">{item.service}</p>
+        {users.length > 0 && (
+          <div className="dx-teams">
+            {users.map((item, index) => {
+              return (
+                <div
+                  className="dx-teams--item d-flex align-items-center justify-content-between"
+                  key={index}
+                >
+                  <div className="d-flex">
+                    <img
+                      className="dx-teams--item-avatar"
+                      src={`${this.props.context.pageContext.web.absoluteUrl}/_layouts/15/userphoto.aspx?UserName=${item.email}&size=L`}
+                      alt=""
+                    />
+                    <div className="ms-2">
+                      <h3 className="dx-teams--item-name">{item.user}</h3>
+                      <p className="dx-teams--item-service">{item.service}</p>
+                    </div>
+                  </div>
+                  <div>
+                    <a href={`mailto:${item.user.email}`}>
+                      <img src={messageIcon} alt="" />
+                    </a>
                   </div>
                 </div>
-                <div>
-                  <img src={teamsIcon} alt="" className="me-3" />
-                  <img src={messageIcon} alt="" />
-                </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        )}
+
+        {users.length === 0 && (
+          <Placeholder
+            iconName="Edit"
+            iconText="Configure your web part"
+            description="Please configure the web part."
+            buttonLabel="Configure"
+            hideButton={this.props.displayMode === DisplayMode.Read}
+            onConfigure={this.props.onConfigurePropPane}
+          />
+        )}
       </>
     );
   }

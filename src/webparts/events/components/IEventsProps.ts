@@ -3,4 +3,5 @@ export interface IEventsProps {
   coverImage: any;
   description: string;
   title: string;
+  url: string;
 }

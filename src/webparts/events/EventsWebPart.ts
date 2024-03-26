@@ -27,6 +27,7 @@ export interface IEventsWebPartProps {
   backgroundImage: IFilePickerResult;
   description: string;
   title: string;
+  url: string;
 }
 
 export default class EventsWebPart extends BaseClientSideWebPart<IEventsWebPartProps> {
@@ -36,8 +37,9 @@ export default class EventsWebPart extends BaseClientSideWebPart<IEventsWebPartP
       {
         libraryName: this.properties.list,
         coverImage: this.properties.backgroundImage,
-        description: this.properties.description,
-        title: this.properties.title,
+        description: this.properties.description || "",
+        title: this.properties.title || "",
+        url: this.properties.url,
       }
     );
 
@@ -133,6 +135,9 @@ export default class EventsWebPart extends BaseClientSideWebPart<IEventsWebPartP
                 }),
                 PropertyPaneTextField("description", {
                   label: strings.PropertyPaneDescription,
+                }),
+                PropertyPaneTextField("url", {
+                  label: "Url",
                 }),
                 PropertyFieldListPicker("list", {
                   label: "Select a list",
