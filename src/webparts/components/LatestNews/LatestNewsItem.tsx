@@ -27,7 +27,7 @@ const LatestNewsItem = (props: ILatestNewsItem): JSX.Element => {
       >
         <div
           className={`dx-news--cover ${
-            props.position === "horizontal" && "me-3"
+            props.position === "horizontal" && "dx-news--cover__vertical me-3"
           }`}
         >
           <img

@@ -217,6 +217,14 @@
           "manifest": "./src/webparts/cardTools/CardToolsWebPart.manifest.json"
         }
       ]
+    },
+    "card-training-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/cardTraining/CardTrainingWebPart.js",
+          "manifest": "./src/webparts/cardTraining/CardTrainingWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -249,6 +257,7 @@
     "NewsWebPartStrings": "lib/webparts/news/loc/{locale}.js",
     "ButtonWebPartStrings": "lib/webparts/button/loc/{locale}.js",
     "FaqLearnWebPartStrings": "lib/webparts/faqLearn/loc/{locale}.js",
-    "CardToolsWebPartStrings": "lib/webparts/cardTools/loc/{locale}.js"
+    "CardToolsWebPartStrings": "lib/webparts/cardTools/loc/{locale}.js",
+    "CardTrainingWebPartStrings": "lib/webparts/cardTraining/loc/{locale}.js"
   }
 }

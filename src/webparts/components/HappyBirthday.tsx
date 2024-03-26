@@ -1,4 +1,5 @@
 import * as strings from "HomeWebPartStrings";
+import { Tooltip } from "primereact/tooltip";
 import * as React from "react";
 
 const HappyBirthDaySection = (props: any) => {
@@ -139,7 +140,14 @@ const HappyBirthDaySection = (props: any) => {
                     <img src={item.user.imageUrl} alt="" />
                   </div>
                   <div className="dx-hp-users--content">
-                    <span className="dx-hp-users--name">{item.user.text}</span>
+                    <span className="dx-hp-users--name">
+                      {item.user.text}
+                      <i
+                        className="dx-info pi pi-info-circle ms-2"
+                        data-pr-tooltip={item.description}
+                        data-pr-position="right"
+                      />
+                    </span>
                     <span className="dx-hp-users--position">
                       {item.jobTitle}
                     </span>
@@ -156,6 +164,7 @@ const HappyBirthDaySection = (props: any) => {
           </div>
         </div>
       </div>
+      <Tooltip target=".dx-info" />
     </>
   );
 };

@@ -342,6 +342,12 @@ export default class HomeWebPart extends BaseClientSideWebPart<IHomeWebPartProps
                       required: true,
                     },
                     {
+                      id: "description",
+                      title: "Description",
+                      type: CustomCollectionFieldType.string,
+                      required: true,
+                    },
+                    {
                       id: "arrivalDate",
                       title: "Arrival Date",
                       type: CustomCollectionFieldType.custom,

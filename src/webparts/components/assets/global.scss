@@ -101,7 +101,7 @@ $black-color: #000;
     flex-grow: 1;
     padding: 0 25px;
   }
-  &--temp{
+  &--temp {
     display: flex;
     align-items: center;
   }
@@ -661,6 +661,11 @@ $black-color: #000;
       width: 100%;
       object-fit: cover;
     }
+    &__vertical {
+      width: 50%;
+      flex-shrink: 0;
+      justify-content: start;
+    }
   }
   &--title {
     font-size: 20px;
@@ -1067,6 +1072,57 @@ $black-color: #000;
   }
   &--link {
     border: 1px solid #00965e;
+    color: #00965e;
+    padding: 11px 30px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+  }
+}
+
+/*******************************************************************
+* Card Training
+********************************************************************/
+.dx-card-training {
+  &--item {
+    font-family: "Open Sans", sans-serif;
+    padding: 20px;
+    border-radius: 15px;
+    transition: all 0.5s ease-in-out;
+    p {
+      color: #696984;
+      font-size: 18px;
+      text-align: center;
+    }
+    &:hover {
+      box-shadow: 0px 50px 80px 0px rgba(0, 0, 0, 0.05);
+      .dx-card-training--link {
+        transition: all 0.4s ease-in-out;
+        background: #003da5;
+        border-color: #003da5;
+        color: #fff;
+      }
+    }
+  }
+  &--cover {
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      max-width: 100%;
+    }
+  }
+  &--title {
+    color: #0b7077;
+    font-family: "Open Sans", sans-serif;
+    font-size: 27px;
+    font-weight: 500;
+  }
+  &--link {
+    border: 1px solid #00965e;
+    background-color: #fff;
     color: #00965e;
     padding: 11px 30px;
     text-align: center;

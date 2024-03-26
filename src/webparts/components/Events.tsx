@@ -63,7 +63,6 @@ const EventsFC = (props: any) => {
           background: "#E6ECF6",
           color: "#fff",
           padding: "2rem",
-          height: "560px",
         }}
       >
         <div className="d-flex align-items-center justify-content-between">

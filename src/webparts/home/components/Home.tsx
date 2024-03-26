@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import * as React from "react";
 import type { IHomeProps } from "./IHomeProps";
 import Carousel from "./components/carousel";
@@ -55,7 +56,7 @@ export default class Home extends React.Component<
     try {
       const items = await this._sp.web.lists
         .getByTitle("Anniversaires")
-        .items.select("field_1", "field_2", "field_5")();
+        .items.select("field_1", "field_3", "field_4", "field_5")();
 
       // Current Date for comparison
       const today = new Date();
@@ -69,7 +70,7 @@ export default class Home extends React.Component<
 
       const _items = items.map((item) => ({
         ...item,
-        normalizedDate: convertDate(item.field_2),
+        normalizedDate: convertDate(`${item.field_3}/${item.field_4}`),
       }));
 
       const filteredItems = _items
@@ -105,7 +106,7 @@ export default class Home extends React.Component<
               .version("v1.0")
               .get();
             const user = userResponse.value[0] ? userResponse.value[0] : null;
-            let [month, day] = item.field_2.split("/");
+            let [month, day] = `${item.field_3}/${item.field_4}`.split("/");
             return {
               ...item,
               birthday: `${day}/${month}`,
@@ -160,7 +161,7 @@ export default class Home extends React.Component<
       </And>
   </Where>`;
 
-      let orderByClause =
+      const orderByClause =
         "<OrderBy><FieldRef Name='Created' Ascending='TRUE' /></OrderBy>";
 
       const renderListDataParameters = {
@@ -257,6 +258,21 @@ export default class Home extends React.Component<
     this.fetchArticles();
   }
 
+  sortArticles(sortedBy: string) {
+    if (sortedBy === "popular") {
+      this.setState({
+        articles: this.state.articles.sort((a, b) => b.likes - a.likes),
+      });
+    }
+    if (sortedBy === "recent") {
+      this.setState({
+        articles: this.state.articles.sort(
+          (a, b) => b.publishedDate - a.publishedDate
+        ),
+      });
+    }
+  }
+
   public render(): React.ReactElement<IHomeProps> {
     const {
       quickLinks,
@@ -295,20 +311,14 @@ export default class Home extends React.Component<
                       this.state.filterNews === "recent" &&
                       "dx-tabs--item__active"
                     }`}
-                    onClick={() =>
+                    onClick={() => {
                       this.setState({
                         filterNews: "recent",
-                      })
-                    }
+                      });
+                      this.sortArticles("recent");
+                    }}
                   >
-                    <span
-                      className="dx-tabs--item__title"
-                      onClick={() =>
-                        this.setState({
-                          filterNews: "popular",
-                        })
-                      }
-                    >
+                    <span className="dx-tabs--item__title">
                       {strings.Recent}
                     </span>
                   </div>
@@ -317,11 +327,13 @@ export default class Home extends React.Component<
                       this.state.filterNews === "popular" &&
                       "dx-tabs--item__active"
                     }`}
-                    onClick={() =>
+                    onClick={() => {
                       this.setState({
                         filterNews: "popular",
-                      })
-                    }
+                      });
+                      this.sortArticles("popular");
+
+                    }}
                   >
                     <span className="dx-tabs--item__title">
                       {strings.Popular}

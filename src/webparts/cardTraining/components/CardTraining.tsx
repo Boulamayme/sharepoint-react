@@ -1,15 +1,13 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import * as React from "react";
-import type { ICardDocumentProps } from "./ICardDocumentProps";
+import type { ICardTrainingProps } from "./ICardTrainingProps";
 import { Placeholder } from "@pnp/spfx-controls-react";
 import { DisplayMode } from "@microsoft/sp-core-library";
-import * as strings from "CardDocumentWebPartStrings";
 
-export default class CardDocument extends React.Component<
-  ICardDocumentProps,
+export default class CardTraining extends React.Component<
+  ICardTrainingProps,
   {}
 > {
-  public render(): React.ReactElement<ICardDocumentProps> {
+  public render(): React.ReactElement<ICardTrainingProps> {
     const { items, columns } = this.props;
 
     return (
@@ -17,19 +15,22 @@ export default class CardDocument extends React.Component<
         <div className="row">
           {items.map((item, index) => (
             <div key={index} className={columns}>
-              <div className="dx-document px-4 pb-3">
-                <div className="dx-document--item">
-                  <div>
-                    <div className="dx-document--cover">
+              <div className="dx-card-training px-4 pb-3">
+                <div className="dx-card-training--item">
+                  <div className="d-flex flex-column align-items-center justify-content-center">
+                    <div className="dx-card-training--cover">
                       <img src={item.imageUrl} alt="" />
                     </div>
-                    <div className="d-flex align-items-center flex-column pt-5">
-                      <h3 className="dx-document--title mb-5">{item.title}</h3>
+                    <div className="d-flex align-items-center flex-column">
+                      <h3 className="dx-card-training--title mb-4 mt-2">
+                        {item.title}
+                      </h3>
+                      <p>{item.description}</p>
                     </div>
                   </div>
                   <div className="d-flex justify-content-center">
-                    <a href={item.url} className="dx-document--link">
-                      {strings.SeeDocument}
+                    <a href={item.url} className="dx-card-training--link">
+                      {item.btnLabel}
                     </a>
                   </div>
                 </div>
