@@ -54,12 +54,6 @@ const CollapseList = (props: any): JSX.Element => {
     }
   };
 
-  React.useEffect(() => {
-    props.items.forEach((item: any) => {
-      item.preview = item.content;
-    });
-  }, []);
-
   return (
     <>
       <div className="dx-accordion">

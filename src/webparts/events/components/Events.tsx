@@ -117,7 +117,7 @@ export default class Events extends React.Component<
   };
 
   public render(): React.ReactElement<IEventsProps> {
-    const { description, title } = this.props;
+    const { description } = this.props;
 
     return (
       <>
@@ -129,7 +129,7 @@ export default class Events extends React.Component<
               backgroundImage: `url('${this.props.coverImage.fileAbsoluteUrl}')`,
             }}
           >
-            <h3 className="dx-event-banner--title">{title}</h3>
+            <h3 className="dx-event-banner--title">{this.state.selectedEvent && this.state.selectedEvent.Title}</h3>
             <div className="dx-event-banner--date">
               <span className="dx-event-banner--date-item">
                 {this.state.countdown.days}
@@ -149,7 +149,7 @@ export default class Events extends React.Component<
               className="dx-event-banner--btn"
               type="button"
               onClick={() => {
-                window.open(this.props.url, "_blank");
+                window.open(this.state.selectedEvent.Lien, "_blank");
               }}
             >
               {strings.Register}

@@ -178,7 +178,7 @@ export default class FaqWebPart extends BaseClientSideWebPart<IFaqWebPartProps> 
                           : [],
                     },
                     {
-                      id: "content",
+                      id: "preview",
                       title: "content",
                       type: CustomCollectionFieldType.custom,
                       onCustomRender: (

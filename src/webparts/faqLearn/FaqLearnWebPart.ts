@@ -141,7 +141,7 @@ export default class FaqLearnWebPart extends BaseClientSideWebPart<IFaqLearnWebP
                       type: CustomCollectionFieldType.string,
                     },
                     {
-                      id: "content",
+                      id: "preview",
                       title: "content",
                       type: CustomCollectionFieldType.custom,
                       onCustomRender: (

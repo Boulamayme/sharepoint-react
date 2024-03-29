@@ -72,7 +72,7 @@ export default class Faq extends React.Component<
     const filteredItems = this.props.items.filter(
       (item) =>
         item.title.toLowerCase().includes(this.state.query.toLowerCase()) ||
-        item.content.toLowerCase().includes(this.state.query.toLowerCase())
+        item.preview.toLowerCase().includes(this.state.query.toLowerCase())
     );
 
     this.setState({
