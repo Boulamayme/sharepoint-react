@@ -326,8 +326,9 @@ export default class HomeWebPart extends BaseClientSideWebPart<IHomeWebPartProps
                           personSelectionLimit: 1,
                           showtooltip: true,
                           key: itemId,
-                          defaultSelectedUsers: [item.customFieldId],
+                          defaultSelectedUsers: [item.email],
                           onChange: (items: any[]) => {
+                            item.email = items[0].secondaryText;
                             onUpdate(field.id, items[0]);
                           },
                           showHiddenInUI: false,

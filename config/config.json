@@ -225,6 +225,14 @@
           "manifest": "./src/webparts/cardTraining/CardTrainingWebPart.manifest.json"
         }
       ]
+    },
+    "animated-card-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/animatedCard/AnimatedCardWebPart.js",
+          "manifest": "./src/webparts/animatedCard/AnimatedCardWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -258,6 +266,7 @@
     "ButtonWebPartStrings": "lib/webparts/button/loc/{locale}.js",
     "FaqLearnWebPartStrings": "lib/webparts/faqLearn/loc/{locale}.js",
     "CardToolsWebPartStrings": "lib/webparts/cardTools/loc/{locale}.js",
-    "CardTrainingWebPartStrings": "lib/webparts/cardTraining/loc/{locale}.js"
+    "CardTrainingWebPartStrings": "lib/webparts/cardTraining/loc/{locale}.js",
+    "AnimatedCardWebPartStrings": "lib/webparts/animatedCard/loc/{locale}.js"
   }
 }

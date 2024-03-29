@@ -7,9 +7,9 @@ import * as strings from "DirectoryWebPartStrings";
 import { LivePersona } from "@pnp/spfx-controls-react";
 import { Dropdown } from "primereact/dropdown";
 
-const iconUser: any = require("../assets/user_1.png");
-const iconPhone: any = require("../assets/phone_1.png");
-const iconOrg: any = require("../assets/org_1.png");
+const iconUser: any = require("../assets/user_2.png");
+// const iconPhone: any = require("../assets/phone_1.png");
+const iconOrg: any = require("../assets/org_2.png");
 
 const iconSearch = require("../../components/assets/images/search.svg");
 const iconOrga = require("../../components/assets/images/org.png");
@@ -184,13 +184,13 @@ export default class Directory extends React.Component<
                       <a href={`mailto:${el.mail}`}>
                         <img src={iconUser} />
                       </a>
-                      <a
+                      {/* <a
                         href={`https://teams.microsoft.com/l/chat/0/0?users=${el.mail}`}
                         target="_blank"
                         rel="noreferrer"
                       >
                         <img src={iconPhone} />
-                      </a>
+                      </a> */}
                       <a href="#">
                         <LivePersona
                           upn={el.mail}

@@ -99,10 +99,16 @@ const EventsFC = (props: any) => {
             <div className="dx-schedule ms-3">
               <div className="dx-schedule__events mt-4">
                 {filteredEvents.map((event: any, index: number) => (
-                  <div className="dx-schedule__event" key={index}>
-                    <span>{formatDate(event.publishedDate)}</span>
-                    <h3>{event.title}</h3>
-                    <p className="mt-1 mb-2">{event.description}</p>
+                  <div
+                    className="dx-schedule__event d-flex flex-column justify-content-between h-100"
+                    key={index}
+                  >
+                    <div>
+                      <span>{formatDate(event.publishedDate)}</span>
+                      <h3>{event.title}</h3>
+                      <p className="mt-1 mb-2">{event.description}</p>
+                    </div>
+
                     <div
                       className="dx-schedule__event-agenda dx-cursor"
                       onClick={() => addToCalendar(event)}

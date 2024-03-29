@@ -37,8 +37,6 @@ export default class Faq extends React.Component<
   }
 
   componentDidMount() {
-    debugger;
-
     this.setState({
       filteredItems: this.props.items,
     });

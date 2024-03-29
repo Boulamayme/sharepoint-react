@@ -5,6 +5,7 @@ import { Placeholder } from "@pnp/spfx-controls-react";
 import { DisplayMode } from "@microsoft/sp-core-library";
 
 const messageIcon = require("../assets/message.png");
+const teamsIcon = require("../assets/icon_teams_1.png");
 
 export default class TeamsList extends React.Component<ITeamsListProps, {}> {
   public render(): React.ReactElement<ITeamsListProps> {
@@ -31,8 +32,16 @@ export default class TeamsList extends React.Component<ITeamsListProps, {}> {
                       <p className="dx-teams--item-service">{item.service}</p>
                     </div>
                   </div>
-                  <div>
-                    <a href={`mailto:${item.user.email}`}>
+                  <div className="d-flex align-items-center">
+                    <a
+                      href={`https://teams.microsoft.com/l/chat/0/0?users=${item.email}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="me-2"
+                    >
+                      <img src={teamsIcon} />
+                    </a>
+                    <a href={`mailto:${item.email}`}>
                       <img src={messageIcon} alt="" />
                     </a>
                   </div>

@@ -1015,6 +1015,89 @@ $black-color: #000;
   }
 }
 
+/********************************************************************
+* Card Animated
+*********************************************************************/
+.dx-card-animated {
+  transition: all 0.5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  width: 210px;
+  height: 210px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  position: relative;
+  background-color: #fff;
+  padding: 5px 20px;
+
+  &--body {
+    width: 100%;
+  }
+  &--image-container {
+    transition: all 0.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    img {
+      transition: width 0.5s ease;
+      width: 100px;
+      height: auto;
+    }
+  }
+  &--content {
+    transition: all 0.5s ease;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    opacity: 0;
+    width: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow: hidden;
+  }
+  &--text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    opacity: 1;
+  }
+
+  &:hover {
+    width: 100%;
+    .dx-card-animated--image-container {
+      width: 30%;
+      justify-content: flex-start;
+      img {
+        width: 50%;
+      }
+    }
+    .dx-card-animated--body {
+      display: flex;
+      flex-direction: row;
+    }
+    .dx-card-animated--content {
+      left: 17%;
+      opacity: 1;
+      width: 80%;
+      padding: 20px;
+    }
+    .dx-card-animated--text {
+      opacity: 1;
+      overflow: auto;
+      white-space: normal;
+      text-align: left;
+    }
+  }
+}
+
 /*******************************************************************
 * Card Article
 ********************************************************************/

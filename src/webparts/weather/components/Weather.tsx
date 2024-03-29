@@ -120,7 +120,7 @@ export default class Weather extends React.Component<
           {this.state.weatherData.map((countryWeather, index) => (
             <div
               key={index}
-              className="dx-weather--item"
+              className="dx-weather--item d-flex flex-column align-items-center"
               style={{
                 borderRight:
                   index !== this.state.weatherData.length - 1
@@ -179,7 +179,12 @@ export default class Weather extends React.Component<
                       </span>
                     </span>
                   </div>
-                  <div className="d-flex justify-content-between mt-3">
+                  <div
+                    className="d-flex justify-content-between mt-3"
+                    style={{
+                      gap: "3rem",
+                    }}
+                  >
                     {/* Wind Speed */}
                     <div
                       style={{

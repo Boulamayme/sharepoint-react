@@ -168,6 +168,7 @@ export default class Home extends React.Component<
         ViewXml: `<View>
                       <Query>
                       ${whereClause}
+                      ${orderByClause}
                     </Query>
                     <ViewFields>
                       <FieldRef Name='Title' />
@@ -180,7 +181,6 @@ export default class Home extends React.Component<
                       <FieldRef Name='_LikeCount' />
                       <FieldRef Name='_CommentCount' />
                     </ViewFields>
-                    ${orderByClause}
                     <RowLimit  Paged='TRUE'>3</RowLimit>
                   </View>`,
       } as any;
@@ -266,9 +266,12 @@ export default class Home extends React.Component<
     }
     if (sortedBy === "recent") {
       this.setState({
-        articles: this.state.articles.sort(
-          (a, b) => b.publishedDate - a.publishedDate
-        ),
+        articles: this.state.articles.sort((a: any, b: any) => {
+          return (
+            new Date(b.publishedDate).getTime() -
+            new Date(a.publishedDate).getTime()
+          );
+        }),
       });
     }
   }
@@ -332,7 +335,6 @@ export default class Home extends React.Component<
                         filterNews: "popular",
                       });
                       this.sortArticles("popular");
-
                     }}
                   >
                     <span className="dx-tabs--item__title">
@@ -378,7 +380,7 @@ export default class Home extends React.Component<
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    padding: "16px 0",
+                    padding: "16px 20px",
                   }}
                 >
                   <QuickLinkFC items={usefulLinks} direction="flex-column" />
