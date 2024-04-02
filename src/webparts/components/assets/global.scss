@@ -65,6 +65,18 @@ $black-color: #000;
     border: 1px solid #00965e;
     box-shadow: 0px 10px 60px 0px rgba(38, 45, 118, 0.08);
   }
+  &__directory{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #003DA5;
+    color:#fff;
+    border-radius: 5px;
+    gap: 15px;
+    border: 0;
+    width: 200px;
+    height: 40px;
+  }
 }
 
 .dx-search {

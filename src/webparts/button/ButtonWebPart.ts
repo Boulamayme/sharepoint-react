@@ -141,6 +141,7 @@ export default class ButtonWebPart extends BaseClientSideWebPart<IButtonWebPartP
                   options: [
                     { key: "dx-btn__default ", text: "Standards" },
                     { key: "dx-btn__rounded", text: "Rounded" },
+                    { key: "dx-btn__directory", text: "Directory" },
                   ],
                   selectedKey: "dx-btn__default",
                 }),

@@ -2,6 +2,9 @@ import * as React from "react";
 import type { IButtonProps } from "./IButtonProps";
 import { Placeholder } from "@pnp/spfx-controls-react";
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const iconDirectory = require("../../components/assets/images/directory.png");
+
 export default class Button extends React.Component<IButtonProps, {}> {
   public render(): React.ReactElement<IButtonProps> {
     const { link, label, theme } = this.props;
@@ -17,6 +20,7 @@ export default class Button extends React.Component<IButtonProps, {}> {
                 window.open(link, "_blank");
               }}
             >
+              {theme === "dx-btn__directory" && <img src={iconDirectory} alt="" />}
               {label}
             </button>
           </div>
