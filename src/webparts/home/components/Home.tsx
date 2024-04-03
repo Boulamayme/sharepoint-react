@@ -295,16 +295,12 @@ export default class Home extends React.Component<
             display: "flex",
             justifyContent: "center",
             padding: "30px 0",
-            overflowX: "auto"
+            overflowX: "auto",
           }}
         >
           <QuickLinkFC items={quickLinks} />
         </div>
-        <div
-          style={{
-            padding: "30px 3rem",
-          }}
-        >
+        <div className="py-5 px-xl-5 px-lg-5">
           <div className="row">
             <div className="col-lg-10">
               <div className="d-flex justify-content-between align-items-center">

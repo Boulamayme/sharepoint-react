@@ -1,73 +1,47 @@
-# enoe-app
+# Eneo Energy - SharePoint Framework Project
 
-## Summary
+## Description
 
-Short summary on functionality and used technologies.
-
-[picture of the solution in action, if possible]
-
-## Used SharePoint Framework Version
-
-![version](https://img.shields.io/badge/version-1.18.0-green.svg)
-
-## Applies to
-
-- [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
-
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
-
-## Prerequisites
-
-> Any special pre-requisites?
-
-## Solution
-
-| Solution    | Author(s)                                               |
-| ----------- | ------------------------------------------------------- |
-| folder name | Author details (name, company, twitter alias with link) |
-
-## Version history
-
-| Version | Date             | Comments        |
-| ------- | ---------------- | --------------- |
-| 1.1     | March 10, 2021   | Update comment  |
-| 1.0     | January 29, 2021 | Initial release |
-
-## Disclaimer
-
-**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
-
-## Minimal Path to Awesome
-
-- Clone this repository
-- Ensure that you are at the solution folder
-- in the command-line run:
-  - **npm install**
-  - **gulp serve**
-
-> Include any additional steps as needed.
+Eneo Energy is a comprehensive SharePoint Framework (SPFx) project designed to enhance the functionality and appearance of SharePoint site. It includes a set of extensions for adding custom footer and header and multiple web parts to display various types of content such as agency lists, animated cards, author boxes, and more. The project leverages PrimeReact for UI components, ensuring a rich user experience.
 
 ## Features
 
-Description of the extension that expands upon high-level summary above.
+- **Extensions for Custom Header and Footer**: Easily add header and footers to your SharePoint site.
+- **Multiple Web Parts**: Including Agency, Animated Card, Author Box, Button, Card, Card Article, and many others for diverse content display.
+- **Global Styling**: Utilizes a `global.scss` file within the `assets/components` folder for consistent styling across all web parts.
+- **Customization and Configuration**: Detailed instructions for updating web part properties and styles.
 
-This extension illustrates the following concepts:
+## Prerequisites
 
-- topic 1
-- topic 2
-- topic 3
+Before setting up the project, ensure you have the following:
 
-> Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
+- SharePoint Online environment
+- Latest SPFx development environment
+- Node.js (preferably the version compatible with your SPFx version)
 
-> Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
+## Installation Guide
 
-## References
+1. Clone the project from the repository.
+2. Navigate to the project directory and run `npm install` to install dependencies.
+3. To deploy the solution to SharePoint Online, run `gulp bundle --ship` followed by `gulp package-solution --ship`.
+4. Upload the generated package to the SharePoint app catalog and add it to your site.
 
-- [Getting started with SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
-- [Building for Microsoft teams](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview)
-- [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
-- [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
-- [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
+## Running Locally
+
+To run the project locally and test the web parts:
+
+1. Execute `gulp serve` from the command line within the project directory.
+2. This will open the SharePoint workbench, where you can add and interact with the web parts.
+
+## Customizing Web Parts
+
+### Updating Web Part Properties
+
+For example, to update the properties of the Agency web part:
+
+1. Open `AgencyWebPart.ts`.
+2. Modify the `getPropertyPaneConfiguration` method as needed.
+
+### Updating Styles
+
+- To update the style for a specific web part, e.g., Agency, look for the `.dx-agency` class in the `global.scss` file and make your adjustments.
