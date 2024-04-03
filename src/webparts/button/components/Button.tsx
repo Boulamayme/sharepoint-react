@@ -7,14 +7,14 @@ const iconDirectory = require("../../components/assets/images/directory.png");
 
 export default class Button extends React.Component<IButtonProps, {}> {
   public render(): React.ReactElement<IButtonProps> {
-    const { link, label, theme } = this.props;
+    const { link, label, theme , position } = this.props;
 
     return (
       <>
         {link && label && (
-          <div className="d-flex justify-content-center mt-3">
+          <div className={`d-flex  mt-3`}>
             <button
-              className={`dx-btn ${theme}`}
+              className={`dx-btn ${position} ${theme}`}
               type="button"
               onClick={() => {
                 window.open(link, "_blank");

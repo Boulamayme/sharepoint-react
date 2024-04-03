@@ -9,11 +9,11 @@ export default class AuthorBox extends React.Component<IAuthorBoxProps, {}> {
     return (
       <>
         {avatar && name && description && position && (
-          <div className="dx-author">
-            <div className="dx-author--image">
+          <div className="dx-author row">
+            <div className="dx-author--image col-lg-auto">
               <img src={avatar.fileAbsoluteUrl} alt="" />
             </div>
-            <div className="dx-author-content">
+            <div className="dx-author-content col-lg">
               <p className="dx-author-content--desc">“{description}”</p>
               <div>
                 <span className="dx-author-content--name">{name}</span>

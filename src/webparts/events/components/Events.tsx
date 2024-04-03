@@ -117,7 +117,7 @@ export default class Events extends React.Component<
   };
 
   public render(): React.ReactElement<IEventsProps> {
-    const { description } = this.props;
+    const { } = this.props;
 
     return (
       <>
@@ -144,7 +144,7 @@ export default class Events extends React.Component<
                 <span>{strings.Minutes}</span>
               </span>
             </div>
-            <p className="dx-event-banner--desc">{description}</p>
+            <p className="dx-event-banner--desc">{this.state.selectedEvent && this.state.selectedEvent.DescriptionSettings}</p>
             <button
               className="dx-event-banner--btn"
               type="button"

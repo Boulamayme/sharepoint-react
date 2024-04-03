@@ -14,7 +14,7 @@ export default class CardTraining extends React.Component<
       <>
         <div className="row">
           {items.map((item, index) => (
-            <div key={index} className={columns}>
+            <div key={index} className={`${columns} mb-4`}>
               <div className="dx-card-training px-4 pb-3">
                 <div className="dx-card-training--item">
                   <div className="d-flex flex-column align-items-center justify-content-center">

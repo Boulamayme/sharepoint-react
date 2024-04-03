@@ -16,7 +16,7 @@ export default class CardDocument extends React.Component<
       <>
         <div className="row">
           {items.map((item, index) => (
-            <div key={index} className={columns}>
+            <div key={index} className={`${columns} mb-4`}>
               <div className="dx-document px-4 pb-3">
                 <div className="dx-document--item">
                   <div>

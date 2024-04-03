@@ -16,7 +16,7 @@ export default class CardTools extends React.Component<ICardToolsProps, {}> {
         <div className="row">
           {items.length > 0 &&
             items.map((item, index) => (
-              <div key={index} className={`${columns}`}>
+              <div key={index} className={`${columns} mb-4`}>
                 <div className="dx-card-tools">
                   <div className="dx-card-tools--header">
                     <img src={item.imageUrl} alt="" />

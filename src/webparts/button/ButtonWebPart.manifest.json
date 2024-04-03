@@ -23,7 +23,8 @@
     "description": { "default": "Button description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "theme": "dx-btn__default"
+      "theme": "dx-btn__default",
+      "position": "justify-content-center"
     }
   }]
 }

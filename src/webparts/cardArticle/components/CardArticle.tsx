@@ -27,7 +27,7 @@ export default class CardArticle extends React.Component<
             news.map((item, index) => (
               <div
                 key={index}
-                className={columns}
+                className={`${columns} mb-4`}
                 onClick={() => this.navigateTo(item.url)}
               >
                 <div className="dx-card-article">

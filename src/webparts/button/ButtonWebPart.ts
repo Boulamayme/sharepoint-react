@@ -19,6 +19,7 @@ export interface IButtonWebPartProps {
   theme: string;
   label: string;
   link: string;
+  position: string;
 }
 
 export default class ButtonWebPart extends BaseClientSideWebPart<IButtonWebPartProps> {
@@ -27,6 +28,7 @@ export default class ButtonWebPart extends BaseClientSideWebPart<IButtonWebPartP
       Button,
       {
         theme: this.properties.theme,
+        position: this.properties.position,
         label: this.properties.label,
         link: this.properties.link,
         displayMode: this.displayMode,
@@ -144,6 +146,15 @@ export default class ButtonWebPart extends BaseClientSideWebPart<IButtonWebPartP
                     { key: "dx-btn__directory", text: "Directory" },
                   ],
                   selectedKey: "dx-btn__default",
+                }),
+                PropertyPaneDropdown("position", {
+                  label: "Position",
+                  selectedKey: this.properties.position,
+                  options: [
+                    { key: "justify-content-start", text: "Start" },
+                    { key: "justify-content-center", text: "Center" },
+                    { key: "justify-content-end", text: "End" },
+                  ],
                 }),
               ],
             },
