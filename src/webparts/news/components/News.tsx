@@ -214,7 +214,7 @@ export default class News extends React.Component<
       <>
         {/* Search / Filter */}
         <div className="row my-4">
-          <div className="col-4">
+          <div className="col-lg-4">
             <div className="dx-search">
               <img src={searchIcon} alt="" />
               <input
@@ -226,7 +226,7 @@ export default class News extends React.Component<
               />
             </div>
           </div>
-          <div className="col-8">
+          <div className="col-lg-8">
             <div className="d-flex align-items-center justify-content-end">
               <button
                 className="dx-btn dx-btn__icon"
@@ -281,7 +281,7 @@ export default class News extends React.Component<
         </div>
         <div className="row">
           {this.state.articles.map((article, index) => (
-            <CardNews key={index} article={article} column="col-3" />
+            <CardNews key={index} article={article} column="col-lg-3" />
           ))}
         </div>
         {this.state.nextHref && (

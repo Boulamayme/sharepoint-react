@@ -111,7 +111,7 @@ export default class Directory extends React.Component<
             marginBottom: "6rem",
           }}
         >
-          <div className="col-3">
+          <div className="col-lg-3">
             <div className="dx-searchbox">
               <img src={iconSearch} />
               <input
@@ -166,7 +166,7 @@ export default class Directory extends React.Component<
           {items.map((el: any) => {
             return (
               <>
-                <div className="col-3 mb-5">
+                <div className="col-lg-3 mb-5">
                   <div className="sp-org sp-org__directory">
                     <div className="d-flex px-3 flex-column align-items-center">
                       <img

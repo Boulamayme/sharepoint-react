@@ -125,7 +125,7 @@ export default class Faq extends React.Component<
             }}
           >
             <div className="row justify-content-center">
-              <div className="col-8">
+              <div className="col-lg-8">
                 <CollapseList items={this.state.filteredItems} />
               </div>
             </div>

@@ -295,6 +295,7 @@ export default class Home extends React.Component<
             display: "flex",
             justifyContent: "center",
             padding: "30px 0",
+            overflowX: "auto"
           }}
         >
           <QuickLinkFC items={quickLinks} />
@@ -305,7 +306,7 @@ export default class Home extends React.Component<
           }}
         >
           <div className="row">
-            <div className="col-10">
+            <div className="col-lg-10">
               <div className="d-flex justify-content-between align-items-center">
                 {titleNews && <Title title={titleNews} />}
                 <div className="dx-tabs">
@@ -346,11 +347,11 @@ export default class Home extends React.Component<
 
               <div className="row">
                 {this.state.articles.map((article, index) => (
-                  <CardNews key={index} article={article} column="col-4" />
+                  <CardNews key={index} article={article} column="col-lg-4" />
                 ))}
               </div>
               <div className="row justify-content-center mt-3">
-                <div className="col-2">
+                <div className="col-lg-2">
                   <button
                     className="dx-btn"
                     type="button"
@@ -369,7 +370,7 @@ export default class Home extends React.Component<
                 incomingEmployees={incomingEmployees}
               />
             </div>
-            <div className="col-2">
+            <div className="col-lg-2">
               {titleUsefulLink && <Title title={titleUsefulLink} />}
               {usefulLinks.length > 0 && (
                 <div
@@ -390,7 +391,7 @@ export default class Home extends React.Component<
           </div>
         </div>
         <div className="row">
-          <div className="col-12">
+          <div className="col-lg-12">
             <EventsFC news={this.props.events} />
           </div>
         </div>

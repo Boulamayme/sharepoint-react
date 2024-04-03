@@ -117,117 +117,120 @@ export default class Weather extends React.Component<
             textAlign: "center",
           }}
         >
-          {this.state.weatherData.map((countryWeather, index) => (
-            <div
-              key={index}
-              className="dx-weather--item d-flex flex-column align-items-center"
-              style={{
-                borderRight:
-                  index !== this.state.weatherData.length - 1
-                    ? "1px solid #8AA8DA"
-                    : undefined,
-              }}
-            >
-              {countryWeather.loading ? (
-                <p>Loading...</p>
-              ) : countryWeather.error ? (
-                <p>Error loading weather data</p>
-              ) : (
-                <>
-                  <div
-                    className="dx-weather--title"
-                    style={{
-                      color: "#738CB3",
-                      fontSize: "20px",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {countryWeather.country}
-                  </div>
-                  <div className="dx-weather--temp">
-                    <div
-                      style={{
-                        width: "140px",
-                        height: "115px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <img
-                        src={countryWeather.data?.weatherIcon}
-                        alt="Weather icon"
-                      />
-                    </div>
-
-                    <span
-                      className="dx-weather--temp-value"
-                      style={{
-                        color: "#436292",
-                        fontSize: "50px",
-                        fontFamily: "Open Sans",
-                      }}
-                    >
-                      {countryWeather.data?.temperature}°
-                      <span
+          <div className="row">
+            {this.state.weatherData.map((countryWeather, index) => (
+              <div key={index} className="col-lg-3">
+                <div
+                  className="dx-weather--item d-flex flex-column align-items-center"
+                  style={{
+                    borderRight:
+                      index !== this.state.weatherData.length - 1
+                        ? "1px solid #8AA8DA"
+                        : undefined,
+                  }}
+                >
+                  {countryWeather.loading ? (
+                    <p>Loading...</p>
+                  ) : countryWeather.error ? (
+                    <p>Error loading weather data</p>
+                  ) : (
+                    <>
+                      <div
+                        className="dx-weather--title"
                         style={{
                           color: "#738CB3",
-                          fontSize: "16px",
+                          fontSize: "20px",
+                          fontWeight: "bold",
                         }}
                       >
-                        {countryWeather.data?.weatherCondition}
-                      </span>
-                    </span>
-                  </div>
-                  <div
-                    className="d-flex justify-content-between mt-3"
-                    style={{
-                      gap: "3rem",
-                    }}
-                  >
-                    {/* Wind Speed */}
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <img src={iconWeather5} alt="Wind icon" />
-                      <span
+                        {countryWeather.country}
+                      </div>
+                      <div className="dx-weather--temp">
+                        <div
+                          style={{
+                            width: "140px",
+                            height: "115px",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                          }}
+                        >
+                          <img
+                            src={countryWeather.data?.weatherIcon}
+                            alt="Weather icon"
+                          />
+                        </div>
+
+                        <span
+                          className="dx-weather--temp-value"
+                          style={{
+                            color: "#436292",
+                            fontSize: "50px",
+                            fontFamily: "Open Sans",
+                          }}
+                        >
+                          {countryWeather.data?.temperature}°
+                          <span
+                            style={{
+                              color: "#738CB3",
+                              fontSize: "16px",
+                            }}
+                          >
+                            {countryWeather.data?.weatherCondition}
+                          </span>
+                        </span>
+                      </div>
+                      <div
+                        className="d-flex justify-content-between mt-3"
                         style={{
-                          fontSize: "11px",
-                          fontWeight: "500",
+                          gap: "3rem",
                         }}
                       >
-                        {countryWeather.data?.windSpeed} km/h
-                      </span>
-                    </div>
-                    {/* Humidity */}
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <img src={iconWeather6} alt="Humidity icon" />
-                      <span
-                        style={{
-                          fontSize: "11px",
-                          fontWeight: "500",
-                        }}
-                      >
-                        {countryWeather.data?.humidity} %
-                      </span>
-                    </div>
-                  </div>
-                </>
-              )}
-            </div>
-          ))}
+                        {/* Wind Speed */}
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            justifyContent: "center",
+                          }}
+                        >
+                          <img src={iconWeather5} alt="Wind icon" />
+                          <span
+                            style={{
+                              fontSize: "11px",
+                              fontWeight: "500",
+                            }}
+                          >
+                            {countryWeather.data?.windSpeed} km/h
+                          </span>
+                        </div>
+                        {/* Humidity */}
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            justifyContent: "center",
+                          }}
+                        >
+                          <img src={iconWeather6} alt="Humidity icon" />
+                          <span
+                            style={{
+                              fontSize: "11px",
+                              fontWeight: "500",
+                            }}
+                          >
+                            {countryWeather.data?.humidity} %
+                          </span>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </>
     );

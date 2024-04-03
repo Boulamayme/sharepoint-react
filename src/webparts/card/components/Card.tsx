@@ -19,10 +19,10 @@ export default class Card extends React.Component<ICardProps, {}> {
       <div className="row">
         {articles.length > 0 &&
           articles.map((article, index) => (
-            <CardNews key={index} article={article} column="col-3" />
+            <CardNews key={index} article={article} column="col-lg-3" />
           ))}
         {articles.length === 0 && (
-          <div className="col-12">
+          <div className="col-lg-12">
             <Placeholder
               iconName="Edit"
               iconText="Configure your web part"

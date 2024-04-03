@@ -15,7 +15,7 @@ export default class AnimatedCard extends React.Component<
         {items.length > 0 && (
           <div className="row">
             {items.map((item, index) => (
-              <div key={index} className="col-4">
+              <div key={index} className="col-lg-4">
                 <div className="dx-card-animated">
                   <div className="dx-card-animated--body">
                     <div className="dx-card-animated--image-container">

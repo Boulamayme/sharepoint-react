@@ -54,7 +54,7 @@ const CardNews = (props: any) => {
 
   return (
     <>
-      <div className={`${column} mb-4`}>
+      <div className={`${column} col-sm-6 mb-4`}>
         <div className="dx-article" onClick={() => navigationTo(article.url)}>
           {article.imageUrl && (
             <img

@@ -16,7 +16,7 @@ const HappyBirthDaySection = (props: any) => {
   return (
     <>
       <div className="row">
-        <div className="col-6">
+        <div className="col-lg-6">
           <div
             className="dx-hp"
             style={{
@@ -88,7 +88,7 @@ const HappyBirthDaySection = (props: any) => {
             </div>
           </div>
         </div>
-        <div className="col-6">
+        <div className="col-lg-6">
           <div className="dx-hp">
             <img
               src="/sites/enoe-energie/SiteAssets/assets/img_n_b.png"

@@ -13,7 +13,7 @@ export default class InfoBox extends React.Component<IInfoBoxProps, {}> {
           <div className="dx-infobox">
             <div className="row">
               {items.map((item, index) => (
-                <div key={index} className="col-4">
+                <div key={index} className="col-lg-4">
                   <div className="dx-infobox--item">
                     <span className="dx-infobox--title">{item.title}</span>
                     <div className="dx-infobox--icon">

@@ -22,7 +22,7 @@ export default class EventsCalendar extends React.Component<
       <>
         {events.length > 0 && (
           <div className="row">
-            <div className="col-12">
+            <div className="col-lg-12">
               <EventsFC news={events} />
             </div>
           </div>

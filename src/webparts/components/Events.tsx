@@ -69,7 +69,7 @@ const EventsFC = (props: any) => {
           <div className="col-auto">
             <Title title="Prochains évènements" />
           </div>
-          <div className="col-3">
+          <div className="col-lg-3">
             <div className="dx-events--search">
               <span className="p-input-icon-left w-100">
                 <i className="pi pi-search" />

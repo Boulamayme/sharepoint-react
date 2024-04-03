@@ -29,7 +29,7 @@ export default class OrganizationalChart extends React.Component<
                   .map((el: any) => {
                     return (
                       <>
-                        <div className="col-3 mb-3">
+                        <div className="col-lg-3 mb-3">
                           <div className="sp-org">
                             <div className="d-flex px-3 flex-column align-items-center">
                               {el.user.imageUrl && (

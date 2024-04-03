@@ -233,11 +233,11 @@ export default class CardLearningWebPart extends BaseClientSideWebPart<ICardLear
                 PropertyPaneDropdown("columns", {
                   label: "Columns per row",
                   options: [
-                    { key: "col-6", text: "2" },
-                    { key: "col-4", text: "3" },
-                    { key: "col-3", text: "4" },
+                    { key: "col-lg-6", text: "2" },
+                    { key: "col-lg-4", text: "3" },
+                    { key: "col-lg-3", text: "4" },
                     {
-                      key: "col-2",
+                      key: "col-lg-2",
                       text: "6",
                     },
                   ],

@@ -29,7 +29,7 @@ export default class Tools extends React.Component<IToolsProps, {}> {
               </div>
               <div>
                 <div className="row">
-                  <div className="col-9">
+                  <div className="col-lg-9">
                     <Title title={strings.LastUpdated} />
                     <div className="dx-tools-description">
                       <div
@@ -40,7 +40,7 @@ export default class Tools extends React.Component<IToolsProps, {}> {
                       />
                     </div>
                   </div>
-                  <div className="col-3">
+                  <div className="col-lg-3">
                     <Title title={strings.ReferentSoftware} />
                     <Member {...tools.Referent} />
                   </div>

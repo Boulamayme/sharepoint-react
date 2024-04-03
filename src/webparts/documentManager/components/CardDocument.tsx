@@ -33,7 +33,7 @@ const CardDocument: React.FC<ICardDocumentProps> = (props) => {
   return (
     <>
       {props.document && (
-        <div className="col-4">
+        <div className="col-lg-4">
           <div className="dx-card-document mb-5">
             <div className="dx-card-document-header">
               <div className="dx-card-document--cover">

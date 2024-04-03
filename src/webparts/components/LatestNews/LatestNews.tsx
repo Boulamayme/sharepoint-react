@@ -17,7 +17,7 @@ const LatestNewsFC = ({
         <div className="col-auto">
           <Title title={title} />
         </div>
-        <div className="col-3 d-flex justify-content-end">
+        <div className="col-lg-3 d-flex justify-content-end">
           <button
             className={`dx-btn dx-btn__default`}
             type="button"
@@ -31,7 +31,7 @@ const LatestNewsFC = ({
       </div>
 
       <div className="row">
-        <div className="col-6">
+        <div className="col-lg-6">
           {latestNews
             .filter((item) => item.featured)
             .map((item) => {
@@ -40,7 +40,7 @@ const LatestNewsFC = ({
               );
             })}
         </div>
-        <div className="col-6">
+        <div className="col-lg-6">
           {
             // eslint-disable-next-line
             latestNews

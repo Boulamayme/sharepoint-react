@@ -216,7 +216,7 @@ export default class DocumentsManager extends React.Component<
             Previous
           </button>
           <div className="row">
-            <div className="col-3">
+            <div className="col-lg-3">
               <div className="dx-manager-docs-filter">
                 <ul className="dx-manager-docs-filter--list">
                   {this.state.folders.map((item) => (
@@ -232,7 +232,7 @@ export default class DocumentsManager extends React.Component<
                 </ul>
               </div>
             </div>
-            <div className="col-9">
+            <div className="col-lg-9">
               <DataTable
                 className="dx-table"
                 value={this.state.files}

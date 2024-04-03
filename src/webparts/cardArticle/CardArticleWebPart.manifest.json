@@ -30,7 +30,7 @@
       "officeFabricIconFontName": "Page",
       "properties": {
         "description": "CardArticle",
-        "columns": "col-3"
+        "columns": "col-lg-3"
       }
     }
   ]

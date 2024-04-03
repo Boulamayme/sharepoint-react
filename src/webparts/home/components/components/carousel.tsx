@@ -55,7 +55,7 @@ const Carousel: React.FC<ICarouselProps> = (props) => {
                 className="d-block w-full"
                 alt={item.title}
               />
-              <div className="dx-carousel-caption d-none d-md-block">
+              <div className="dx-carousel-caption d-block">
                 <h5>{item.title}</h5>
                 <p>{item.description}</p>
                 <div className="d-flex align-items-center">

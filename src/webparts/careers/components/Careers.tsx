@@ -55,7 +55,7 @@ export default class Careers extends React.Component<
         {this.props.categories.length > 0 && (
           <div className="dx-careers">
             <div className="row">
-              <div className="col-3">
+              <div className="col-lg-3">
                 <ul className="dx-careers-categories">
                   {this.props.categories.map((category, index) => (
                     <li
@@ -71,11 +71,11 @@ export default class Careers extends React.Component<
                   ))}
                 </ul>
               </div>
-              <div className="col-9">
+              <div className="col-lg-9">
                 <div className="row">
                   {this.state.careers.length > 0 ? (
                     this.state.careers.map((item, index) => (
-                      <div key={index} className="col-6">
+                      <div key={index} className="col-lg-6">
                         <div className="dx-careers-item">
                           <span className="dx-careers-item--time">
                             {formatDate(item.publishedDate)}

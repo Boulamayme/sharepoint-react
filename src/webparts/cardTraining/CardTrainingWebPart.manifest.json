@@ -23,7 +23,7 @@
     "officeFabricIconFontName": "Page",
     "properties": {
       "description": "Card Training",
-      "columns": "col-4"
+      "columns": "col-lg-4"
     }
   }]
 }
