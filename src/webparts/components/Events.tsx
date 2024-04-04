@@ -69,6 +69,14 @@ const EventsFC = (props: any) => {
     setSearch(search);
     setFilteredEvents(filteredEvents);
   };
+
+  React.useEffect(() => {
+    const filteredEvents = news.filter((event: any) => {
+      return startOfDay(new Date(event.publishedDate)) >= startOfDay(date);
+    });
+    setFilteredEvents(filteredEvents);
+  }, [date]);
+
   return (
     <>
       <div
@@ -79,8 +87,8 @@ const EventsFC = (props: any) => {
           padding: "2rem",
         }}
       >
-        <div className="d-flex align-items-center justify-content-between">
-          <div className="col-auto">
+        <div className="row d-flex align-items-center justify-content-between">
+          <div className="col-lg-auto mb-3">
             <Title title="Prochains évènements" />
           </div>
           <div className="col-lg-3">

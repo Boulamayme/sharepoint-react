@@ -251,6 +251,7 @@ $black-color: #000;
     align-items: center;
     gap: 15px;
     max-width: 166px;
+    height: 130px;
     flex-direction: column;
     font-size: 14px;
     color: #000;
@@ -452,8 +453,14 @@ $black-color: #000;
   right: 10px;
 }
 
+@media (max-width: 992px) {
+  .dx-carousel-caption{
+    width: 65%;
+  }
+}
+
 /*******************************************************************
-* Events
+* Event
 ********************************************************************/
 .dx-events {
   &--name {
