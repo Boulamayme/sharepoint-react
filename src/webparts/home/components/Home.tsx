@@ -295,7 +295,6 @@ export default class Home extends React.Component<
             display: "flex",
             justifyContent: "center",
             padding: "30px 0",
-            overflowX: "auto",
           }}
         >
           <QuickLinkFC items={quickLinks} />

@@ -28,7 +28,21 @@ const EventsFC = (props: any) => {
           startOfDay(new Date(event.publishedDate)) === startOfDay(checkDate)
       )
     ) {
-      return <span style={{ color: "#1F2023" }}>{dateMeta.day}</span>;
+      return (
+        <span
+          style={{
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "#f3f4f6",
+            color: "#1F2023",
+          }}
+        >
+          {dateMeta.day}
+        </span>
+      );
     }
     return dateMeta.day;
   };
@@ -86,16 +100,16 @@ const EventsFC = (props: any) => {
           </div>
         </div>
         <div className="row">
-          <div className="col-auto">
+          <div className="col-lg-3">
             <Calendar
-              className="dx-events--calendar"
+              className="dx-events--calendar w-100"
               value={date}
               onChange={(e: any) => setDate(e.value)}
               inline
               dateTemplate={dateEventTemplate}
             />
           </div>
-          <div className="col">
+          <div className="col-lg">
             <div className="dx-schedule ms-3">
               <div className="dx-schedule__events mt-4">
                 {filteredEvents.map((event: any, index: number) => (

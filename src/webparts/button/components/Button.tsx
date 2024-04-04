@@ -12,9 +12,9 @@ export default class Button extends React.Component<IButtonProps, {}> {
     return (
       <>
         {link && label && (
-          <div className={`d-flex  mt-3`}>
+          <div className={`d-flex ${position} mt-3`}>
             <button
-              className={`dx-btn ${position} ${theme}`}
+              className={`dx-btn ${theme}`}
               type="button"
               onClick={() => {
                 window.open(link, "_blank");

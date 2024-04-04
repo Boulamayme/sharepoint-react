@@ -11,15 +11,15 @@ const Footer = (): JSX.Element => {
     <>
       <div className="dx-footer">
         <div className="dx-footer-container">
-          <div className="dx-footer-content">
-            <div>
+          <div className="dx-footer-content row">
+            <div className="col-lg">
               <img
                 loading="lazy"
                 srcSet="/sites/enoe-energie/SiteAssets/assets/image_4.png"
                 className="dx-footer--logo"
               />
             </div>
-            <div className="dx-footer--list">
+            <div className="col-lg dx-footer--list">
               <div className="dx-footer--title">Menu principal</div>
               <span className="dx-footer--item dx-cursor">
                 <a href="https://enoeenergie.sharepoint.com/sites/enoe-energie">
@@ -52,7 +52,7 @@ const Footer = (): JSX.Element => {
                 </a>
               </span>
             </div>
-            <div className="dx-footer--list">
+            <div className="col-lg dx-footer--list">
               <div className="dx-footer--title">Aide</div>
               <span className="dx-footer--item dx-cursor">
                 <a href="https://enoeenergie.sharepoint.com/sites/enoe-energie/SitePages/FAQ.aspx">
@@ -60,7 +60,7 @@ const Footer = (): JSX.Element => {
                 </a>
               </span>
             </div>
-            <div>
+            <div className="col-lg">
               <div className="dx-footer--title">SUIVEZ-NOUS</div>
               <div className="dx-footer--socials">
                 <a href="https://www.linkedin.com/company/eno%C3%A9-%C3%A9nergie/">

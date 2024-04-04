@@ -43,14 +43,12 @@ export default class Directory extends React.Component<
     let filterQueries = ["userType eq 'Member'"];
 
     if (name) {
-      // Assuming 'name' can be part of either displayName, surname, or givenName
-      // Adjust the logic here if you want a more sophisticated matching algorithm
       const nameFilter = `startsWith(displayName,'${name}') or startsWith(surname,'${name}') or startsWith(givenName,'${name}')`;
       filterQueries.push(nameFilter);
     }
 
     if (department) {
-      filterQueries.push(`department eq '${department}'`);
+      filterQueries.push(`department eq '${encodeURIComponent(department)}'`);
     }
 
     let filterQuery = `$filter=${filterQueries.join(" and ")}`;
