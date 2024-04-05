@@ -84,9 +84,9 @@ export default class Faq extends React.Component<
 
     return (
       <>
-        <div className="dx-faq-banner mb-4">
+        <div className="row dx-faq-banner mb-4">
           <img src={imgFAQ} alt="" />
-          <div className="dx-faq-searchbox">
+          <div className="col-lg dx-faq-searchbox">
             <div className="dx-faq-searchbox-container">
               <img src={iconSearch} alt="" />
               <input
@@ -110,7 +110,7 @@ export default class Faq extends React.Component<
               Rechercher
             </button>
           </div>
-          <div className="dx-faq-filter">
+          <div className="col-lg-auto dx-faq-filter">
             <Menubar model={this.itemsCategories} />
           </div>
         </div>

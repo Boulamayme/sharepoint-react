@@ -1665,6 +1665,13 @@ $black-color: #000;
   }
 }
 
+@media (max-width: 992px) {
+  .dx-event-current{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .dx-tools {
   &-banner {
     height: 165px;
@@ -1700,6 +1707,8 @@ $black-color: #000;
     }
   }
 }
+
+
 
 /**************************
 * Organization
