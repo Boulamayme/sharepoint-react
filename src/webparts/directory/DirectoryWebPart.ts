@@ -133,7 +133,7 @@ export default class DirectoryWebPart extends BaseClientSideWebPart<IDirectoryWe
                 PropertyFieldCollectionData("departments", {
                   key: "Departments",
                   label: "",
-                  panelHeader: "Manage categories careers",
+                  panelHeader: "Manage categories",
                   manageBtnLabel: "Manage categories",
                   value: this.properties.departments,
                   fields: [
