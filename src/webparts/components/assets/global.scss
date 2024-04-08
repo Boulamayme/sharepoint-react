@@ -502,6 +502,10 @@ $black-color: #000;
         tbody {
           td {
             color: #919091;
+            span{
+              width: 1.7rem;
+              height: 1.7rem;
+            }
             span:hover {
               color: #4b5563;
             }

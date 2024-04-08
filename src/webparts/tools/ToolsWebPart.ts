@@ -143,11 +143,12 @@ export default class ToolsWebPart extends BaseClientSideWebPart<IToolsWebPartPro
         this.properties.items = items;
         this.context.propertyPane.refresh();
       });
+    } else {
+      this.context.propertyPane.refresh();
     }
   }
 
   async fetchListItems(listId: string): Promise<Array<any>> {
-    debugger;
     let items = await this._sp.web.lists
       .getById(listId)
       .items.select(
