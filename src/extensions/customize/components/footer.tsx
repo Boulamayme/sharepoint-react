@@ -55,8 +55,18 @@ const Footer = (): JSX.Element => {
             <div className="col-lg dx-footer--list">
               <div className="dx-footer--title">Aide</div>
               <span className="dx-footer--item dx-cursor">
-                <a href="https://enoeenergie.sharepoint.com/sites/enoe-energie/SitePages/FAQ.aspx">
-                  FAQ
+                <a href="https://enoeenergie.sharepoint.com/:u:/r/sites/enoe-energie/SitePages/FAQ.aspx?csf=1&web=1&share=Ea-kaT6uA6lFrgSf7rtbPqABYyUO9AxE3Ahxsv1wMGlerA&e=7JjZdg">
+                  FAQ Corporate
+                </a>
+              </span>
+              <span className="dx-footer--item dx-cursor">
+                <a href="https://enoeenergie.sharepoint.com/:u:/r/sites/enoe-energie/SitePages/FAQ-M%C3%A9tiers.aspx?csf=1&web=1&share=Efu2qO3M5oBOm-WZTCh7ZrsBKvYM2cMp1n8S1IenflkB9Q&e=d8stmX">
+                  FAQ Métiers
+                </a>
+              </span>
+              <span className="dx-footer--item dx-cursor">
+                <a href="https://enoeenergie.sharepoint.com/:u:/r/sites/enoe-energie/SitePages/FAQ-Outils.aspx?csf=1&web=1&share=ESxaGXBAIuFIplwhpTBU55kBD2IKu7cPoazkgPOaZTYrLA&e=X8KmAV">
+                  FAQ Outils
                 </a>
               </span>
             </div>
