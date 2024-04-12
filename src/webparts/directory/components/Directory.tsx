@@ -44,7 +44,7 @@ export default class Directory extends React.Component<
     let filterQueries = ["userType eq 'Member'"];
     filterQueries.push("assignedLicenses/any(s:s/skuId eq f245ecc8-75af-4f8e-b61f-27d8114de5f3)");
 
-    console.log("Maxence : 7")
+    console.log("PENG : 1")
     if (name) {
       const nameFilter = `startsWith(displayName,'${name}') or startsWith(surname,'${name}') or startsWith(givenName,'${name}')`;
       filterQueries.push(nameFilter);
