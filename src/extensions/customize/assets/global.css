@@ -1,0 +1,195 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css");
+
+.dx-carousel{margin:0 -8px 0 -8px;}
+
+/*********************************************************************
+* Global
+**********************************************************************/
+body,div,span,a{
+    font-family: "Comfortaa", sans-serif;
+}
+.ms-HorizontalNavItem  .ms-HorizontalNavItem-link span{ position: relative;font-family: "Open Sans", sans-serif !important;font-weight: 500!important;color: #003DA5;}
+.ms-HorizontalNavItem .ms-HorizontalNavItem-link span.is-selected{border-color: transparent;}
+.ms-HorizontalNavItem .ms-HorizontalNavItem-link span.is-selected:after {content: "";position: absolute;width: 50%;background: #00965E;height: 3px;bottom: -5px;left: 0;}
+.g_b_50a7110f,.a_g_50a7110f:not(.b_g_50a7110f) .t_g_50a7110f{max-width: 100%!important;padding: 0;}
+.CanvasZone,.ControlZone{padding: 0!important;margin:0!important;}
+/* #spCommandBar{display: none!important;} */
+.actionsWrapper-60{display: none!important;}
+.fh_aj_9f38462c{margin-left:0!important;}
+.a_a_50a7110f:not(.c_a_50a7110f) .f_a_50a7110f,.a_c_50a7110f:not(.b_c_50a7110f) .m_c_50a7110f{    max-width: 100%;padding: 0;}
+
+/* [data-automation-id='pageHeader']{height: 90px;} */
+
+.od-ItemsScopeItemContent-header.od-ItemContent-header{box-sizing: content-box;}
+
+
+
+/*********************************************************************
+* Default Header
+**********************************************************************/
+[data-automationid="SiteHeader"]{box-shadow: 0px 4px 21px 0px rgba(0, 0, 0, 0.16);}
+
+
+/*********************************************************************
+* Carousel
+**********************************************************************/
+.dx-carousel-caption .dx-btn{width: auto;}
+/*********************************************************************
+* Banner Section Page
+**********************************************************************/
+.dx-section-title{height: 90px!important;background: #E6ECF6;}
+.dx-section-title [data-automation-id="TitleTextId"]{top: -18px;position: relative;}
+[data-automation-id="TitleTextId"]{color:#003DA5!important;font-weight: 500 !important;font-family: "Open Sans", sans-serif !important;}
+[data-automation-id="authorByLine"]{display: none!important;}
+.dx-title{margin-top: 2rem;}
+.dx-section-title div{max-width: 100%!important;}
+
+.dx-section-bg #title_text{display: none;}
+.dx-section-bg [data-automation-id="gradientBox"]{box-shadow: none;background-image: none!important}
+/**********************************************************************
+* Org
+************************************************************************/
+.sp-org{margin-bottom: 3rem;}
+
+/**********************************************************************
+* Events
+************************************************************************/
+.dx-events{gap: 1.2rem!important;}
+.dx-schedule__events{gap: 25px;}
+.dx-schedule__dates{gap: 25px;}
+
+/**********************************************************************
+* Document
+************************************************************************/
+.dx-document{
+  height: 100%;
+}
+.dx-document .dx-document--item{
+  height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+/***********************************************************************
+* Quick Links
+************************************************************************/
+.dx-quicklink .dx-quicklink--name{
+  white-space: break-spaces;
+}
+.dx-quicklink--item{cursor: pointer;}
+
+/***********************************************************************
+* News
+************************************************************************/
+.dx-card-article,.dx-article{cursor: pointer;}
+/***********************************************************************
+* Happy Birthday
+************************************************************************/
+.dx-hp{width: 430px;margin-top: 3rem;}
+
+/**********************************************************************
+* Footer
+************************************************************************/
+ .dx-footer {
+   margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .dx-footer-container {
+    background-color: #003da5;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 39px 60px;
+    flex-direction: column;
+  }
+  .dx-footer-content {
+    display: flex;
+    width: 100%;
+    max-width: 1166px;
+    gap: 20px;
+  }
+  .dx-footer--item{
+    margin-top: 20px;
+  }
+  .dx-footer--item a{
+    text-decoration: none;
+    color:#fff;
+  }
+
+  .dx-footer--logo {
+    object-fit: auto;
+    object-position: center;
+    width: 184px;
+    margin-top: 13px;
+    max-width: 100%;
+    margin-right: 6rem;
+  }
+  @media (max-width: 991px) {
+    .dx-footer--logo {
+      margin-top: 40px;
+    }
+  }
+  .dx-footer--list {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 400;
+    white-space: nowrap;
+    line-height: 150%;
+  }
+  .dx-footer--title {
+    color: #00965e;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font: 600 13px/138% Open Sans, sans-serif;
+  }
+  .dx-footer--socials {
+    display: flex;
+    margin-top: 23px;
+    gap: 20px;
+  }
+  .dx-footer--socials img {
+    aspect-ratio: 1;
+    object-fit: auto;
+    object-position: center;
+    width: 24px;
+  }
+  .dx-footer-divider {
+    background-color: #e2e8f0;
+    align-self: stretch;
+    margin-top: 36px;
+    height: 1px;
+  }
+  .dx-footer--copyright {
+    color: #fff;
+    text-align: center;
+    margin-top: 44px;
+    font: 400 14px/157% Open Sans, sans-serif;
+  }
+/**************************************************
+* Org
+*****************************************************/
+[class*="orgBrowser-"] [class*="manager-"]{
+  justify-content: center;
+}
+[class*="orgBrowser-"]  [data-automation-id="orgChart-persona-managers"]{
+  display: flex;
+    flex-direction: column;
+    height: auto;
+}
+[class*="orgBrowser-"]  [data-automation-id="orgChart-persona-managers"] .ms-Persona-details {
+  text-align: center;
+}
+[class*="orgBrowser-"]  [data-automation-id="orgChart-persona-managers"] .ms-Persona-details > .ms-Persona-primaryText{
+  margin: 20px 0 25px 0
+}

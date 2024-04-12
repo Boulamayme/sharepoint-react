@@ -52,6 +52,7 @@ const CardNews = (props: any) => {
     setBookmarked(article.bookmarked ? true : false);
   }, []);
 
+
   return (
     <>
       <div className={`${column} col-sm-6 mb-4`}>
