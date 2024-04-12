@@ -106,10 +106,27 @@ export default class Home extends React.Component<
               .version("v1.0")
               .get();
             const user = userResponse.value[0] ? userResponse.value[0] : null;
-            let [month, day] = `${item.field_3}/${item.field_4}`.split("/");
+            let [day_str, month_str] = `${item.field_3}/${item.field_4}`.split("/");
+            let map_chiffre_mois = new Map();
+            map_chiffre_mois.set(1,"Jan.");
+            map_chiffre_mois.set(2,"Fev.");
+            map_chiffre_mois.set(3,"Mars");
+            map_chiffre_mois.set(4,"Avr.");
+            map_chiffre_mois.set(5,"Mai");
+            map_chiffre_mois.set(6,"Juin");
+            map_chiffre_mois.set(7,"Juil.");
+            map_chiffre_mois.set(8,"Aout");
+            map_chiffre_mois.set(9,"Sept.");
+            map_chiffre_mois.set(10,"Oct.");
+            map_chiffre_mois.set(11,"Nov.");
+            map_chiffre_mois.set(12,"Dec.");
+            var month_int: number = +month_str;
+            let dateNaissance = `${day_str} ${map_chiffre_mois.get(month_int)}`
+            console.log("MONTH 1:", month_int)
+            console.log("BIRTHDAY :", dateNaissance)
             return {
               ...item,
-              birthday: `${day}/${month}`,
+              birthday: `${day_str} ${map_chiffre_mois.get(month_int)}`,
               jobTitle: user?.jobTitle ?? "",
               user: {
                 text: `${item.field_5} ${item.field_1}`,
