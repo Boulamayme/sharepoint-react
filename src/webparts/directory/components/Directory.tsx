@@ -40,8 +40,11 @@ export default class Directory extends React.Component<
     department = "",
     _nextLink: any = null
   ): void {
+    // 'Microsoft 365 Business Standard' = 'f30db892-07e9-47e9-837c-80727f46fd3d'
     let filterQueries = ["userType eq 'Member'"];
+    filterQueries.push("assignedLicenses/any(s:s/skuId eq f245ecc8-75af-4f8e-b61f-27d8114de5f3)");
 
+    console.log("Maxence : 7")
     if (name) {
       const nameFilter = `startsWith(displayName,'${name}') or startsWith(surname,'${name}') or startsWith(givenName,'${name}')`;
       filterQueries.push(nameFilter);
@@ -68,6 +71,7 @@ export default class Directory extends React.Component<
           .version("v1.0")
           .get(
             (error: any, response: any, rawResponse?: HttpClientResponse) => {
+              console.log(response)
               if (!error) {
                 this.setState((prevState) => ({
                   items: _nextLink
