@@ -233,6 +233,14 @@
           "manifest": "./src/webparts/animatedCard/AnimatedCardWebPart.manifest.json"
         }
       ]
+    },
+    "birthday-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/birthday/BirthdayWebPart.js",
+          "manifest": "./src/webparts/birthday/BirthdayWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -267,6 +275,7 @@
     "FaqLearnWebPartStrings": "lib/webparts/faqLearn/loc/{locale}.js",
     "CardToolsWebPartStrings": "lib/webparts/cardTools/loc/{locale}.js",
     "CardTrainingWebPartStrings": "lib/webparts/cardTraining/loc/{locale}.js",
-    "AnimatedCardWebPartStrings": "lib/webparts/animatedCard/loc/{locale}.js"
+    "AnimatedCardWebPartStrings": "lib/webparts/animatedCard/loc/{locale}.js",
+    "BirthdayWebPartStrings": "lib/webparts/birthday/loc/{locale}.js"
   }
 }
