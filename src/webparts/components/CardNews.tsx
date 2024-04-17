@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import * as React from "react";
 
-import { formatDate } from "./helpers/helpers";
+// import { formatDate } from "./helpers/helpers";
 import { getSP } from "./pnpjsConfig";
 
 //Icons
@@ -73,7 +73,7 @@ const CardNews = (props: any) => {
             >
               <div className="d-flex justify-content-between align-items-center">
                 <div className="dx-article--date">
-                  {formatDate(article.publishedDate)}
+                  {article.publishedDate}
                 </div>
                 <img
                   loading="lazy"

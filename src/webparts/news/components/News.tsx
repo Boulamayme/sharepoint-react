@@ -101,6 +101,7 @@ export default class News extends React.Component<
         ViewXml: `<View>
                     <Query>
                       ${whereClause}
+                      ${orderByClause}
                     </Query>
                     <ViewFields>
                       <FieldRef Name='Title' />
@@ -113,7 +114,6 @@ export default class News extends React.Component<
                       <FieldRef Name='_LikeCount' />
                       <FieldRef Name='_CommentCount' />
                     </ViewFields>
-                    ${orderByClause}
                     <RowLimit  Paged='TRUE'>4</RowLimit>
                   </View>`,
         Paging: nextPagePosition ? nextPagePosition : "",
@@ -133,7 +133,7 @@ export default class News extends React.Component<
           const elt = await this.fetchViewsLifeTimeForArticle(item.ID);
           return {
             ...item,
-            ...elt,
+            ...(elt.Created ? elt : {}),
             imageUrl: `${window.location.origin}/_layouts/15/getpreview.ashx?path=${item.FileRef}&resolution=6`,
             publishedDate: item.Created,
             description: item.Title,
@@ -180,7 +180,7 @@ export default class News extends React.Component<
           (a) => a.sharepointIds.listItemUniqueId === _item.IdentityListItemId
         );
         _item.bookmarked = isExist ? true : false;
-        return _item
+        return _item;
       }
       return 0;
     } catch (error) {
