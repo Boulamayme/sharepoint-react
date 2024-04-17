@@ -121,9 +121,6 @@ export default class Home extends React.Component<
             map_chiffre_mois.set(11,"Nov.");
             map_chiffre_mois.set(12,"Dec.");
             var month_int: number = +month_str;
-            let dateNaissance = `${day_str} ${map_chiffre_mois.get(month_int)}`
-            console.log("MONTH 1:", month_int)
-            console.log("BIRTHDAY :", dateNaissance)
             return {
               ...item,
               birthday: `${day_str} ${map_chiffre_mois.get(month_int)}`,
