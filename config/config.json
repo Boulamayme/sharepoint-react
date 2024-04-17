@@ -241,6 +241,14 @@
           "manifest": "./src/webparts/birthday/BirthdayWebPart.manifest.json"
         }
       ]
+    },
+    "incoming-employees-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/incomingEmployees/IncomingEmployeesWebPart.js",
+          "manifest": "./src/webparts/incomingEmployees/IncomingEmployeesWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -276,6 +284,7 @@
     "CardToolsWebPartStrings": "lib/webparts/cardTools/loc/{locale}.js",
     "CardTrainingWebPartStrings": "lib/webparts/cardTraining/loc/{locale}.js",
     "AnimatedCardWebPartStrings": "lib/webparts/animatedCard/loc/{locale}.js",
-    "BirthdayWebPartStrings": "lib/webparts/birthday/loc/{locale}.js"
+    "BirthdayWebPartStrings": "lib/webparts/birthday/loc/{locale}.js",
+    "IncomingEmployeesWebPartStrings": "lib/webparts/incomingEmployees/loc/{locale}.js"
   }
 }
