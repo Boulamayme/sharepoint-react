@@ -1,40 +1,38 @@
 import * as React from "react";
 import * as ReactDom from "react-dom";
 import { Version } from "@microsoft/sp-core-library";
-import { type IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
+import {
+  type IPropertyPaneConfiguration,
+  PropertyPaneTextField,
+} from "@microsoft/sp-property-pane";
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import { IReadonlyTheme } from "@microsoft/sp-component-base";
 
-import EventsCalendar from "./components/EventsCalendar";
-import { IEventsCalendarProps } from "./components/IEventsCalendarProps";
+import LatestArticles from "./components/LatestArticles";
+import { ILatestArticlesProps } from "./components/ILatestArticlesProps";
 import { getSP } from "../components/pnpjsConfig";
-import { SPFI } from "@pnp/sp";
 import { PropertyFieldMultiSelect } from "@pnp/spfx-property-controls";
-import { LIST_EVENTS_ID } from "../data/constants";
+import { LIST_SITE_PAGE_ID } from "../data/constants";
+import { SPFI } from "@pnp/sp";
 
-export interface IEventsCalendarWebPartProps {
-  events: any[];
+export interface ILatestArticlesWebPartProps {
+  title: string;
   categories: any[];
-  selectedCategories: any[];
+  selectedCategories: string[];
 }
 
-export default class EventsCalendarWebPart extends BaseClientSideWebPart<IEventsCalendarWebPartProps> {
-  private _sp: SPFI;
+export default class LatestArticlesWebPart extends BaseClientSideWebPart<ILatestArticlesWebPartProps> {
+  _sp: SPFI;
   public render(): void {
-    const element: React.ReactElement<IEventsCalendarProps> =
-      React.createElement(EventsCalendar, {
-        events: this.properties.events || [],
-        categories: this.properties.selectedCategories || [],
-        displayMode: this.displayMode,
-        onConfigurePropPane: this._onConfigure,
+    console.log("Categories", this.properties.selectedCategories);
+    const element: React.ReactElement<ILatestArticlesProps> =
+      React.createElement(LatestArticles, {
+        title: this.properties.title,
+        categories: this.properties.selectedCategories,
       });
 
     ReactDom.render(element, this.domElement);
   }
-
-  _onConfigure = (): void => {
-    this.context.propertyPane.open();
-  };
 
   protected async onInit(): Promise<void> {
     // this._environmentMessage = this._getEnvironmentMessage();
@@ -65,13 +63,14 @@ export default class EventsCalendarWebPart extends BaseClientSideWebPart<IEvents
       );
     }
   }
+
   private async loadCategories(): Promise<void> {
     let items = await this._sp.web.lists
-      .getById(LIST_EVENTS_ID)
-      .fields.getByInternalNameOrTitle("Category")
+      .getById(LIST_SITE_PAGE_ID)
+      .fields.getByInternalNameOrTitle("D_x00e9_partement")
       .select("Choices")();
 
-    this.properties.categories = items.Choices.map((choice) => {
+    this.properties.categories = items.Choices.map((choice: any) => {
       return {
         key: choice,
         text: choice,
@@ -92,12 +91,14 @@ export default class EventsCalendarWebPart extends BaseClientSideWebPart<IEvents
       pages: [
         {
           header: {
-            description: "Events Calendar Web Part Settings",
+            description: "Latest Articles Web Part Configuration",
           },
           groups: [
             {
-              groupName: "Configuration",
               groupFields: [
+                PropertyPaneTextField("title", {
+                  label: "Title",
+                }),
                 PropertyFieldMultiSelect("selectedCategories", {
                   key: "multiSelecCategorytField",
                   label: "Select Categories",

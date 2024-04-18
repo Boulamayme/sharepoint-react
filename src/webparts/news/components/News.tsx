@@ -9,6 +9,7 @@ import * as strings from "NewsWebPartStrings";
 
 import { getSP } from "../../components/pnpjsConfig";
 import { SPFI } from "@pnp/sp";
+import { LIST_SITE_PAGE_ID } from "../../data/constants";
 
 //Images
 const searchIcon = require("../assets/seach.png");
@@ -59,7 +60,7 @@ export default class News extends React.Component<
         resetData = true;
       }
 
-      const listId = "bacb861d-cc8d-4178-beed-e976a7fa1ca3";
+      const listId = LIST_SITE_PAGE_ID;
       let nextPagePosition = this.state.nextHref;
       //Remove first character
       if (nextPagePosition) nextPagePosition = nextPagePosition.substring(1);

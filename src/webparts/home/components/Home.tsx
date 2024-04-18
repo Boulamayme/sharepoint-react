@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import * as React from "react";
 import type { IHomeProps } from "./IHomeProps";
-import Carousel from "./components/carousel";
+import * as strings from "HomeWebPartStrings";
 
 /**************************************************
  *TO DO: Must be deleted and add it in extension
@@ -20,11 +20,12 @@ import CardNews from "../../components/CardNews";
 import QuickLinkFC from "../../components/quickLink";
 import EventsFC from "../../components/Events";
 import HappyBirthDaySection from "../../components/HappyBirthday";
-import * as strings from "HomeWebPartStrings";
+import CarouselFC from "./components/carousel";
 
 //PnP
 import { SPFI } from "@pnp/sp";
 import { getSP } from "../../components/pnpjsConfig";
+import { LIST_EVENTS_ID, LIST_SITE_PAGE_ID } from "../../data/constants";
 
 export default class Home extends React.Component<
   IHomeProps,
@@ -168,7 +169,7 @@ export default class Home extends React.Component<
   //Retrieve Last 3 news
   public fetchArticles = async () => {
     try {
-      const listId = "bacb861d-cc8d-4178-beed-e976a7fa1ca3";
+      const listId = LIST_SITE_PAGE_ID;
 
       let whereClause = `
       <Where>
@@ -285,7 +286,7 @@ export default class Home extends React.Component<
 
   public getListEvents = async () => {
     const items = await this._sp.web.lists
-      .getById("590c7021-64f5-419b-9494-a73379748965")
+      .getById(LIST_EVENTS_ID)
       .items();
 
     this.setState({
@@ -323,7 +324,7 @@ export default class Home extends React.Component<
 
     return (
       <>
-        {carouselItems.length > 0 && <Carousel items={carouselItems} />}
+        {carouselItems.length > 0 && <CarouselFC items={carouselItems} />}
         <div
           style={{
             backgroundColor: "#F3F4F3",
@@ -374,7 +375,6 @@ export default class Home extends React.Component<
                   </div>
                 </div>
               </div>
-
               <div className="row">
                 {this.state.articles.map((article, index) => (
                   <CardNews key={index} article={article} column="col-lg-4" />

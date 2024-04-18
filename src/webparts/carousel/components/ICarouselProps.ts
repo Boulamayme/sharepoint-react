@@ -1,8 +1,7 @@
 import { DisplayMode } from "@microsoft/sp-core-library";
 
-export interface IEventsCalendarProps {
-  events: any[];
-  categories: any[];
+export interface ICarouselProps {
+  items: any[];
   displayMode: DisplayMode;
   onConfigurePropPane: () => void;
 }

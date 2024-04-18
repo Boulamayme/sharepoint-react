@@ -51,3 +51,6 @@ export const LATEST_NEWS: ILatestNewsItem[] = [
     featured: false,
   },
 ];
+
+export const LIST_EVENTS_ID = "590c7021-64f5-419b-9494-a73379748965";
+export const LIST_SITE_PAGE_ID = "bacb861d-cc8d-4178-beed-e976a7fa1ca3";

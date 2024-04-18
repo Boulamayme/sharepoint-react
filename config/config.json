@@ -249,6 +249,22 @@
           "manifest": "./src/webparts/incomingEmployees/IncomingEmployeesWebPart.manifest.json"
         }
       ]
+    },
+    "carousel-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/carousel/CarouselWebPart.js",
+          "manifest": "./src/webparts/carousel/CarouselWebPart.manifest.json"
+        }
+      ]
+    },
+    "latest-articles-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/latestArticles/LatestArticlesWebPart.js",
+          "manifest": "./src/webparts/latestArticles/LatestArticlesWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -285,6 +301,8 @@
     "CardTrainingWebPartStrings": "lib/webparts/cardTraining/loc/{locale}.js",
     "AnimatedCardWebPartStrings": "lib/webparts/animatedCard/loc/{locale}.js",
     "BirthdayWebPartStrings": "lib/webparts/birthday/loc/{locale}.js",
-    "IncomingEmployeesWebPartStrings": "lib/webparts/incomingEmployees/loc/{locale}.js"
+    "IncomingEmployeesWebPartStrings": "lib/webparts/incomingEmployees/loc/{locale}.js",
+    "CarouselWebPartStrings": "lib/webparts/carousel/loc/{locale}.js",
+    "LatestArticlesWebPartStrings": "lib/webparts/latestArticles/loc/{locale}.js"
   }
 }

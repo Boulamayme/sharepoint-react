@@ -15,6 +15,7 @@ import EventsFC from "../../components/Events";
 //PnPjs
 import { getSP } from "../../components/pnpjsConfig";
 import { SPFI } from "@pnp/sp";
+import { LIST_EVENTS_ID } from "../../data/constants";
 
 export default class EventsCalendar extends React.Component<
   IEventsCalendarProps,
@@ -33,13 +34,26 @@ export default class EventsCalendar extends React.Component<
   }
 
   public getListEvents = async () => {
-    const items = await this._sp.web.lists
-      .getById("590c7021-64f5-419b-9494-a73379748965")
-      .items();
+    // Check if selected categories is not empty
+    if (this.props.categories.length > 0) {
+      const filterQuery = this.props.categories
+        .map((category: string) => `Category eq '${category}'`)
+        .join(" or ");
 
-    this.setState({
-      events: items,
-    });
+      const items = await this._sp.web.lists
+        .getById(LIST_EVENTS_ID)
+        .items.filter(filterQuery)();
+
+      this.setState({
+        events: items,
+      });
+    } else {
+      // If Categories is empty, get all events
+      const items = await this._sp.web.lists.getById(LIST_EVENTS_ID).items();
+      this.setState({
+        events: items,
+      });
+    }
   };
 
   public async componentDidMount(): Promise<void> {

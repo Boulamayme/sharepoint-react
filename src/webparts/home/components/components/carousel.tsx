@@ -12,7 +12,7 @@ interface ICarouselProps {
   items: ICarouselItem[];
 }
 
-const Carousel: React.FC<ICarouselProps> = (props) => {
+const CarouselFC: React.FC<ICarouselProps> = (props) => {
   const [activeIndex, setActiveIndex] = React.useState(0);
 
   const nextSlide = () => {
@@ -78,4 +78,4 @@ const Carousel: React.FC<ICarouselProps> = (props) => {
   );
 };
 
-export default Carousel;
+export default CarouselFC;
