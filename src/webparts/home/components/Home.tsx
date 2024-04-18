@@ -33,6 +33,7 @@ export default class Home extends React.Component<
     birthdays: any[];
     articles: any[];
     favItems: any[];
+    events: any[];
   }
 > {
   public _sp: SPFI;
@@ -43,6 +44,7 @@ export default class Home extends React.Component<
       birthdays: [],
       articles: [],
       favItems: [],
+      events: [],
     };
     this._sp = getSP();
   }
@@ -104,28 +106,30 @@ export default class Home extends React.Component<
           const userSearchUrl = `/users?$filter=startsWith(givenName,'${escapeODataString(
             item.field_5
           )}') and startsWith(surname,'${escapeODataString(item.field_1)}')`;
-          
+
           try {
             const userResponse = await client
               .api(userSearchUrl)
               .version("v1.0")
               .get();
             const user = userResponse.value[0] ? userResponse.value[0] : null;
-            let [day_str, month_str] = `${item.field_3}/${item.field_4}`.split("/");
+            let [day_str, month_str] = `${item.field_3}/${item.field_4}`.split(
+              "/"
+            );
             let map_chiffre_mois = new Map();
-            map_chiffre_mois.set(1,"Jan.");
-            map_chiffre_mois.set(2,"Fev.");
-            map_chiffre_mois.set(3,"Mars");
-            map_chiffre_mois.set(4,"Avr.");
-            map_chiffre_mois.set(5,"Mai");
-            map_chiffre_mois.set(6,"Juin");
-            map_chiffre_mois.set(7,"Juil.");
-            map_chiffre_mois.set(8,"Aout");
-            map_chiffre_mois.set(9,"Sept.");
-            map_chiffre_mois.set(10,"Oct.");
-            map_chiffre_mois.set(11,"Nov.");
-            map_chiffre_mois.set(12,"Dec.");
-            var month_int: number = +month_str;
+            map_chiffre_mois.set(1, "Jan.");
+            map_chiffre_mois.set(2, "Fev.");
+            map_chiffre_mois.set(3, "Mars");
+            map_chiffre_mois.set(4, "Avr.");
+            map_chiffre_mois.set(5, "Mai");
+            map_chiffre_mois.set(6, "Juin");
+            map_chiffre_mois.set(7, "Juil.");
+            map_chiffre_mois.set(8, "Aout");
+            map_chiffre_mois.set(9, "Sept.");
+            map_chiffre_mois.set(10, "Oct.");
+            map_chiffre_mois.set(11, "Nov.");
+            map_chiffre_mois.set(12, "Dec.");
+            let month_int: number = +month_str;
             return {
               ...item,
               birthday: `${day_str} ${map_chiffre_mois.get(month_int)}`,
@@ -268,6 +272,8 @@ export default class Home extends React.Component<
   }
 
   async componentDidMount(): Promise<void> {
+    await this.getListEvents();
+
     await this.getFollowedListITems();
 
     this.setState({
@@ -276,6 +282,16 @@ export default class Home extends React.Component<
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     this.fetchArticles();
   }
+
+  public getListEvents = async () => {
+    const items = await this._sp.web.lists
+      .getById("590c7021-64f5-419b-9494-a73379748965")
+      .items();
+
+    this.setState({
+      events: items,
+    });
+  };
 
   sortArticles(sortedBy: string) {
     if (sortedBy === "popular") {
@@ -404,11 +420,13 @@ export default class Home extends React.Component<
             </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col-lg-12">
-            <EventsFC news={this.props.events} />
+        {this.state.events.length > 0 && (
+          <div className="row">
+            <div className="col-lg-12">
+              <EventsFC news={this.state.events} />
+            </div>
           </div>
-        </div>
+        )}
       </>
     );
   }
