@@ -99,7 +99,12 @@ export default class Home extends React.Component<
 
       const resultItems = await Promise.all(
         filteredItems.map(async (item) => {
-          const userSearchUrl = `/users?$filter=startsWith(givenName,'${item.field_5}') and startsWith(surname,'${item.field_1}')`;
+          const escapeODataString = (value: any) => value.replace(/'/g, "''");
+
+          const userSearchUrl = `/users?$filter=startsWith(givenName,'${escapeODataString(
+            item.field_5
+          )}') and startsWith(surname,'${escapeODataString(item.field_1)}')`;
+          
           try {
             const userResponse = await client
               .api(userSearchUrl)

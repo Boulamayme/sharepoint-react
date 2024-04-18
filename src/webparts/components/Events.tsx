@@ -25,7 +25,7 @@ const EventsFC = (props: any) => {
     if (
       news.some(
         (event: any) =>
-          startOfDay(new Date(event.publishedDate)) === startOfDay(checkDate)
+          startOfDay(new Date(event.EventDate)) === startOfDay(checkDate)
       )
     ) {
       return (
@@ -50,20 +50,20 @@ const EventsFC = (props: any) => {
   const addToCalendar = (event: any) => {
     window.open(
       `https://outlook.office.com/calendar/deeplink/compose?body=${encodeURIComponent(
-        event.description
+        event.Description ? event.Description : ""
       )}&enddt=${new Date(
-        event.publishedDate
+        event.EventDate
       ).toISOString()}&location=location&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&startdt=${new Date(
-        event.publishedDate
-      ).toUTCString()}&subject=${event.title}`
+        event.EndDate
+      ).toUTCString()}&subject=${event.Title}`
     );
   };
   const handleSearchEvent = (search: string) => {
     //Search in title and description
     const filteredEvents = news.filter((event: any) => {
       return (
-        event.description.toLowerCase().includes(search.toLowerCase()) ||
-        event.title.toLowerCase().includes(search.toLowerCase())
+        event.Description.toLowerCase().includes(search.toLowerCase()) ||
+        event.Title.toLowerCase().includes(search.toLowerCase())
       );
     });
     setSearch(search);
@@ -72,7 +72,7 @@ const EventsFC = (props: any) => {
 
   React.useEffect(() => {
     const filteredEvents = news.filter((event: any) => {
-      return startOfDay(new Date(event.publishedDate)) >= startOfDay(date);
+      return startOfDay(new Date(event.EventDate)) >= startOfDay(date);
     });
     setFilteredEvents(filteredEvents);
   }, [date]);
@@ -126,9 +126,14 @@ const EventsFC = (props: any) => {
                     key={index}
                   >
                     <div>
-                      <span>{formatDate(event.publishedDate)}</span>
-                      <h3>{event.title}</h3>
-                      <p className="mt-1 mb-2">{event.description}</p>
+                      <span>{formatDate(event.EventDate)}</span>
+                      <h3>{event.Title}</h3>
+                      <p
+                        className="mt-1 mb-2"
+                        dangerouslySetInnerHTML={{
+                          __html: event.Description,
+                        }}
+                      />
                     </div>
 
                     <div

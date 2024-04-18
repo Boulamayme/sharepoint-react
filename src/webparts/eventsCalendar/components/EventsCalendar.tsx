@@ -8,34 +8,55 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";
 //core
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
+
+//components
 import EventsFC from "../../components/Events";
-import { Placeholder } from "@pnp/spfx-controls-react";
+
+//PnPjs
+import { getSP } from "../../components/pnpjsConfig";
+import { SPFI } from "@pnp/sp";
 
 export default class EventsCalendar extends React.Component<
   IEventsCalendarProps,
-  {}
+  {
+    events: any[];
+  }
 > {
+  private _sp: SPFI;
+
+  constructor(props: IEventsCalendarProps) {
+    super(props);
+    this.state = {
+      events: [],
+    };
+    this._sp = getSP();
+  }
+
+  public getListEvents = async () => {
+    const items = await this._sp.web.lists
+      .getById("590c7021-64f5-419b-9494-a73379748965")
+      .items();
+
+    this.setState({
+      events: items,
+    });
+  };
+
+  public async componentDidMount(): Promise<void> {
+    await this.getListEvents();
+  }
+
   public render(): React.ReactElement<IEventsCalendarProps> {
-    const { events } = this.props;
+    const {} = this.props;
 
     return (
       <>
-        {events.length > 0 && (
+        {this.state.events.length > 0 && (
           <div className="row">
             <div className="col-lg-12">
-              <EventsFC news={events} />
+              <EventsFC news={this.state.events} />
             </div>
           </div>
-        )}
-
-        {events.length === 0 && (
-          <Placeholder
-            iconName="Edit"
-            iconText="Configure your web part"
-            description="Please configure the web part."
-            buttonLabel="Configure"
-            onConfigure={this.props.onConfigurePropPane}
-          />
         )}
       </>
     );
