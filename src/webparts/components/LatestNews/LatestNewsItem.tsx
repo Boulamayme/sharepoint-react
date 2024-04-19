@@ -1,18 +1,17 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import * as React from "react";
-import { formatDate } from "../helpers/helpers";
 
-interface ILatestNewsItem {
-  position: string;
-  imageUrl: string;
-  title: string;
-  description: string;
-  author: string;
-  publishedDate: string;
-  url: string;
-}
+// interface ILatestNewsItem {
+//   position: string;
+//   imageUrl: string;
+//   title: string;
+//   description: string;
+//   author: string;
+//   publishedDate: string;
+//   url: string;
+// }
 
-const LatestNewsItem = (props: ILatestNewsItem): JSX.Element => {
+const LatestNewsItem = (props: any): JSX.Element => {
   const navigateTo = (url: string): void => {
     window.open(url, "_blank");
   };
@@ -39,10 +38,10 @@ const LatestNewsItem = (props: ILatestNewsItem): JSX.Element => {
         </div>
         <div>
           <div className="dx-news--author my-3">
-            {props.author} • { formatDate(props.publishedDate)}
+            {props.author.text} • {props.publishedDate}
           </div>
           <h3 className="dx-news--title">
-            {props.title}
+            {props.Title}
             {/* <img src={icon} alt="" /> */}
           </h3>
           <p className="dx-news--desc">{props.description}</p>

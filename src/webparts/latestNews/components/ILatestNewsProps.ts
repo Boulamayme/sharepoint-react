@@ -4,4 +4,5 @@ export interface ILatestNewsProps {
   link: string;
   onConfigurePropPane: () => void;
   displayMode: any;
+  categories: any[];
 }

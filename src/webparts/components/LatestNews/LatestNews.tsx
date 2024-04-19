@@ -36,25 +36,18 @@ const LatestNewsFC = ({
             .filter((item) => item.featured)
             .map((item) => {
               return (
-                <LatestNewsItem key={item.id} {...item} position="vertical" />
+                <LatestNewsItem key={item.Id} {...item} position="vertical" />
               );
             })}
         </div>
         <div className="col-lg-6">
-          {
-            // eslint-disable-next-line
-            latestNews
-              .filter((item) => !item.featured)
-              .map((item) => {
-                return (
-                  <LatestNewsItem
-                    key={item.id}
-                    {...item}
-                    position="horizontal"
-                  />
-                );
-              })
-          }
+          {latestNews
+            .filter((item) => !item.featured)
+            .map((item) => {
+              return (
+                <LatestNewsItem key={item.Id} {...item} position="horizontal" />
+              );
+            })}
         </div>
       </div>
     </>

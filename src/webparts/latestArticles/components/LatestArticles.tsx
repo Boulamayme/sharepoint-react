@@ -67,7 +67,6 @@ export default class LatestArticles extends React.Component<
     try {
       const listId = LIST_SITE_PAGE_ID;
 
-      // Building the department condition dynamically
       let departmentCondition = "";
       if (this.props.categories && this.props.categories.length > 0) {
         const departmentConditions = this.props.categories.map(
@@ -85,6 +84,10 @@ export default class LatestArticles extends React.Component<
             <FieldRef Name='Cat_x00e9_gorie'/>
             <Value Type='Text'>Actualités</Value>
           </Eq>
+          <Eq>            
+            <FieldRef Name='Home'/>            
+            <Value Type='Boolean'>1</Value>        
+          </Eq>        
         </And>
         ${departmentCondition ? departmentCondition : ""}
       </And>
