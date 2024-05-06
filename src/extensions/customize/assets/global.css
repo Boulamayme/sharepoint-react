@@ -102,7 +102,7 @@ body,div,span,a{
     justify-content: center;
   }
   .dx-footer-container {
-    background-color: #003da5;
+    background-color: #2e5240 !important;
     display: flex;
     width: 100%;
     justify-content: center;

@@ -36,7 +36,8 @@ export default class Birthday extends React.Component<
               }}
             >
               <img
-                src="/sites/enoe-energie/SiteAssets/assets/greenc_cloud.png"
+                // src="/sites/enoe-energie/SiteAssets/assets/greenc_cloud.png"
+                src=""
                 style={{
                   position: "absolute",
                   top: 0,
@@ -45,7 +46,8 @@ export default class Birthday extends React.Component<
                 }}
               />
               <img
-                src="/sites/enoe-energie/SiteAssets/assets/green_blue.png"
+                // src="/sites/enoe-energie/SiteAssets/assets/green_blue.png"
+                src=""
                 style={{
                   position: "absolute",
                   top: 0,

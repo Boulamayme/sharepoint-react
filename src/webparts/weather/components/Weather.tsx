@@ -110,7 +110,8 @@ export default class Weather extends React.Component<
           className="dx-weather"
           style={{
             display: "flex",
-            backgroundColor: "#D5E2F6",
+            // backgroundColor: "#919091",
+            backgroundColor: "rgb(230, 236, 246)",
             padding: "20px",
             borderRadius: "5px",
             justifyContent: "center",
@@ -138,7 +139,7 @@ export default class Weather extends React.Component<
                       <div
                         className="dx-weather--title"
                         style={{
-                          color: "#738CB3",
+                          color: "#2e5240",
                           fontSize: "20px",
                           fontWeight: "bold",
                         }}
@@ -164,7 +165,8 @@ export default class Weather extends React.Component<
                         <span
                           className="dx-weather--temp-value"
                           style={{
-                            color: "#436292",
+                            // color: "#436292",
+                            color: "#2e5240",
                             fontSize: "50px",
                             fontFamily: "Open Sans",
                           }}
@@ -172,7 +174,8 @@ export default class Weather extends React.Component<
                           {countryWeather.data?.temperature}°
                           <span
                             style={{
-                              color: "#738CB3",
+                              // color: "#738CB3",
+                              color: "#2e5240",
                               fontSize: "16px",
                             }}
                           >

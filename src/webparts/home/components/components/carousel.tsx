@@ -58,10 +58,13 @@ const CarouselFC: React.FC<ICarouselProps> = (props) => {
               <div className="dx-carousel-caption d-block">
                 <h5>{item.title}</h5>
                 <p>{item.description}</p>
-                <div className="d-flex align-items-center">
-                  <a href={item.linkUrl} className="dx-btn">
+                <div className="d-flex align-items-center" >
+                  <button className="dx-btn dx-btn__default" type="button">
                     {item.btnLabel}
-                  </a>
+                  </button>
+                  {/* <a href={item.linkUrl} className="dx-btn">
+                    {item.btnLabel}
+                  </a> */}
                 </div>
               </div>
             </div>

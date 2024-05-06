@@ -34,7 +34,8 @@ export default class IncomingEmployees extends React.Component<
               <div className="col-lg-6 d-flex justify-content-center">
                 <div className="dx-hp">
                   <img
-                    src="/sites/enoe-energie/SiteAssets/assets/img_n_b.png"
+                    // src="/sites/enoe-energie/SiteAssets/assets/img_n_b.png"
+                    src=""
                     style={{
                       position: "absolute",
                       right: "0",
@@ -43,7 +44,8 @@ export default class IncomingEmployees extends React.Component<
                     }}
                   />
                   <img
-                    src="/sites/enoe-energie/SiteAssets/assets/image.png"
+                    // src="/sites/enoe-energie/SiteAssets/assets/image.png"
+                    src=""
                     alt=""
                     style={{
                       position: "absolute",
@@ -53,7 +55,8 @@ export default class IncomingEmployees extends React.Component<
                     }}
                   />
                   <img
-                    src="/sites/enoe-energie/SiteAssets/assets/nuage%20souriant.png"
+                    // src="/sites/enoe-energie/SiteAssets/assets/nuage%20souriant.png"
+                    src=""
                     style={{
                       position: "absolute",
                       left: "0",
@@ -64,7 +67,8 @@ export default class IncomingEmployees extends React.Component<
                   />
                   <h3 className="dx-hp--title">
                     <img
-                      src="/sites/enoe-energie/SiteAssets/assets/cloud.png"
+                      // src="/sites/enoe-energie/SiteAssets/assets/cloud.png"
+                      src=""
                       alt=""
                       style={{
                         position: "absolute",
